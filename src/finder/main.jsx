@@ -1,19 +1,13 @@
 import { render } from 'preact';
+import { App } from './components/App.jsx';
 import './style.css';
 
 /**
- * WP-0 placeholder. WP-3 replaces this with the real 3-tab finder SPA.
- * Mounts into the element the `[obw_beer_finder]` shortcode renders.
+ * Mount the OBW Beer Finder SPA into the element rendered by the
+ * `[obw_beer_finder]` shortcode. No hardcoded theme paths — the REST root and
+ * nonce arrive via `window.OBWFinder` (localized by the shortcode), with a
+ * `/wp-json/` fallback so the app also runs in a mocked/standalone context.
  */
-function App() {
-	return (
-		<div className="obw-finder-placeholder">
-			<h2>OBW Beer Finder</h2>
-			<p>Preact scaffold is mounted. The finder SPA lands in WP-3.</p>
-		</div>
-	);
-}
-
 const MOUNT_ID = 'obw-beer-finder-root';
 
 function mount() {

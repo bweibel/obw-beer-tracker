@@ -39,18 +39,18 @@ final class Fields {
 		// Normalize the beer REST payload to the documented contract. Runs late
 		// (after ACF / acf-to-rest-api have populated the `acf` key) so the shape
 		// is guaranteed regardless of which REST integration is active.
-		//
-		// NOTE: we deliberately do NOT normalize obw_brewery / obw_venue here.
-		// The live AngularJS finder's Brewery/Venue tabs filter their reverse
-		// relations on `beer.post_status == 'publish'` (see the theme's
-		// ngtemplates/{brewerieslist,venuelist}.html), and the acf-to-rest-api
-		// recursive variant supplies that `post_status` key. Reshaping those
-		// relations to the minimal { ID, post_title, post_name } contract would
-		// strip `post_status` and hide every beer in those tabs. When WP-3/WP-6
-		// cut the finder over to core REST and acf-to-rest-api is removed, add the
-		// brewery/venue reverse normalization there (native show_in_rest is
-		// already enabled on both groups).
 		add_filter( 'rest_prepare_obw_beer', [ $this, 'prepare_beer' ], 20, 3 );
+
+		// WP-3: normalize the brewery/venue *reverse* relations so the finder's
+		// Brewery/Venue tabs can run off core REST. Native ACF `show_in_rest`
+		// returns each reverse relation as a full WP_Post-ish array (dozens of
+		// fields per beer — a heavy payload), and the deep recursive acf-to-rest
+		// variant returns them empty for some venues (a pre-existing bug). Both
+		// filters below reduce the `brewery_link` / `venue_link` reverse payloads
+		// to `[{ ID, post_title, post_name, post_status }]` — `post_status` is
+		// included because the tabs display only published beers.
+		add_filter( 'rest_prepare_obw_brewery', [ $this, 'prepare_brewery' ], 20, 3 );
+		add_filter( 'rest_prepare_obw_venue', [ $this, 'prepare_venue' ], 20, 3 );
 	}
 
 	/**
@@ -105,6 +105,51 @@ final class Fields {
 	}
 
 	/**
+	 * Normalize the brewery REST payload: slim the reverse `brewery_link` beers.
+	 *
+	 * @param \WP_REST_Response $response The response object.
+	 * @param \WP_Post          $post     The post being prepared.
+	 * @return \WP_REST_Response
+	 */
+	public function prepare_brewery( $response, $post, $request ) {
+		return $this->prepare_reverse_relation( $response, $post, 'brewery_link' );
+	}
+
+	/**
+	 * Normalize the venue REST payload: slim the reverse `venue_link` beers.
+	 *
+	 * @param \WP_REST_Response $response The response object.
+	 * @param \WP_Post          $post     The post being prepared.
+	 * @return \WP_REST_Response
+	 */
+	public function prepare_venue( $response, $post, $request ) {
+		return $this->prepare_reverse_relation( $response, $post, 'venue_link' );
+	}
+
+	/**
+	 * Shared: reduce a brewery/venue reverse relation to the finder's shape:
+	 * an ordered array of { ID, post_title, post_name, post_status }.
+	 *
+	 * @param \WP_REST_Response $response The response object.
+	 * @param \WP_Post          $post     The post being prepared.
+	 * @param string            $field    Reverse relation field name.
+	 * @return \WP_REST_Response
+	 */
+	private function prepare_reverse_relation( $response, $post, string $field ) {
+		$data = $response->get_data();
+		if ( ! is_array( $data ) ) {
+			return $response;
+		}
+
+		$acf            = ( isset( $data['acf'] ) && is_array( $data['acf'] ) ) ? $data['acf'] : [];
+		$acf[ $field ]  = self::relation( $post->ID, $field, true );
+		$data['acf']    = $acf;
+		$response->set_data( $data );
+
+		return $response;
+	}
+
+	/**
 	 * Read a scalar ACF value.
 	 *
 	 * @return mixed
@@ -130,11 +175,15 @@ final class Fields {
 	 * an ordered array of { ID, post_title, post_name }.
 	 *
 	 * Reads the raw stored value (post IDs) with `get_field( …, false )` so the
-	 * result is deterministic regardless of the field's return_format.
+	 * result is deterministic regardless of the field's return_format. When
+	 * `$with_status` is true (brewery/venue reverse relations) a `post_status`
+	 * key is added so the finder's Brewery/Venue tabs can show only published
+	 * beers.
 	 *
-	 * @return array<int,array{ID:int,post_title:string,post_name:string}>
+	 * @param bool $with_status Include the related post's `post_status`.
+	 * @return array<int,array<string,int|string>>
 	 */
-	private static function relation( int $post_id, string $field ): array {
+	private static function relation( int $post_id, string $field, bool $with_status = false ): array {
 		$raw = function_exists( 'get_field' ) ? get_field( $field, $post_id, false ) : null;
 		if ( empty( $raw ) ) {
 			return [];
@@ -162,11 +211,16 @@ final class Fields {
 				continue;
 			}
 
-			$out[] = [
+			$entry = [
 				'ID'         => $related->ID,
 				'post_title' => $related->post_title,
 				'post_name'  => $related->post_name,
 			];
+			if ( $with_status ) {
+				$entry['post_status'] = $related->post_status;
+			}
+
+			$out[] = $entry;
 		}
 
 		return $out;

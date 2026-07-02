@@ -1,0 +1,73 @@
+/**
+ * Shared accordion list for the Brewery and Venue tabs. Ports
+ * brewerieslist.html / venuelist.html: each group is sorted by name, expands
+ * on click, and lists its published beers (from the reverse relation) sorted
+ * by post_name and filtered by the search term (matched on post_name, as the
+ * legacy templates did). Beer rows resolve to the full beer via `beerLookup`
+ * so tracker badges and the modal work identically to the Brews tab.
+ */
+import { Badges } from './Badges.jsx';
+
+export function GroupList({
+	groups,
+	kind, // 'brewery' | 'venue' — for CSS class parity
+	search,
+	openIds,
+	toggleOpen,
+	beerLookup,
+	flagsFor,
+	onSelect,
+}) {
+	const term = (search || '').toLowerCase();
+	const sorted = [...groups].sort((a, b) =>
+		a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+	);
+
+	return (
+		<section class="page-content beer-list cf">
+			{sorted.map((group) => {
+				const isOpen = !!openIds[group.id];
+				const beers = (group.beers || [])
+					.filter((b) => b.post_status === 'publish')
+					.filter((b) => !term || (b.post_name || '').toLowerCase().includes(term))
+					.sort((a, b) => (a.post_name || '').localeCompare(b.post_name || ''));
+
+				return (
+					<div class={kind} key={group.id}>
+						<h2 class={kind + '-title'}>
+							<a onClick={() => toggleOpen(group.id)}>{group.name}</a>
+						</h2>
+						<div
+							class={
+								'beer-sublist-wrap ' +
+								(isOpen ? 'sublist-open' : 'sublist-closed')
+							}
+						>
+							{isOpen
+								? beers.map((rel) => {
+										const beer = beerLookup[rel.ID];
+										if (!beer) return null;
+										const flags = flagsFor(beer.id);
+										return (
+											<div class="beer" key={rel.ID}>
+												<h3 class="beer-title">
+													<a onClick={() => onSelect(beer)}>{beer.name}</a>
+												</h3>
+												<Badges flags={flags} />
+												{beer.acf.style ? (
+													<span class="style-small">{beer.acf.style}</span>
+												) : null}
+											</div>
+										);
+								  })
+								: null}
+							{isOpen && beers.length === 0 ? (
+								<p class="obw-empty">No published brews here yet.</p>
+							) : null}
+						</div>
+					</div>
+				);
+			})}
+		</section>
+	);
+}

@@ -108,7 +108,16 @@ final class Plugin {
 	public function render_finder_shortcode( $atts = [] ): string {
 		$this->assets->enqueue_entry( 'src/finder/main.jsx', 'obw-finder' );
 
-		return '<div id="obw-beer-finder-root" class="obw-beer-finder"></div>';
+		// The finder reads its REST root + nonce from these data attributes.
+		// (Passing config via the mount node avoids the inline-script/module-tag
+		// interaction on our ES-module bundle; the JS falls back to /wp-json/
+		// when the attributes are absent, so a mocked/standalone mount still
+		// works.)
+		return sprintf(
+			'<div id="obw-beer-finder-root" class="obw-beer-finder" data-rest-url="%s" data-nonce="%s"></div>',
+			esc_url( rest_url() ),
+			esc_attr( wp_create_nonce( 'wp_rest' ) )
+		);
 	}
 
 	/**
