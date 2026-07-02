@@ -1,0 +1,5 @@
+name,style,abv,ibu,untappd,description,brewery_id,brewery,venue_id,venue
+Test Sample IPA,IPA,6.5,55,test-sample-ipa,"A hoppy test IPA imported via CSV. Exact ID match on both relations.",11158,,10940,
+Test Sample Stout,Stout,7.2,40,test-sample-stout,"A dark test stout. Name-fallback match on both relations.",,Wild Ohio,,The Side Bar
+Test Sample Collab,Saison,5.8,25,test-sample-collab,"A collaboration exercising multi-brewery and multi-venue linking.",11158|11114,,10940|9843,
+Test Sample Orphan,Pilsner,4.9,18,test-sample-orphan,"No matching brewery or venue exists; this must land in the review queue, not create anything.",,Nonexistent Brewery XYZ,,No Such Venue QQ

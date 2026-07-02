@@ -72,6 +72,14 @@ final class Plugin {
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );
+
+		// WP-4: ensure the pending-review table exists (self-heals if the plugin
+		// was activated before this WP shipped), then register the CLI command.
+		Import\PendingStore::maybe_upgrade();
+
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			\WP_CLI::add_command( 'obw', Import\CliCommand::class );
+		}
 	}
 
 	/**
@@ -108,6 +116,9 @@ final class Plugin {
 	 * resolve immediately.
 	 */
 	public static function activate(): void {
+		// WP-4: create the pending-review store table.
+		Import\PendingStore::create_table();
+
 		flush_rewrite_rules();
 	}
 
