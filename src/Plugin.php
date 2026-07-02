@@ -59,6 +59,11 @@ final class Plugin {
 
 		add_action( 'init', [ $this, 'load_textdomain' ] );
 
+		// WP-1: the plugin now owns the beer/venue/brewery CPTs. Registered on
+		// `init` priority 0 so they exist before the theme (and everything else
+		// on the default priority) runs.
+		( new PostTypes() )->register_hooks();
+
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );
