@@ -318,6 +318,24 @@ WP-0 ──┬─ WP-1 ─┬─ WP-2 ─┬─ WP-3 ─┐
 - Each WP should land as its own reviewed commit/PR in the plugin repo with the
   acceptance criteria demonstrably met.
 
+## WP-0/1/2 outcomes & discovered contracts (read before WP-3 / WP-6)
+
+WP-0, WP-1, WP-2 landed (plugin commits `5dfb18c`, `b20d713`, `17141c2`).
+
+**Asset pipeline (WP-0):** enqueue via `Plugin::instance()->assets()->enqueue_entry($entry, $handle, $deps=[])` where `$entry` is the Vite-root-relative source path (e.g. `'src/finder/main.jsx'`, matches manifest keys); add new entries to `vite.config.js` `rollupOptions.input`. Returns the script handle for `wp_localize_script`/inline REST-root+nonce. Dev/HMR when `OBW_VITE_DEV` truthy (`OBW_VITE_DEV_URL` default `http://localhost:5173`). Mount contract: `[obw_beer_finder]` renders `<div id="obw-beer-finder-root">`.
+
+**CPTs (WP-1):** slugs beer=`brew`, venue=`venue`, brewery=`brewery`; rest_base = CPT name. `obw_brewery` has EMPTY `supports` (no editor/thumbnail) — WP-5's create-full-profile path relies on ACF fields (`logo`, `address`, `website`), not the featured image. Theme registration is guarded behind `post_type_exists(...)` (graceful degradation when plugin inactive).
+
+**ACF fields reused, not recreated (WP-2):** existing DB field keys were kept (no data migration for the persistent 105 breweries / 50 venues). Beer group `group_5b9fd8cc7804a`: `brewery_link` `field_5965323de28fc`, `venue_link` `field_596538519f8af`, `untappd` `field_5734e758eb388`, `style`, `abv`, `ibu` (+ `bottle_or_draft`, `limited_release`, `ratebeer_link`). Reverse fields: brewery `field_5965347353292`, venue `field_59653dc9532f2`. Captured as plugin Local JSON in `acf-json/`. Native `bidirectional` wiring is live.
+
+**REST contract (WP-2):** `rest_prepare_obw_beer` (in `src/Fields.php`) normalizes the BEER `acf` payload to exactly `{style, abv:number|null, ibu:number|null, untappd:<raw slug>, brewery_link:[{ID,post_title,post_name}], venue_link:[{ID,post_title,post_name}]}`. `untappd` is a RAW slug — the finder must re-prepend `https://untappd.com/b/` (as `beerfinder.js:274` does). Brewery/venue reverse relations are **deliberately NOT normalized yet** — the live Angular Brewery/Venue tabs filter on `beer.post_status=='publish'` supplied by the recursive plugin.
+
+**WP-3 must additionally:** add a native normalizer for the brewery/venue reverse relations (map via `get_field(...,false)`, include `post_status` for parity) so the Brewery/Venue tabs work off core REST — this also fixes a pre-existing recursive-plugin bug where deep venue→beers relations return empty over REST.
+
+**WP-6 must additionally:** remove the theme's legacy hand-rolled bidirectional filters at `functions.php:472-475` (`acf/update_value/name=brewery_link|venue_link`) — they double-process reverse writes now that native `bidirectional` is on and can corrupt the `_field` reference meta. Do this at finder cutover. Avoid bulk-editing brewery/venue relations in the ACF UI during the transition.
+
+**acf-to-rest-api removal (deferred — WP-6/WP-7, NOT done in WP-2):** no consumer uses the `/acf/v3/` or `/acf/v2/` routes; the only dependency is the injected `acf` key on core `/wp/v2/*`, consumed solely by the theme finder (`beerfinder.js`, `brewerieslist.html`, `venuelist.html`) and `page-beerfinder.php`. PHP single/archive templates use `get_field()` directly and are unaffected. Removal order: (1) WP-3 finder onto native core REST + reverse normalizer; (2) confirm every `.acf`-read post type has native `show_in_rest`; (3) remove theme filters `functions.php:472-475`; (4) `wp plugin deactivate acf-to-rest-api acf-to-rest-api-recursive-master`; (5) retest 3 tabs + PHP templates. Both plugins remain ACTIVE until then (they coexist fine with native REST).
+
 ## Open items to confirm with the owner (non-blocking)
 - Exact venue/brewery rewrite slugs to preserve (read from current theme files).
 - Whether any other consumer depends on `acf-to-rest-api` before removal.
