@@ -56,7 +56,7 @@
             "name": "brewery_link",
             "aria-label": "",
             "type": "relationship",
-            "instructions": "Which brewery made this beer? If the brewery is not available in this list, <a href=\"http:\/\/ohio-brew-week.local\/wp-admin\/post-new.php?post_type=obw_brewery\" target=\"_blank\">add it to the breweries list<\/a>.",
+            "instructions": "Which brewery made this beer? If the brewery is not available in this list, <a href=\"http://ohio-brew-week.local/wp-admin/post-new.php?post_type=obw_brewery\" target=\"_blank\">add it to the breweries list</a>.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -86,7 +86,7 @@
             "name": "venue_link",
             "aria-label": "",
             "type": "relationship",
-            "instructions": "Which venues have this brew available? If the venue is not available in this list, <a href=\"http:\/\/ohio-brew-week.local\/wp-admin\/post-new.php?post_type=obw_venue\" href=\"_target\">add it to the venues list<\/a>.",
+            "instructions": "Which venues have this brew available? If the venue is not available in this list, <a href=\"http://ohio-brew-week.local/wp-admin/post-new.php?post_type=obw_venue\" href=\"_target\">add it to the venues list</a>.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -144,7 +144,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "untappd.com\/b\/",
+            "prepend": "untappd.com/b/",
             "append": "",
             "maxlength": ""
         },
@@ -191,57 +191,6 @@
             "step": ".1"
         },
         {
-            "key": "field_5717e6042e3d4",
-            "label": "Bottle or Draft",
-            "name": "bottle_or_draft",
-            "aria-label": "",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "10",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "bottle": "Bottle\/Can",
-                "draft": "Draft"
-            },
-            "allow_custom": 0,
-            "default_value": [],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0,
-            "custom_choice_button_text": "Add new choice"
-        },
-        {
-            "key": "field_5734e63986409",
-            "label": "Limited Release",
-            "name": "limited_release",
-            "aria-label": "",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "13",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "Limited Release": "Limited Release"
-            },
-            "allow_custom": 0,
-            "default_value": [],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0,
-            "custom_choice_button_text": "Add new choice"
-        },
-        {
             "key": "field_62c6fa240b297",
             "label": "Old Fields",
             "name": "",
@@ -280,26 +229,6 @@
             "min": "",
             "max": "",
             "step": ""
-        },
-        {
-            "key": "field_5734e7b6eb389",
-            "label": "Ratebeer Link",
-            "name": "ratebeer_link",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "ratebeer.com\/beer\/",
-            "append": "",
-            "maxlength": ""
         }
     ],
     "modified": 1782976795
