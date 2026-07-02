@@ -1,0 +1,13 @@
+/* WP-0 placeholder styles. Proves CSS is emitted into the manifest and
+   enqueued by the PHP Assets loader. WP-3 owns the real finder styles. */
+.obw-finder-placeholder {
+	padding: 1.5rem;
+	border: 1px dashed #c8a24a;
+	border-radius: 6px;
+	background: #fffdf5;
+	font-family: system-ui, sans-serif;
+}
+
+.obw-finder-placeholder h2 {
+	margin: 0 0 0.5rem;
+}
