@@ -336,9 +336,17 @@ WP-0, WP-1, WP-2 landed (plugin commits `5dfb18c`, `b20d713`, `17141c2`).
 
 **acf-to-rest-api removal (deferred — WP-6/WP-7, NOT done in WP-2):** no consumer uses the `/acf/v3/` or `/acf/v2/` routes; the only dependency is the injected `acf` key on core `/wp/v2/*`, consumed solely by the theme finder (`beerfinder.js`, `brewerieslist.html`, `venuelist.html`) and `page-beerfinder.php`. PHP single/archive templates use `get_field()` directly and are unaffected. Removal order: (1) WP-3 finder onto native core REST + reverse normalizer; (2) confirm every `.acf`-read post type has native `show_in_rest`; (3) remove theme filters `functions.php:472-475`; (4) `wp plugin deactivate acf-to-rest-api acf-to-rest-api-recursive-master`; (5) retest 3 tabs + PHP templates. Both plugins remain ACTIVE until then (they coexist fine with native REST).
 
-## Open items to confirm with the owner (non-blocking)
-- Exact venue/brewery rewrite slugs to preserve (read from current theme files).
-- Whether any other consumer depends on `acf-to-rest-api` before removal.
-- Final CSV column contract (headers, whether we add `brewery_id`/`venue_id`).
-- Capability model for the importer (reuse `manage_options` vs custom cap).
+## Open items — RESOLVED with owner (2026-07-02)
+1. **Rewrite slugs** — resolved by WP-1: beer=`brew`, venue=`venue`, brewery=`brewery` (preserved).
+2. **acf-to-rest-api consumers** — resolved by WP-2 inventory: only the theme finder; removal deferred to WP-6/WP-7 (see removal order above). Coexists with native REST until then.
+3. **CSV column contract (WP-4)** — the CSV will carry canonical **`brewery_id` / `venue_id`** columns (owner normalizes the CSV before import). Matching strategy: canonical ID first, normalized exact-name as fallback. Unmatched → review queue, never auto-created.
+4. **Importer capability** — **`manage_options`** (no custom cap for now).
+
+**Beer field mapping for the importer (WP-4):**
+- `style`, `abv`, `ibu`, `untappd` → the existing ACF scalar fields (untappd stored as RAW slug).
+- **description** → beer **`post_content`** (NOT an ACF field; beer CPT has `editor` support, rendered by `single-obw_beer.php` `the_content()`).
+- `brewery_id` / `venue_id` CSV columns → resolve to `obw_brewery`/`obw_venue` posts, set the bidirectional relations (`brewery_link`/`venue_link`).
+
+**Legacy field removal (do as a small WP-2 follow-up / fold into WP-4 prep — owner approved):**
+`bottle_or_draft`, `limited_release`, and `ratebeer_link` are dead (zero consumers in theme, finder JS, or templates — only present in the ACF group). Remove all three from `acf-json/group_5b9fd8cc7804a.json` AND the live DB field group. Not written by the importer.
 ```
