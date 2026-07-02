@@ -64,6 +64,11 @@ final class Plugin {
 		// on the default priority) runs.
 		( new PostTypes() )->register_hooks();
 
+		// WP-2: ACF Local JSON autoload (bidirectional relationship fields +
+		// native show_in_rest) and REST payload normalization to the finder
+		// contract.
+		( new Fields() )->register_hooks();
+
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );

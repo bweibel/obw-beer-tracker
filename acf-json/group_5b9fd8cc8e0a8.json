@@ -1,0 +1,157 @@
+{
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "obw_brewery"
+            }
+        ]
+    ],
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "author",
+        "send-trackbacks"
+    ],
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "title": "Brewery Fields",
+    "key": "group_5b9fd8cc8e0a8",
+    "menu_order": 0,
+    "active": true,
+    "fields": [
+        {
+            "key": "field_572cfa02d8f61",
+            "label": "Logo",
+            "name": "logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "preview_size": "thumbnail",
+            "library": "all",
+            "return_format": "array",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_5717e401dd1bf",
+            "label": "Address",
+            "name": "address",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
+            "key": "field_5717e441dd1c1",
+            "label": "Website",
+            "name": "website",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "ohiobrewweek.com",
+            "prepend": "",
+            "append": "",
+            "formatting": "html",
+            "maxlength": ""
+        },
+        {
+            "key": "field_596506006bc4f",
+            "label": "Sponsor Link",
+            "name": "sponsor_link",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "object",
+            "post_type": [
+                "obw_sponsor"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": 1,
+            "min": 0,
+            "elements": [
+                "post_type"
+            ],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_5965347353292",
+            "label": "Brewery Link",
+            "name": "brewery_link",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "object",
+            "post_type": [
+                "obw_beer"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": "",
+            "min": 0,
+            "elements": [
+                "post_type"
+            ],
+            "bidirectional_target": [
+                "field_5965323de28fc"
+            ],
+            "bidirectional": 1
+        }
+    ],
+    "modified": 1782976795
+}

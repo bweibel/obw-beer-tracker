@@ -1,0 +1,203 @@
+{
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "obw_venue"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "title": "Venue Fields",
+    "key": "group_5b9fd8ccb1327",
+    "menu_order": 0,
+    "active": true,
+    "fields": [
+        {
+            "key": "field_574789e634c7b",
+            "label": "Website",
+            "name": "website",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "ohiobrewweek.com",
+            "prepend": "",
+            "append": "",
+            "formatting": "html",
+            "maxlength": ""
+        },
+        {
+            "key": "field_574789f534c7c",
+            "label": "Location",
+            "name": "location",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
+            "key": "field_57478a0434c7d",
+            "label": "Logo",
+            "name": "logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "preview_size": "thumbnail",
+            "library": "all",
+            "return_format": "array",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_57478a0f34c7e",
+            "label": "Hours",
+            "name": "hours",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "<strong>DO NOT<\/strong> use too many things from the Visual Editor here, it's a small area!",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "toolbar": "full",
+            "media_upload": 1,
+            "tabs": "all",
+            "delay": 0
+        },
+        {
+            "key": "field_59653dc9532f2",
+            "label": "Beers",
+            "name": "venue_link",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select all of the beers currently available at this venue from the list.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "object",
+            "post_type": [
+                "obw_beer"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": "",
+            "min": 0,
+            "elements": [
+                "post_type"
+            ],
+            "bidirectional_target": [
+                "field_596538519f8af"
+            ],
+            "bidirectional": 1
+        },
+        {
+            "key": "field_5967ba73e6006",
+            "label": "Sponsor Link",
+            "name": "sponsor_link",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Use this to link a sponsor that is also is also a venue",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "object",
+            "post_type": [
+                "obw_sponsor"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": "",
+            "min": 0,
+            "elements": [
+                "post_type"
+            ],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_5b438db332e07",
+            "label": "Event Location",
+            "name": "venue_event_link",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "This links the venue with it's Event location. Allows events for this location to be displayed on the venue page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "object",
+            "post_type": [
+                "location"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": "",
+            "min": 0,
+            "elements": [
+                "post_type"
+            ],
+            "bidirectional_target": []
+        }
+    ],
+    "modified": 1782976795
+}
