@@ -80,6 +80,12 @@ final class Plugin {
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			\WP_CLI::add_command( 'obw', Import\CliCommand::class );
 		}
+
+		// WP-5: importer admin UI + review queue. Only in admin context (the page
+		// and its handlers live under wp-admin); front-end never needs it.
+		if ( is_admin() ) {
+			( new Admin\ImportPage( new Import\PendingStore() ) )->register_hooks();
+		}
 	}
 
 	/**
