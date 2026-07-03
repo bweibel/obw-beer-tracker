@@ -301,6 +301,41 @@ body.beer-tracker-page-body {
 	height: 30px;
 }
 
+/* ---- Skeleton (loading placeholders) ------------------------------------ */
+.obwf-row--skeleton .obwf-row-main {
+	cursor: default;
+	gap: 0.35rem;
+}
+.obwf-skeleton {
+	display: block;
+	background: #e6e6e6;
+	border-radius: 3px;
+	animation: obwf-skeleton-pulse 1.2s ease-in-out infinite;
+}
+.obwf-skeleton-title {
+	width: 60%;
+	height: 1.4rem;
+}
+.obwf-skeleton-style {
+	width: 35%;
+	height: 0.85rem;
+}
+.obwf-skeleton-badges {
+	flex: 0 0 auto;
+	align-self: center;
+	width: 102px; /* ~3 badges (30px) + gaps */
+	height: 30px;
+}
+@keyframes obwf-skeleton-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.obwf-skeleton {
+		animation: none;
+	}
+}
+
 .obwf-group-title {
 	font-size: 1.6rem;
 	margin: 0.75rem 0 0.25rem;

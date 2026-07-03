@@ -9,6 +9,7 @@ import { useTracker } from '../tracker.js';
 import { FilterBar } from './FilterBar.jsx';
 import { BeerList } from './BeerList.jsx';
 import { GroupList } from './GroupList.jsx';
+import { SkeletonList } from './Skeleton.jsx';
 import { BeerModal } from './BeerModal.jsx';
 
 const DEFAULT_FILTERS = {
@@ -120,7 +121,7 @@ export function App() {
 			<div class="obwf-list-wrap" ref={listWrapRef}>
 				{error ? <p class="obwf-error">{error}</p> : null}
 
-				{listType === 'beer' ? (
+				{!loading && listType === 'beer' ? (
 					<BeerList
 						beers={beers}
 						search={search}
@@ -131,7 +132,7 @@ export function App() {
 					/>
 				) : null}
 
-				{listType === 'breweries' ? (
+				{!loading && listType === 'breweries' ? (
 					<GroupList
 						groups={breweries}
 						kind="brewery"
@@ -144,7 +145,7 @@ export function App() {
 					/>
 				) : null}
 
-				{listType === 'venue' ? (
+				{!loading && listType === 'venue' ? (
 					<GroupList
 						groups={venues}
 						kind="venue"
@@ -157,15 +158,7 @@ export function App() {
 					/>
 				) : null}
 
-				{loading ? (
-					<aside class="obwf-loader">
-						<div class="obwf-loading-wrap">
-							<div class="obwf-loading-token">
-								<h4>Loading&hellip;</h4>
-							</div>
-						</div>
-					</aside>
-				) : null}
+				{loading ? <SkeletonList /> : null}
 			</div>
 
 			<BeerModal
