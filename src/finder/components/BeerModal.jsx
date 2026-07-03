@@ -16,14 +16,21 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	// per beer when the modal opens, cached in memory (api.js) for the
 	// session so re-opening the same beer doesn't re-fetch.
 	const [content, setContent] = useState('');
+	// Track the in-flight fetch so we can reserve description space (min-height)
+	// while loading and avoid the content popping in and shoving the buttons down.
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		let cancelled = false;
 		setContent('');
+		setLoading(true);
 		if (!beer) return undefined;
 
 		loadBeerContent(beer.id).then((html) => {
-			if (!cancelled) setContent(html);
+			if (!cancelled) {
+				setContent(html);
+				setLoading(false);
+			}
 		});
 
 		return () => {
@@ -93,14 +100,16 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 						</div>
 					) : null}
 
-					{content ? (
+					{loading || content ? (
 						<div class="obwf-description">
-							<div
-								class="obwf-description-inner"
-								dangerouslySetInnerHTML={{
-									__html: cutText(content, 240),
-								}}
-							/>
+							{content ? (
+								<div
+									class="obwf-description-inner"
+									dangerouslySetInnerHTML={{
+										__html: cutText(content, 240),
+									}}
+								/>
+							) : null}
 						</div>
 					) : null}
 

@@ -463,6 +463,9 @@ body.beer-tracker-page-body {
 	margin: 0.75rem 0;
 	font-size: 0.95rem;
 	line-height: 1.4;
+	/* Reserve roughly a typical 240-char description so the lazily-loaded text
+	   doesn't pop in and shove the action buttons down (§4.2). */
+	min-height: 4.5em;
 }
 
 .obwf-card .obwf-actions {
