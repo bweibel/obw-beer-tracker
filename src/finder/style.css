@@ -108,6 +108,12 @@ body.beer-tracker-page-body {
 .obwf-filterbar.is-stuck .obwf-card-header h5 {
 	color: #fff;
 }
+/* When pinned *and* collapsed, drop the top-level "Search" heading to keep the
+   bar slim (the other headings live inside .obwf-filters and are already hidden
+   while closed). Direct child so only the "Search" header is targeted. */
+.obwf-filterbar.is-stuck:not(.is-open) > .obwf-card-header {
+	display: none;
+}
 @media (prefers-reduced-motion: reduce) {
 	.obwf-filterbar {
 		transition: none;
