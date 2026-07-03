@@ -55,10 +55,8 @@ export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }
 				const flags = flagsFor(beer.id);
 				return (
 					<div class="obwf-row" key={beer.id}>
-						<div class="obwf-row-main">
-							<h3 class="obwf-title">
-								<a onClick={() => onSelect(beer)}>{beer.name}</a>
-							</h3>
+						<a class="obwf-row-main" onClick={() => onSelect(beer)}>
+							<h3 class="obwf-title">{beer.name}</h3>
 							{beer.acf.style || showAbv ? (
 								<div class="obwf-row-meta">
 									{beer.acf.style ? (
@@ -72,7 +70,7 @@ export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }
 									) : null}
 								</div>
 							) : null}
-						</div>
+						</a>
 						<Badges flags={flags} />
 					</div>
 				);

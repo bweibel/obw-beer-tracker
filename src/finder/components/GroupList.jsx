@@ -56,16 +56,14 @@ export function GroupList({
 										const flags = flagsFor(beer.id);
 										return (
 											<div class="obwf-row" key={rel.ID}>
-												<div class="obwf-row-main">
-													<h3 class="obwf-title">
-														<a onClick={() => onSelect(beer)}>{beer.name}</a>
-													</h3>
+												<a class="obwf-row-main" onClick={() => onSelect(beer)}>
+													<h3 class="obwf-title">{beer.name}</h3>
 													{beer.acf.style ? (
 														<div class="obwf-row-meta">
 															<span class="obwf-style-small">{beer.acf.style}</span>
 														</div>
 													) : null}
-												</div>
+												</a>
 												<Badges flags={flags} />
 											</div>
 										);

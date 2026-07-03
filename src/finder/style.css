@@ -200,9 +200,8 @@ body.beer-tracker-page-body {
 /* Row layout: name stacked above style/ABV on the left, status badges right. */
 .obwf-list .obwf-row {
 	border-bottom: 1px solid var(--obwf-line);
-	padding: 0.5rem 0.5rem;
 	display: flex;
-	align-items: center;
+	align-items: stretch;
 	gap: 0.75rem;
 	transition: background-color 0.12s ease;
 }
@@ -220,11 +219,20 @@ body.beer-tracker-page-body {
 	}
 }
 
+/* The whole name/style block is the click target: the row's vertical padding
+   lives here (not on .obwf-row), and align-items: stretch makes it fill the
+   full height of the row, so clicking anywhere in the item opens the beer. */
 .obwf-list .obwf-row-main {
 	flex: 1 1 auto;
 	min-width: 0; /* allow long names to wrap instead of pushing badges off */
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	gap: 0.15rem;
+	padding: 0.5rem;
+	cursor: pointer;
+	color: currentColor;
+	text-decoration: none;
 }
 .obwf-list .obwf-row-meta {
 	display: flex;
@@ -236,11 +244,6 @@ body.beer-tracker-page-body {
 	margin: 0;
 	font-size: 1.4rem;
 }
-.obwf-list .obwf-title a {
-	cursor: pointer;
-	color: currentColor;
-	text-decoration: none;
-}
 
 .obwf-list .obwf-style-small,
 .obwf-list .obwf-abv {
@@ -249,9 +252,12 @@ body.beer-tracker-page-body {
 	font-weight: bold;
 }
 
-/* Status badges: right-justified, and smaller in the list than the modal. */
+/* Status badges: right-justified (centered vertically now the row stretches),
+   and smaller in the list than the modal. */
 .obwf-list .obwf-badges {
 	flex: 0 0 auto;
+	align-self: center;
+	padding-right: 0.5rem;
 }
 .obwf-list .obwf-badges .obwf-badge-to-try,
 .obwf-list .obwf-badges .obwf-badge-tasted,
