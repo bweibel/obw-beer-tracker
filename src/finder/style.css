@@ -31,6 +31,25 @@
 	clear: both;
 }
 
+/*
+ * Sticky-filter enabler (Phase 2 §3.2). The theme sets `overflow-x: hidden` on
+ * html/body (paired with the slidebars off-canvas menu). A non-`visible`
+ * overflow on the root makes it the scroll container and silently breaks
+ * `position: sticky` for everything below it — which is why the filter bar
+ * wouldn't pin (while `position: fixed` would). This is the one deliberately
+ * UN-scoped rule in the finder stylesheet: it targets the html/body hook classes
+ * the finder adds (App.jsx), so it only affects the beerfinder page, and it
+ * swaps `hidden` for `clip` — identical horizontal clipping, but `clip` does NOT
+ * establish a scroll container, so sticky works again. Progressive: browsers
+ * without `overflow: clip` ignore the 2nd line and keep the theme's `hidden`
+ * (sticky stays inert there, but the horizontal-scroll guard is preserved).
+ */
+html.beer-tracker-page-html,
+body.beer-tracker-page-body {
+	overflow-x: hidden; /* fallback for browsers without `overflow: clip` */
+	overflow-x: clip;
+}
+
 /* ---- Icons (inline SVG, Phase 2 §2) -------------------------------------- */
 .obwf-icon {
 	width: 1em;
@@ -59,7 +78,6 @@
 	 * and an unrelated `.mobile-ad`). Revisit this offset if the theme ever
 	 * grows a fixed header.
 	 */
-	position: -webkit-sticky; /* iOS Safari won't pin without the prefixed value */
 	position: sticky;
 	top: 0;
 	background: #fff;
