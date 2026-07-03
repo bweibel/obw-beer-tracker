@@ -98,11 +98,14 @@ body.beer-tracker-page-body {
    keeps its own white background (below) so typed text stays legible. */
 .obwf-filterbar.is-stuck {
 	background: rgba(44, 44, 44, 0.93);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
 	color: #fff;
 }
-/* The toggle carries its own explicit (dark) color for the light state, so it
-   won't inherit the white above — flip it explicitly when the bar is dark. */
-.obwf-filterbar.is-stuck .obwf-filter-toggle {
+/* The toggle and the section headings carry their own explicit colors for the
+   light state, so they won't inherit the white above — flip them when dark. */
+.obwf-filterbar.is-stuck .obwf-filter-toggle,
+.obwf-filterbar.is-stuck .obwf-card-header h5 {
 	color: #fff;
 }
 @media (prefers-reduced-motion: reduce) {

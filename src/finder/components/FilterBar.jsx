@@ -68,7 +68,7 @@ export function FilterBar({
 		<>
 		<div ref={sentinelRef} class="obwf-sticky-sentinel" aria-hidden="true" />
 		<aside
-			class={'obwf-card obwf-filterbar' + (stuck ? ' is-stuck' : '')}
+			class={'obwf-filterbar' + (stuck ? ' is-stuck' : '')}
 			id="obwf-search"
 		>
 			<header class="obwf-card-header">
