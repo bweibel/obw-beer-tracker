@@ -24,7 +24,7 @@ export function GroupList({
 	);
 
 	return (
-		<section class="page-content beer-list cf">
+		<section class="obwf-page-content obwf-list obwf-cf">
 			{sorted.map((group) => {
 				const isOpen = !!openIds[group.id];
 				const beers = (group.beers || [])
@@ -33,14 +33,14 @@ export function GroupList({
 					.sort((a, b) => (a.post_name || '').localeCompare(b.post_name || ''));
 
 				return (
-					<div class={kind} key={group.id}>
-						<h2 class={kind + '-title'}>
+					<div class={'obwf-group obwf-group--' + kind} key={group.id}>
+						<h2 class="obwf-group-title">
 							<a onClick={() => toggleOpen(group.id)}>{group.name}</a>
 						</h2>
 						<div
 							class={
-								'beer-sublist-wrap ' +
-								(isOpen ? 'sublist-open' : 'sublist-closed')
+								'obwf-sublist ' +
+								(isOpen ? 'obwf-sublist--open' : 'obwf-sublist--closed')
 							}
 						>
 							{isOpen
@@ -49,20 +49,20 @@ export function GroupList({
 										if (!beer) return null;
 										const flags = flagsFor(beer.id);
 										return (
-											<div class="beer" key={rel.ID}>
-												<h3 class="beer-title">
+											<div class="obwf-row" key={rel.ID}>
+												<h3 class="obwf-title">
 													<a onClick={() => onSelect(beer)}>{beer.name}</a>
 												</h3>
 												<Badges flags={flags} />
 												{beer.acf.style ? (
-													<span class="style-small">{beer.acf.style}</span>
+													<span class="obwf-style-small">{beer.acf.style}</span>
 												) : null}
 											</div>
 										);
 								  })
 								: null}
 							{isOpen && beers.length === 0 ? (
-								<p class="obw-empty">No published brews here yet.</p>
+								<p class="obwf-empty">No published brews here yet.</p>
 							) : null}
 						</div>
 					</div>

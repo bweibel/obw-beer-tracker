@@ -1,112 +1,102 @@
 /**
  * OBW Beer Finder — self-contained styles.
  *
- * Uses the legacy class names (beer-list, beer-badges, beer-card, modal-wrap,
- * beer-filter, sublist-open/closed, filter-box-show/hide, etc.) so the app also
- * inherits the theme's finder styling when hosted inside the theme page (WP-6),
- * while remaining fully usable standalone on any page. No hardcoded theme image
- * paths — badges are drawn in CSS.
+ * Minimal structural CSS only (Phase 2 §1): no decorative/brand styling, no
+ * border-radius, no box-shadow, no glyph overlays. Every selector is scoped
+ * under the plugin-owned `.obwf-*` / `#obwf-*` namespace so the legacy theme
+ * stylesheet (which still compiles `.beer-card`, `.obw-button`, etc. for its
+ * own page chrome) can never match anything in the finder DOM. Badge PNGs are
+ * plugin-owned assets referenced by relative path.
  */
 
 :root {
-	--obw-gold: #c8a24a;
-	--obw-gray: #4a4a4a;
-	--obw-red: #b0413e;
-	--obw-green: #4a8f4a;
-	--obw-line: #ddd;
+	--obwf-gray: #4a4a4a;
+	--obwf-line: #ddd;
 }
 
-.obw-finder-app {
+.obwf-app {
 	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	color: #2b2b2b;
 }
 
-.obw-finder-app *,
-.obw-finder-app *::before,
-.obw-finder-app *::after {
+.obwf-app *,
+.obwf-app *::before,
+.obwf-app *::after {
 	box-sizing: border-box;
 }
 
-.obw-finder-app .cf::after {
+.obwf-app .obwf-cf::after {
 	content: "";
 	display: table;
 	clear: both;
 }
 
 /* ---- Filter bar --------------------------------------------------------- */
-.beer-filter {
-	background: var(--obw-gray);
-	color: #fff;
+.obwf-filterbar {
+	border: 1px solid var(--obwf-line);
 	padding: 0.75rem 1rem;
-	border-radius: 6px;
 	margin-bottom: 1.25rem;
 }
 
-.beer-filter .card-header h5 {
-	color: #fff;
+.obwf-filterbar .obwf-card-header h5 {
 	margin: 0.5rem 0 0.4rem;
 	font-size: 1.05rem;
 }
 
-.beer-filter .filter-search-form {
+.obwf-filterbar .obwf-search-form {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
 }
 
-.beer-filter input[type="text"] {
+.obwf-filterbar input[type="text"] {
 	flex: 1;
 	padding: 0.5rem 0.65rem;
-	border: 1px solid #fff;
-	border-radius: 4px;
+	border: 1px solid var(--obwf-line);
 	font-size: 1rem;
 }
 
-.beer-filter .filter-icon {
+.obwf-filterbar .obwf-filter-toggle {
 	background: transparent;
-	border: 1px solid #fff;
-	color: #fff;
-	border-radius: 4px;
+	border: 1px solid currentColor;
 	padding: 0.45rem 0.6rem;
 	cursor: pointer;
 	font-size: 1rem;
 	line-height: 1;
 }
 
-.beer-filter .filter-body {
+.obwf-filterbar .obwf-filters {
 	margin-top: 0.75rem;
 }
-.beer-filter .filter-body.filter-box-hide {
+.obwf-filterbar .obwf-filters.obwf-filters--closed {
 	display: none;
 }
-.beer-filter .filter-body.filter-box-show {
+.obwf-filterbar .obwf-filters.obwf-filters--open {
 	display: block;
 }
 /* On wide screens keep filters always visible. */
 @media (min-width: 768px) {
-	.beer-filter .filter-body.filter-box-hide,
-	.beer-filter .filter-body.filter-box-show {
+	.obwf-filterbar .obwf-filters.obwf-filters--closed,
+	.obwf-filterbar .obwf-filters.obwf-filters--open {
 		display: block;
 	}
-	.beer-filter .filter-icon {
+	.obwf-filterbar .obwf-filter-toggle {
 		display: none;
 	}
 }
 
-.beer-filter .button-wrap {
+.obwf-filterbar .obwf-actions {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.4rem;
 	padding-bottom: 0.5rem;
-	border-bottom: 1px dashed rgba(255, 255, 255, 0.35);
+	border-bottom: 1px solid var(--obwf-line);
 	margin-bottom: 0.5rem;
 }
 
-.beer-filter .obw-button {
+.obwf-filterbar .obwf-btn {
 	background: transparent;
-	border: 1px solid #fff;
-	color: #fff;
-	border-radius: 4px;
+	border: 1px solid currentColor;
 	padding: 0.4rem 0.7rem;
 	font-size: 0.9rem;
 	cursor: pointer;
@@ -114,126 +104,107 @@
 	align-items: center;
 	gap: 0.35rem;
 }
-.beer-filter .obw-button:hover,
-.beer-filter .obw-button.is-active {
-	background: #fff;
-	color: var(--obw-gray);
+.obwf-filterbar .obwf-btn:hover,
+.obwf-filterbar .obwf-btn--active {
+	background: var(--obwf-gray);
+	color: #fff;
 }
 
-.beer-filter .obw-check {
+.obwf-filterbar .obwf-check {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
 	border: 1px solid currentColor;
-	border-radius: 3px;
 }
-.beer-filter .obw-check.on {
-	background: var(--obw-gold);
-	border-color: var(--obw-gold);
+.obwf-filterbar .obwf-check--on {
+	background: var(--obwf-gray);
+	border-color: var(--obwf-gray);
 	position: relative;
 }
-.beer-filter .obw-check.on::after {
+.obwf-filterbar .obwf-check--on::after {
 	content: "\2713";
 	position: absolute;
 	top: -3px;
 	left: 1px;
 	font-size: 12px;
-	color: var(--obw-gray);
-}
-
-.beer-filter .delete-wrapper {
-	text-align: right;
-	border: 0;
-}
-.beer-filter .delete-data-button {
-	background: var(--obw-red);
-	border-color: var(--obw-red);
-}
-.beer-filter .delete-data-button:hover {
-	background: #822f2d;
 	color: #fff;
 }
 
+.obwf-filterbar .obwf-delete-wrap {
+	text-align: right;
+	border: 0;
+}
+
 /* ---- Lists -------------------------------------------------------------- */
-.beer-list .beer {
-	border-bottom: 1px solid var(--obw-line);
+.obwf-list .obwf-row {
+	border-bottom: 1px solid var(--obwf-line);
 	padding: 0.5rem 0;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 }
-.beer-list .beer:last-child {
+.obwf-list .obwf-row:last-child {
 	border-bottom: 0;
 }
 
-.beer-list .beer-title {
+.obwf-list .obwf-title {
 	margin: 0;
 	font-size: 1.4rem;
 }
-.beer-list .beer-title a {
+.obwf-list .obwf-title a {
 	cursor: pointer;
-	color: var(--obw-gray);
+	color: currentColor;
 	text-decoration: none;
 }
-.beer-list .beer-title a:hover {
-	color: var(--obw-gold);
-}
 
-.beer-list .style-small,
-.beer-list .abv {
+.obwf-list .obwf-style-small,
+.obwf-list .obwf-abv {
 	color: #777;
 	font-size: 0.85rem;
 	font-weight: bold;
 }
 
-.brewery-title,
-.venue-title {
+.obwf-group-title {
 	font-size: 1.6rem;
 	margin: 0.75rem 0 0.25rem;
 }
-.brewery-title a,
-.venue-title a {
+.obwf-group-title a {
 	cursor: pointer;
-	color: var(--obw-gray);
+	color: currentColor;
 	text-decoration: none;
 }
-.brewery-title a::before,
-.venue-title a::before {
-	content: "\25B8 ";
-	color: var(--obw-gold);
-}
 
-.beer-sublist-wrap.sublist-closed {
+.obwf-sublist.obwf-sublist--closed {
 	display: none;
 }
-.beer-sublist-wrap.sublist-open {
+.obwf-sublist.obwf-sublist--open {
 	display: block;
 	margin: 0 0 1.5rem 1rem;
-	border-left: 2px solid var(--obw-line);
+	border-left: 2px solid var(--obwf-line);
 	padding-left: 1rem;
 }
 
-.obw-empty {
+.obwf-empty {
 	color: #888;
 	font-style: italic;
 	padding: 0.5rem 0;
 }
-.obw-error {
-	color: var(--obw-red);
+.obwf-error {
+	color: #a83232;
 	font-weight: bold;
 }
 
 /* ---- Badges (PNG icons, dimmed off / full on) --------------------------- */
-.beer-badges {
+.obwf-badges {
 	display: inline-flex;
 	gap: 6px;
 	line-height: 1;
 	vertical-align: middle;
 }
-.beer-badges .to-try,
-.beer-badges .tasted,
-.beer-badges .favorite {
+.obwf-badges .obwf-badge-to-try,
+.obwf-badges .obwf-badge-tasted,
+.obwf-badges .obwf-badge-favorite {
 	width: 40px;
 	height: 40px;
 	display: inline-block;
@@ -242,37 +213,37 @@
 	background-size: contain;
 	opacity: 0.6;
 }
-.beer-badges .on {
+.obwf-badges .obwf-badge--on {
 	opacity: 1;
 }
-.beer-badges .to-try {
+.obwf-badges .obwf-badge-to-try {
 	background-image: url("./icons/wishlist_off_icon.png");
 }
-.beer-badges .to-try.on {
+.obwf-badges .obwf-badge-to-try.obwf-badge--on {
 	background-image: url("./icons/wishlist_on_icon.png");
 }
-.beer-badges .tasted {
+.obwf-badges .obwf-badge-tasted {
 	background-image: url("./icons/tasted_off_icon.png");
 }
-.beer-badges .tasted.on {
+.obwf-badges .obwf-badge-tasted.obwf-badge--on {
 	background-image: url("./icons/tasted_on_icon.png");
 }
-.beer-badges .favorite {
+.obwf-badges .obwf-badge-favorite {
 	background-image: url("./icons/favorite_off_icon.png");
 }
-.beer-badges .favorite.on {
+.obwf-badges .obwf-badge-favorite.obwf-badge--on {
 	background-image: url("./icons/favorite_on_icon.png");
 }
 
-/* ---- Loader ------------------------------------------------------------- */
-.loader {
+/* ---- Loader --------------------------------------------------------------*/
+.obwf-loader {
 	padding: 1.5rem 0;
 	text-align: center;
 	color: #888;
 }
 
-/* ---- Modal -------------------------------------------------------------- */
-.modal-wrap {
+/* ---- Modal ---------------------------------------------------------------*/
+.obwf-modal-overlay {
 	position: fixed;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.55);
@@ -283,21 +254,19 @@
 	padding: 3vh 1rem;
 	z-index: 100000;
 }
-.modal-wrap.on {
+.obwf-modal-overlay.obwf-modal-overlay--open {
 	display: flex;
 }
 
-.beer-card.modal {
+.obwf-card.obwf-card--modal {
 	background: #fff;
 	max-width: 640px;
 	width: 100%;
-	border-radius: 8px;
 	padding: 1.5rem;
 	position: relative;
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-.beer-card .modal-close {
+.obwf-card .obwf-modal-close {
 	position: absolute;
 	top: 0.5rem;
 	right: 0.75rem;
@@ -309,71 +278,64 @@
 	color: #999;
 }
 
-.beer-card .beer-title {
+.obwf-card .obwf-title {
 	margin: 0 2rem 0.25rem 0;
 	font-size: 1.8rem;
 }
-.beer-card .beer-title a {
-	color: var(--obw-gray);
+.obwf-card .obwf-title a {
+	color: currentColor;
 	text-decoration: none;
 }
-.beer-card .brewery {
+.obwf-card .obwf-modal-brewery {
 	font-size: 1.2rem;
 	margin: 0 0 0.75rem;
 	color: #666;
 }
-.beer-card .brewery a {
+.obwf-card .obwf-modal-brewery a {
 	color: #666;
 	text-decoration: none;
 }
 
-.beer-card .details {
+.obwf-card .obwf-details {
 	margin: 0.5rem 0;
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
 }
-.beer-card .available-list {
+.obwf-card .obwf-available-list {
 	margin: 0.75rem 0;
 	font-size: 0.95rem;
 }
-.beer-card .available-list .venue-link::before {
-	content: "\1F4CD";
-	margin-right: 4px;
-}
-.beer-card .beer-description-wrap {
+.obwf-card .obwf-description {
 	margin: 0.75rem 0;
 	font-size: 0.95rem;
 	line-height: 1.4;
 }
 
-.beer-card .button-wrap {
+.obwf-card .obwf-actions {
 	display: flex;
 	gap: 0.5rem;
 	flex-wrap: wrap;
 	margin-top: 1rem;
 }
-.beer-card .obw-button,
-.beer-card .obw-button-gold,
-.beer-card .obw-button-gray {
-	border-radius: 4px;
+.obwf-card .obwf-btn,
+.obwf-card .obwf-btn--gold,
+.obwf-card .obwf-btn--gray {
 	padding: 0.5rem 0.85rem;
 	font-size: 0.95rem;
 	cursor: pointer;
 	text-decoration: none;
-	border: 1px solid var(--obw-gray);
+	border: 1px solid currentColor;
 	background: #fff;
-	color: var(--obw-gray);
+	color: currentColor;
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
 }
-.beer-card .obw-button-gold {
-	background: var(--obw-gold);
-	border-color: var(--obw-gold);
-	color: #fff;
+.obwf-card .obwf-btn--gold {
+	font-weight: bold;
 }
-.beer-card .obw-button-gray.is-on {
-	background: var(--obw-gray);
+.obwf-card .obwf-btn--on {
+	background: var(--obwf-gray);
 	color: #fff;
 }

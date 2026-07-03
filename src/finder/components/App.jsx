@@ -107,7 +107,7 @@ export function App() {
 		: DEFAULT_FILTERS;
 
 	return (
-		<div class="obw-finder-app">
+		<div class="obwf-app">
 			<FilterBar
 				listType={listType}
 				setListType={setListType}
@@ -120,8 +120,8 @@ export function App() {
 				onDelete={tracker.deleteAll}
 			/>
 
-			<div class="list-wrap" ref={listWrapRef}>
-				{error ? <p class="obw-error">{error}</p> : null}
+			<div class="obwf-list-wrap" ref={listWrapRef}>
+				{error ? <p class="obwf-error">{error}</p> : null}
 
 				{listType === 'beer' ? (
 					<BeerList
@@ -161,9 +161,9 @@ export function App() {
 				) : null}
 
 				{loading ? (
-					<aside class="loader">
-						<div class="loading-wrap">
-							<div class="loading-token">
+					<aside class="obwf-loader">
+						<div class="obwf-loading-wrap">
+							<div class="obwf-loading-token">
 								<h4>Loading&hellip;</h4>
 							</div>
 						</div>

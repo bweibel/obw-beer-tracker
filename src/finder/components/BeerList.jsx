@@ -50,20 +50,20 @@ export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }
 	const list = visibleBeers(beers, search, orderBy, filters, flagsFor);
 
 	return (
-		<section class="page-content beer-list cf">
+		<section class="obwf-page-content obwf-list obwf-cf">
 			{list.map((beer) => {
 				const flags = flagsFor(beer.id);
 				return (
-					<div class="beer" key={beer.id}>
-						<h3 class="beer-title">
+					<div class="obwf-row" key={beer.id}>
+						<h3 class="obwf-title">
 							<a onClick={() => onSelect(beer)}>{beer.name}</a>
 						</h3>
 						<Badges flags={flags} />
 						{beer.acf.style ? (
-							<span class="style-small">{beer.acf.style}</span>
+							<span class="obwf-style-small">{beer.acf.style}</span>
 						) : null}
 						{showAbv ? (
-							<span class="abv">
+							<span class="obwf-abv">
 								<strong>ABV</strong>:{' '}
 								{typeof beer.abv === 'number' ? beer.abv : 'N/A'}
 							</span>
@@ -72,7 +72,7 @@ export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }
 				);
 			})}
 			{list.length === 0 ? (
-				<p class="obw-empty">No brews match your filters.</p>
+				<p class="obwf-empty">No brews match your filters.</p>
 			) : null}
 		</section>
 	);

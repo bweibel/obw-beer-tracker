@@ -17,19 +17,19 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	const hasAbv = typeof acf.abv === 'number' && !Number.isNaN(acf.abv);
 
 	return (
-		<div class="modal-wrap on" onClick={onClose}>
-			<aside class="beer-card modal" onClick={(e) => e.stopPropagation()}>
-				<button class="modal-close" onClick={onClose} aria-label="Close">
+		<div class="obwf-modal-overlay obwf-modal-overlay--open" onClick={onClose}>
+			<aside class="obwf-card obwf-card--modal" onClick={(e) => e.stopPropagation()}>
+				<button class="obwf-modal-close" onClick={onClose} aria-label="Close">
 					&times;
 				</button>
 
-				<header class="card-header cf">
-					<h3 class="beer-title">
+				<header class="obwf-card-header obwf-cf">
+					<h3 class="obwf-title">
 						<a href={beer.link} target="_blank" rel="noopener">
 							{beer.name}
 						</a>
 					</h3>
-					<h4 class="brewery obw-gray">
+					<h4 class="obwf-modal-brewery obwf-text-muted">
 						{breweries.map((b, i) => (
 							<span key={b.ID}>
 								{i > 0 ? ' & ' : ''}
@@ -42,14 +42,14 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 					<Badges flags={flags} />
 				</header>
 
-				<section class="card-content cf">
-					<div class="details">
+				<section class="obwf-card-content obwf-cf">
+					<div class="obwf-details">
 						{acf.style ? (
-							<span class="style">
+							<span class="obwf-style">
 								<strong>Style:</strong> {acf.style}
 							</span>
 						) : null}
-						<span class="abv">
+						<span class="obwf-abv">
 							<strong>ABV:</strong>{' '}
 							{hasAbv && acf.abv >= 0.1
 								? `${acf.abv}%`
@@ -58,12 +58,12 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 					</div>
 
 					{venues.length > 0 ? (
-						<div class="available-list">
+						<div class="obwf-available-list">
 							<strong>Available at:</strong>
 							<br />
 							{venues.map((v) => (
-								<div class="venue" key={v.ID}>
-									<a class="venue-link" href={`/venue/${v.post_name}`}>
+								<div class="obwf-venue-row" key={v.ID}>
+									<a class="obwf-venue-link" href={`/venue/${v.post_name}`}>
 										{v.post_title}
 									</a>
 								</div>
@@ -72,9 +72,9 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 					) : null}
 
 					{beer.content ? (
-						<div class="beer-description-wrap">
+						<div class="obwf-description">
 							<div
-								class="beer-description-inner"
+								class="obwf-description-inner"
 								dangerouslySetInnerHTML={{
 									__html: cutText(beer.content, 240),
 								}}
@@ -82,21 +82,21 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 						</div>
 					) : null}
 
-					<div class="button-wrap top-row">
+					<div class="obwf-actions obwf-actions--top">
 						{acf.untappd ? (
 							<a
 								href={acf.untappd}
 								target="_blank"
 								rel="noopener"
-								class="obw-button-gold ut-button"
+								class="obwf-btn--gold obwf-btn-untappd"
 								id="untappd-link"
 							>
-								Untappd <span class="untappd-button-icon">&gt;</span>
+								Untappd <span class="obwf-btn-untappd-icon">&gt;</span>
 							</a>
 						) : null}
 						<a
 							href={beer.link}
-							class="obw-button more-info-button"
+							class="obwf-btn obwf-btn-more-info"
 							target="_blank"
 							rel="noopener"
 						>
@@ -104,21 +104,21 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 						</a>
 					</div>
 
-					<div class="button-wrap bottom-row">
+					<div class="obwf-actions obwf-actions--bottom">
 						<button
-							class={'obw-button-gray' + (flags.toTry ? ' is-on' : '')}
+							class={'obwf-btn--gray' + (flags.toTry ? ' obwf-btn--on' : '')}
 							onClick={() => onToTry(beer.id)}
 						>
 							Want To Try
 						</button>
 						<button
-							class={'obw-button-gray' + (flags.tasted ? ' is-on' : '')}
+							class={'obwf-btn--gray' + (flags.tasted ? ' obwf-btn--on' : '')}
 							onClick={() => onTasted(beer.id)}
 						>
 							Tasted
 						</button>
 						<button
-							class={'obw-button-gray' + (flags.favorited ? ' is-on' : '')}
+							class={'obwf-btn--gray' + (flags.favorited ? ' obwf-btn--on' : '')}
 							onClick={() => onFavorited(beer.id)}
 						>
 							Favorite

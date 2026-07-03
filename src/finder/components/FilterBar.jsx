@@ -19,7 +19,7 @@ const TABS = [
 ];
 
 function Check({ on }) {
-	return <span class={'obw-check' + (on ? ' on' : '')} aria-hidden="true" />;
+	return <span class={'obwf-check' + (on ? ' obwf-check--on' : '')} aria-hidden="true" />;
 }
 
 export function FilterBar({
@@ -43,16 +43,16 @@ export function FilterBar({
 	};
 
 	return (
-		<aside class="beer-card beer-filter" id="rtd-floating-search">
-			<header class="card-header">
+		<aside class="obwf-card obwf-filterbar" id="obwf-search">
+			<header class="obwf-card-header">
 				<h5>Search</h5>
 			</header>
 
-			<div class="filter-header">
-				<section class="card-content">
+			<div class="obwf-filter-header">
+				<section class="obwf-card-content">
 					<form
 						onSubmit={(e) => e.preventDefault()}
-						class="filter-search-form"
+						class="obwf-search-form"
 					>
 						<input
 							type="text"
@@ -63,7 +63,7 @@ export function FilterBar({
 						/>
 						<button
 							type="button"
-							class="filter-icon"
+							class="obwf-filter-toggle"
 							aria-label="Toggle filters"
 							onClick={() => setOpen((o) => !o)}
 						>
@@ -73,17 +73,17 @@ export function FilterBar({
 				</section>
 			</div>
 
-			<div class={'filter-body ' + (open ? 'filter-box-show' : 'filter-box-hide')}>
+			<div class={'obwf-filters ' + (open ? 'obwf-filters--open' : 'obwf-filters--closed')}>
 				{isBeer ? (
 					<>
-						<header class="card-header">
+						<header class="obwf-card-header">
 							<h5>Show only:</h5>
 						</header>
-						<section class="card-content button-wrap">
+						<section class="obwf-card-content obwf-actions">
 							{SHOW_ONLY.map((f) => (
 								<button
 									key={f.key}
-									class="obw-button"
+									class="obwf-btn"
 									onClick={() => toggleFilter(f.key)}
 								>
 									<Check on={filters[f.key]} /> {f.label}
@@ -93,14 +93,14 @@ export function FilterBar({
 					</>
 				) : null}
 
-				<header class="card-header">
+				<header class="obwf-card-header">
 					<h5>Show by:</h5>
 				</header>
-				<section class="card-content button-wrap">
+				<section class="obwf-card-content obwf-actions">
 					{TABS.map((t) => (
 						<button
 							key={t.key}
-							class={'obw-button' + (listType === t.key ? ' is-active' : '')}
+							class={'obwf-btn' + (listType === t.key ? ' obwf-btn--active' : '')}
 							onClick={() => setListType(t.key)}
 						>
 							{t.label}
@@ -110,26 +110,26 @@ export function FilterBar({
 
 				{isBeer ? (
 					<>
-						<header class="card-header">
+						<header class="obwf-card-header">
 							<h5>Order by:</h5>
 						</header>
-						<section class="card-content button-wrap">
+						<section class="obwf-card-content obwf-actions">
 							<button
-								class="obw-button"
+								class="obwf-btn"
 								onClick={() => toggleOrderBy('title.rendered')}
 							>
 								Name{orderArrow('title.rendered')}
 							</button>
-							<button class="obw-button" onClick={() => toggleOrderBy('abv')}>
+							<button class="obwf-btn" onClick={() => toggleOrderBy('abv')}>
 								ABV{orderArrow('abv')}
 							</button>
 						</section>
 					</>
 				) : null}
 
-				<div class="delete-wrapper">
+				<div class="obwf-delete-wrap">
 					<button
-						class="obw-button delete-data-button"
+						class="obwf-btn obwf-btn-delete"
 						onClick={onDelete}
 						title="Delete all tracker data"
 					>
