@@ -7,6 +7,7 @@
  * so tracker badges and the modal work identically to the Brews tab.
  */
 import { Badges } from './Badges.jsx';
+import { IconChevronRight } from './icons/Icons.jsx';
 
 export function GroupList({
 	groups,
@@ -35,7 +36,12 @@ export function GroupList({
 				return (
 					<div class={'obwf-group obwf-group--' + kind} key={group.id}>
 						<h2 class="obwf-group-title">
-							<a onClick={() => toggleOpen(group.id)}>{group.name}</a>
+							<a onClick={() => toggleOpen(group.id)} aria-expanded={isOpen}>
+								<IconChevronRight
+									class={'obwf-group-toggle-icon' + (isOpen ? ' obwf-icon--open' : '')}
+								/>{' '}
+								{group.name}
+							</a>
 						</h2>
 						<div
 							class={

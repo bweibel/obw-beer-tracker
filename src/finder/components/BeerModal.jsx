@@ -7,6 +7,7 @@
  */
 import { cutText } from '../util.js';
 import { Badges } from './Badges.jsx';
+import { IconClose, IconExternalLink } from './icons/Icons.jsx';
 
 export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry }) {
 	if (!beer) return null;
@@ -20,7 +21,7 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 		<div class="obwf-modal-overlay obwf-modal-overlay--open" onClick={onClose}>
 			<aside class="obwf-card obwf-card--modal" onClick={(e) => e.stopPropagation()}>
 				<button class="obwf-modal-close" onClick={onClose} aria-label="Close">
-					&times;
+					<IconClose />
 				</button>
 
 				<header class="obwf-card-header obwf-cf">
@@ -91,7 +92,10 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 								class="obwf-btn--gold obwf-btn-untappd"
 								id="untappd-link"
 							>
-								Untappd <span class="obwf-btn-untappd-icon">&gt;</span>
+								Untappd{' '}
+								<span class="obwf-btn-untappd-icon">
+									<IconExternalLink />
+								</span>
 							</a>
 						) : null}
 						<a
@@ -100,7 +104,7 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 							target="_blank"
 							rel="noopener"
 						>
-							More Info &gt;
+							More Info <IconExternalLink />
 						</a>
 					</div>
 

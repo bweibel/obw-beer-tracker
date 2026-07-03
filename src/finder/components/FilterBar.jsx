@@ -4,6 +4,12 @@
  * toggleControls, deleteClick).
  */
 import { useState } from 'preact/hooks';
+import {
+	IconChevronDown,
+	IconChevronUp,
+	IconFilter,
+	IconTrash,
+} from './icons/Icons.jsx';
 
 const SHOW_ONLY = [
 	{ key: 'notTasted', label: 'Not Tasted' },
@@ -37,9 +43,9 @@ export function FilterBar({
 	const isBeer = listType === 'beer';
 
 	const orderArrow = (field) => {
-		if (orderBy === field) return ' ▼'; // ▼ asc marker (legacy)
-		if (orderBy === '-' + field) return ' ▲';
-		return '';
+		if (orderBy === field) return <IconChevronDown />; // asc marker (legacy ▼)
+		if (orderBy === '-' + field) return <IconChevronUp />; // desc marker (legacy ▲)
+		return null;
 	};
 
 	return (
@@ -67,7 +73,7 @@ export function FilterBar({
 							aria-label="Toggle filters"
 							onClick={() => setOpen((o) => !o)}
 						>
-							&#9776;
+							<IconFilter />
 						</button>
 					</form>
 				</section>
@@ -118,10 +124,10 @@ export function FilterBar({
 								class="obwf-btn"
 								onClick={() => toggleOrderBy('title.rendered')}
 							>
-								Name{orderArrow('title.rendered')}
+								Name {orderArrow('title.rendered')}
 							</button>
 							<button class="obwf-btn" onClick={() => toggleOrderBy('abv')}>
-								ABV{orderArrow('abv')}
+								ABV {orderArrow('abv')}
 							</button>
 						</section>
 					</>
@@ -133,7 +139,7 @@ export function FilterBar({
 						onClick={onDelete}
 						title="Delete all tracker data"
 					>
-						&#128465; Reset
+						<IconTrash /> Reset
 					</button>
 				</div>
 			</div>

@@ -31,6 +31,21 @@
 	clear: both;
 }
 
+/* ---- Icons (inline SVG, Phase 2 §2) -------------------------------------- */
+.obwf-icon {
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+	flex-shrink: 0;
+}
+/* Accordion chevron (GroupList): points right when closed, down when open. */
+.obwf-icon--open {
+	transform: rotate(90deg);
+}
+.obwf-group-toggle-icon {
+	transition: transform 0.15s ease;
+}
+
 /* ---- Filter bar --------------------------------------------------------- */
 .obwf-filterbar {
 	border: 1px solid var(--obwf-line);
