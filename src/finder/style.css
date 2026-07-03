@@ -135,16 +135,12 @@ body.beer-tracker-page-body {
 .obwf-filterbar .obwf-filters.obwf-filters--open {
 	display: block;
 }
-/* On wide screens keep filters always visible. */
-@media (min-width: 768px) {
-	.obwf-filterbar .obwf-filters.obwf-filters--closed,
-	.obwf-filterbar .obwf-filters.obwf-filters--open {
-		display: block;
-	}
-	.obwf-filterbar .obwf-filter-toggle {
-		display: none;
-	}
-}
+/*
+ * Collapse behaves the same at every breakpoint: the toggle is always visible
+ * and the panel defaults collapsed (FilterBar `open` state), so the sticky bar
+ * stays slim (search + toggle) and never covers the viewport on desktop. Expand
+ * on demand via the toggle.
+ */
 
 .obwf-filterbar .obwf-actions {
 	display: flex;

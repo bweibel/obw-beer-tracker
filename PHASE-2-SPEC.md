@@ -320,9 +320,11 @@ every actionable icon; badges untouched (still PNG).
   class toggling.
 - Set `top:` with an offset for any theme sticky-header height so the bar pins
   *below* the header, not under it.
-- Keep the existing mobile collapse-behind-hamburger (`.obwf-filters--open/closed`
-  + the filter toggle) so the sticky bar stays compact one-handed; filters stay
-  always-visible ≥768px per the current media query.
+- Collapse-behind-toggle (`.obwf-filters--open/closed` + the filter toggle) at
+  **all breakpoints**, defaulting collapsed, so the sticky bar stays slim (search
+  + toggle) and never covers the viewport on desktop. (Superseded the original
+  "always-visible ≥768px" behavior — a full always-open panel can't be pinned
+  without covering the screen.)
 
 ### 3.3 Modal on small screens (centered card, near-full-bleed)
 - **Keep the centered fixed-overlay card** (current behavior) — no bottom-sheet
