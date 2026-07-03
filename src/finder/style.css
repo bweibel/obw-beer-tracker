@@ -200,13 +200,24 @@ body.beer-tracker-page-body {
 /* Row layout: name stacked above style/ABV on the left, status badges right. */
 .obwf-list .obwf-row {
 	border-bottom: 1px solid var(--obwf-line);
-	padding: 0.5rem 0;
+	padding: 0.5rem 0.5rem;
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
+	transition: background-color 0.12s ease;
 }
 .obwf-list .obwf-row:last-child {
 	border-bottom: 0;
+}
+/* Subtle full-row hover tint: ties the name (left) to its status icons (right)
+   so the eye can track across the row. */
+.obwf-list .obwf-row:hover {
+	background-color: rgba(0, 0, 0, 0.04);
+}
+@media (prefers-reduced-motion: reduce) {
+	.obwf-list .obwf-row {
+		transition: none;
+	}
 }
 
 .obwf-list .obwf-row-main {
