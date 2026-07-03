@@ -97,16 +97,19 @@ body.beer-tracker-page-body {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
+	width: 100%;
 }
 
 .obwf-filterbar input[type="text"] {
-	flex: 1;
+	flex: 1 1 auto;
+	min-width: 0; /* let the field actually stretch/shrink in the flex row */
 	padding: 0.5rem 0.65rem;
 	border: 1px solid var(--obwf-line);
 	font-size: 1rem;
 }
 
 .obwf-filterbar .obwf-filter-toggle {
+	flex: 0 0 auto; /* keep the toggle square and pinned at the far right */
 	background: transparent;
 	border: 1px solid currentColor;
 	padding: 0.45rem 0.6rem;
