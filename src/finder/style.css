@@ -86,6 +86,24 @@ body.beer-tracker-page-body {
 	   under the theme's `all: unset` global reset, which otherwise leaves the
 	   finder's color to ambiguous inheritance. */
 	color: #2b2b2b;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+/* Zero-height marker at the bar's in-flow position; FilterBar observes it to
+   toggle `.is-stuck` once the bar pins to the top. */
+.obwf-sticky-sentinel {
+	height: 0;
+}
+/* Dark treatment while pinned: currentColor flips to white so the heading,
+   toggle icon and button borders read against the dark bar. The search field
+   keeps its own white background (below) so typed text stays legible. */
+.obwf-filterbar.is-stuck {
+	background: var(--obwf-gray);
+	color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+	.obwf-filterbar {
+		transition: none;
+	}
 }
 
 .obwf-filterbar .obwf-card-header h5 {
@@ -106,6 +124,9 @@ body.beer-tracker-page-body {
 	padding: 0.5rem 0.65rem;
 	border: 1px solid var(--obwf-line);
 	font-size: 1rem;
+	/* Stay a readable white field regardless of the bar's light/dark state. */
+	background: #fff;
+	color: #2b2b2b;
 }
 
 .obwf-filterbar .obwf-filter-toggle {

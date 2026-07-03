@@ -3,7 +3,7 @@
  * the related controller handlers (filterClick, listButtonClick, orderByClick,
  * toggleControls, deleteClick).
  */
-import { useState } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import {
 	IconChevronDown,
 	IconChevronUp,
@@ -42,6 +42,22 @@ export function FilterBar({
 	const [open, setOpen] = useState(false);
 	const isBeer = listType === 'beer';
 
+	// Detect when the sticky bar is pinned to the top (a zero-height sentinel
+	// sits at its in-flow position; once it scrolls out of view above the
+	// viewport, the bar is stuck) so we can restyle it — see `.is-stuck`.
+	const sentinelRef = useRef(null);
+	const [stuck, setStuck] = useState(false);
+	useEffect(() => {
+		const el = sentinelRef.current;
+		if (!el || typeof IntersectionObserver === 'undefined') return undefined;
+		const observer = new IntersectionObserver(
+			([entry]) => setStuck(!entry.isIntersecting),
+			{ threshold: [0] }
+		);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
+
 	const orderArrow = (field) => {
 		if (orderBy === field) return <IconChevronDown />; // asc marker (legacy ▼)
 		if (orderBy === '-' + field) return <IconChevronUp />; // desc marker (legacy ▲)
@@ -49,7 +65,12 @@ export function FilterBar({
 	};
 
 	return (
-		<aside class="obwf-card obwf-filterbar" id="obwf-search">
+		<>
+		<div ref={sentinelRef} class="obwf-sticky-sentinel" aria-hidden="true" />
+		<aside
+			class={'obwf-card obwf-filterbar' + (stuck ? ' is-stuck' : '')}
+			id="obwf-search"
+		>
 			<header class="obwf-card-header">
 				<h5>Search</h5>
 			</header>
@@ -144,5 +165,6 @@ export function FilterBar({
 				</div>
 			</div>
 		</aside>
+		</>
 	);
 }
