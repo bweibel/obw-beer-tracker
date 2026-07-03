@@ -197,16 +197,28 @@ body.beer-tracker-page-body {
 }
 
 /* ---- Lists -------------------------------------------------------------- */
+/* Row layout: name stacked above style/ABV on the left, status badges right. */
 .obwf-list .obwf-row {
 	border-bottom: 1px solid var(--obwf-line);
 	padding: 0.5rem 0;
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
-	gap: 0.5rem;
+	gap: 0.75rem;
 }
 .obwf-list .obwf-row:last-child {
 	border-bottom: 0;
+}
+
+.obwf-list .obwf-row-main {
+	flex: 1 1 auto;
+	min-width: 0; /* allow long names to wrap instead of pushing badges off */
+	display: flex;
+	flex-direction: column;
+}
+.obwf-list .obwf-row-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
 }
 
 .obwf-list .obwf-title {
@@ -224,6 +236,17 @@ body.beer-tracker-page-body {
 	color: #777;
 	font-size: 0.85rem;
 	font-weight: bold;
+}
+
+/* Status badges: right-justified, and smaller in the list than the modal. */
+.obwf-list .obwf-badges {
+	flex: 0 0 auto;
+}
+.obwf-list .obwf-badges .obwf-badge-to-try,
+.obwf-list .obwf-badges .obwf-badge-tasted,
+.obwf-list .obwf-badges .obwf-badge-favorite {
+	width: 30px;
+	height: 30px;
 }
 
 .obwf-group-title {
