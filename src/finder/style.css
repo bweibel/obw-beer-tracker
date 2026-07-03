@@ -364,6 +364,11 @@ body.beer-tracker-page-body {
 	background: #fff;
 	max-width: 640px;
 	width: 100%;
+	/* `margin: auto` centers the card both axes within the flex overlay while
+	   staying scroll-safe: when the card is taller than the viewport the auto
+	   margins collapse to 0 so the top stays reachable (unlike align-items:
+	   center, which would clip it). */
+	margin: auto;
 	padding: 1.5rem;
 	position: relative;
 }
