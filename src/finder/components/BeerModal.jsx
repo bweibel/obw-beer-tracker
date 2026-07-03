@@ -5,11 +5,32 @@
  * action buttons. Closes on overlay click or the close button (replacing the
  * AngularJS `click-outside` directive).
  */
+import { useEffect, useState } from 'preact/hooks';
 import { cutText } from '../util.js';
+import { loadBeerContent } from '../api.js';
 import { Badges } from './Badges.jsx';
 import { IconClose, IconExternalLink } from './icons/Icons.jsx';
 
 export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry }) {
+	// §4.2: `content` is not part of the bulk finder payload — fetch it lazily
+	// per beer when the modal opens, cached in memory (api.js) for the
+	// session so re-opening the same beer doesn't re-fetch.
+	const [content, setContent] = useState('');
+
+	useEffect(() => {
+		let cancelled = false;
+		setContent('');
+		if (!beer) return undefined;
+
+		loadBeerContent(beer.id).then((html) => {
+			if (!cancelled) setContent(html);
+		});
+
+		return () => {
+			cancelled = true;
+		};
+	}, [beer && beer.id]);
+
 	if (!beer) return null;
 
 	const acf = beer.acf || {};
@@ -72,12 +93,12 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 						</div>
 					) : null}
 
-					{beer.content ? (
+					{content ? (
 						<div class="obwf-description">
 							<div
 								class="obwf-description-inner"
 								dangerouslySetInnerHTML={{
-									__html: cutText(beer.content, 240),
+									__html: cutText(content, 240),
 								}}
 							/>
 						</div>

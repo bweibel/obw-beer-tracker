@@ -69,6 +69,10 @@ final class Plugin {
 		// contract.
 		( new Fields() )->register_hooks();
 
+		// Phase 2 §4.1: precomputed, cached `/obw/v1/finder` route (replaces
+		// the finder's three paginated core-REST fetches with one payload).
+		( new Rest\FinderController() )->register_hooks();
+
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );

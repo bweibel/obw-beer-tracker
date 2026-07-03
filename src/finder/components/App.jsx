@@ -4,7 +4,7 @@
  * AngularJS BeerListController.
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { loadBeers, loadBreweries, loadVenues } from '../api.js';
+import { loadFinderData } from '../api.js';
 import { useTracker } from '../tracker.js';
 import { FilterBar } from './FilterBar.jsx';
 import { BeerList } from './BeerList.jsx';
@@ -38,11 +38,15 @@ export function App() {
 	useEffect(() => {
 		let cancelled = false;
 		setLoading(true);
-		// Beers first (needed for the lookup used by the brewery/venue tabs),
-		// breweries + venues in parallel — mirrors the legacy init().
-		loadBeers()
+		// Phase 2 §4.1: one request for the whole dataset (falls back to the
+		// three-type core-REST loading internally if the precomputed route is
+		// unavailable) instead of three separate loaders.
+		loadFinderData()
 			.then((data) => {
-				if (!cancelled) setBeers(data);
+				if (cancelled) return;
+				setBeers(data.beers);
+				setBreweries(data.breweries);
+				setVenues(data.venues);
 			})
 			.catch((e) => {
 				if (!cancelled) setError(e.message || 'Failed to load beers.');
@@ -50,13 +54,6 @@ export function App() {
 			.finally(() => {
 				if (!cancelled) setLoading(false);
 			});
-
-		loadBreweries()
-			.then((data) => !cancelled && setBreweries(data))
-			.catch(() => {});
-		loadVenues()
-			.then((data) => !cancelled && setVenues(data))
-			.catch(() => {});
 
 		// Add the body/html classes the theme styles key off of.
 		document.documentElement.classList.add('beer-tracker-page-html');

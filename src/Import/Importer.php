@@ -122,6 +122,16 @@ final class Importer {
 			$this->link_relation( $result, $row, $row_number, $beer_id, $name, 'venue', 'obw_venue', self::F_VENUE, $dry_run );
 		}
 
+		// Commit point for anything that needs to react to a completed import
+		// (e.g. Phase 2 §4.1's FinderCache invalidation). Never fires for a dry
+		// run, since nothing was mutated. save_post/deleted_post already cover
+		// per-post cache busting during the run; this catches the reverse
+		// relations that ACF writes directly to brewery/venue meta (no
+		// save_post fires on those) so the group blob doesn't go stale.
+		if ( ! $dry_run && function_exists( 'do_action' ) ) {
+			do_action( 'obw_beer_tracker_imported', $result );
+		}
+
 		return $result;
 	}
 
