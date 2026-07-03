@@ -36,6 +36,18 @@
 	border: 1px solid var(--obwf-line);
 	padding: 0.75rem 1rem;
 	margin-bottom: 1.25rem;
+	/*
+	 * Sticky at all breakpoints (Phase 2 §3.2), replacing the legacy JS-toggled
+	 * `.floating-finder.fixed`. `top: 0` because the theme has no fixed/sticky
+	 * site header (verified against library/scss/breakpoints/_base.scss — the
+	 * only `position: fixed` rules there are the legacy floating finder itself
+	 * and an unrelated `.mobile-ad`). Revisit this offset if the theme ever
+	 * grows a fixed header.
+	 */
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 10;
 }
 
 .obwf-filterbar .obwf-card-header h5 {
@@ -60,9 +72,14 @@
 	background: transparent;
 	border: 1px solid currentColor;
 	padding: 0.45rem 0.6rem;
+	min-width: 44px;
+	min-height: 44px;
 	cursor: pointer;
 	font-size: 1rem;
 	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .obwf-filterbar .obwf-filters {
@@ -98,6 +115,7 @@
 	background: transparent;
 	border: 1px solid currentColor;
 	padding: 0.4rem 0.7rem;
+	min-height: 44px;
 	font-size: 0.9rem;
 	cursor: pointer;
 	display: inline-flex;
@@ -257,6 +275,13 @@
 .obwf-modal-overlay.obwf-modal-overlay--open {
 	display: flex;
 }
+/* Near-full-bleed centered card on small screens (Phase 2 §3.3) — still a
+   centered overlay card, not a bottom sheet, just with minimal side padding. */
+@media (max-width: 767px) {
+	.obwf-modal-overlay {
+		padding: 3vh 0.35rem;
+	}
+}
 
 .obwf-card.obwf-card--modal {
 	background: #fff;
@@ -268,14 +293,19 @@
 
 .obwf-card .obwf-modal-close {
 	position: absolute;
-	top: 0.5rem;
-	right: 0.75rem;
+	top: 0.25rem;
+	right: 0.5rem;
 	background: transparent;
 	border: 0;
+	min-width: 44px;
+	min-height: 44px;
 	font-size: 1.8rem;
 	line-height: 1;
 	cursor: pointer;
 	color: #999;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .obwf-card .obwf-title {
@@ -322,6 +352,7 @@
 .obwf-card .obwf-btn--gold,
 .obwf-card .obwf-btn--gray {
 	padding: 0.5rem 0.85rem;
+	min-height: 44px;
 	font-size: 0.95rem;
 	cursor: pointer;
 	text-decoration: none;
