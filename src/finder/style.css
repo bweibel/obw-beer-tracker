@@ -97,7 +97,12 @@ body.beer-tracker-page-body {
    toggle icon and button borders read against the dark bar. The search field
    keeps its own white background (below) so typed text stays legible. */
 .obwf-filterbar.is-stuck {
-	background: var(--obwf-gray);
+	background: rgba(44, 44, 44, 0.93);
+	color: #fff;
+}
+/* The toggle carries its own explicit (dark) color for the light state, so it
+   won't inherit the white above — flip it explicitly when the bar is dark. */
+.obwf-filterbar.is-stuck .obwf-filter-toggle {
 	color: #fff;
 }
 @media (prefers-reduced-motion: reduce) {
