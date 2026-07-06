@@ -1,6 +1,6 @@
 {
   "name": "obw-beer-tracker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Ohio Brew Week beer finder SPA (Preact) + build toolchain.",
   "type": "module",
