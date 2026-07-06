@@ -80,12 +80,17 @@ body.beer-tracker-page-body {
 	 */
 	position: sticky;
 	top: 0;
-	background: #fff;
+	/* Dark treatment at all times (not just when pinned): currentColor is white
+	   so the heading, toggle icon and button borders read against the dark bar.
+	   Without this the transparent buttons were white-bordered on a white bar and
+	   effectively invisible until the bar became sticky. `.is-stuck` below only
+	   adds the blurred/translucent pinned look on top of this. */
+	background: #2b2b2b;
 	z-index: 10;
 	/* Explicit color so currentColor (icon strokes, borders) is deterministic
 	   under the theme's `all: unset` global reset, which otherwise leaves the
 	   finder's color to ambiguous inheritance. */
-	color: #2b2b2b;
+	color: #fff;
 	transition: background-color 0.15s ease, color 0.15s ease;
 }
 /* Zero-height marker at the bar's in-flow position; FilterBar observes it to
@@ -151,7 +156,7 @@ body.beer-tracker-page-body {
 	min-width: 44px;
 	min-height: 44px;
 	cursor: pointer;
-	color: #2b2b2b;
+	color: #fff;
 	line-height: 1;
 	display: inline-flex;
 	align-items: center;
