@@ -89,6 +89,9 @@ final class Plugin {
 		// and its handlers live under wp-admin); front-end never needs it.
 		if ( is_admin() ) {
 			( new Admin\ImportPage( new Import\PendingStore() ) )->register_hooks();
+
+			// Printable venue → brewery → beer tasting sheet (POC).
+			( new Admin\PrintList() )->register_hooks();
 		}
 	}
 
