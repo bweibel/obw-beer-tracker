@@ -20,18 +20,26 @@ export function GroupList({
 	onSelect,
 }) {
 	const term = (search || '').toLowerCase();
-	const sorted = [...groups].sort((a, b) =>
-		a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+	// Resolve each group's renderable (published, in-lookup) beers up front so we
+	// can drop empty breweries/venues entirely instead of showing a bare header.
+	const withBeers = groups
+		.map((group) => ({
+			group,
+			beers: (group.beers || [])
+				.filter((b) => b.post_status === 'publish')
+				.filter((b) => beerLookup[b.ID])
+				.filter((b) => !term || (b.post_name || '').toLowerCase().includes(term))
+				.sort((a, b) => (a.post_name || '').localeCompare(b.post_name || '')),
+		}))
+		.filter(({ beers }) => beers.length > 0);
+	const sorted = withBeers.sort((a, b) =>
+		a.group.name.localeCompare(b.group.name, undefined, { sensitivity: 'base' })
 	);
 
 	return (
 		<section class="obwf-page-content obwf-list obwf-cf">
-			{sorted.map((group) => {
+			{sorted.map(({ group, beers }) => {
 				const isOpen = !!openIds[group.id];
-				const beers = (group.beers || [])
-					.filter((b) => b.post_status === 'publish')
-					.filter((b) => !term || (b.post_name || '').toLowerCase().includes(term))
-					.sort((a, b) => (a.post_name || '').localeCompare(b.post_name || ''));
 
 				return (
 					<div class={'obwf-group obwf-group--' + kind} key={group.id}>
@@ -69,9 +77,6 @@ export function GroupList({
 										);
 								  })
 								: null}
-							{isOpen && beers.length === 0 ? (
-								<p class="obwf-empty">No published brews here yet.</p>
-							) : null}
 						</div>
 					</div>
 				);

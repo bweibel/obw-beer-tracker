@@ -128,12 +128,14 @@ body.beer-tracker-page-body {
 .obwf-filterbar .obwf-card-header h5 {
 	margin: 0.5rem 0 0.4rem;
 	font-size: 1.05rem;
+	color: #fff;
 }
 
 .obwf-filterbar .obwf-search-form {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
+	justify-content: space-between;
 	width: 100%;
 }
 
