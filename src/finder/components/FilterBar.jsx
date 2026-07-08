@@ -152,17 +152,16 @@ export function FilterBar({
 							{t.label}
 						</button>
 					))}
-				</section>
-
-				<div class="obwf-delete-wrap">
 					<button
 						class="obwf-btn obwf-btn-delete"
 						onClick={onDelete}
 						title="Delete all tracker data"
+						aria-label="Delete all tracker data"
 					>
-						<IconTrash /> Reset
+						<IconTrash />
 					</button>
-				</div>
+				</section>
+
 			</div>
 		</aside>
 		</>

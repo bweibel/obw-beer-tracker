@@ -12,6 +12,8 @@
 :root {
 	--obwf-gray: #4a4a4a;
 	--obwf-line: #ddd;
+	--obwf-red: #cc4747;
+	--obwf-yellow: #e2a052;
 }
 
 .obwf-app {
@@ -229,7 +231,6 @@ body.beer-tracker-page-body {
 	flex-wrap: wrap;
 	gap: 0.4rem;
 	padding-bottom: 0.5rem;
-	border-bottom: 1px solid var(--obwf-line);
 	margin-bottom: 0.5rem;
 }
 
@@ -270,9 +271,12 @@ body.beer-tracker-page-body {
 	color: #fff;
 }
 
-.obwf-filterbar .obwf-delete-wrap {
-	text-align: right;
-	border: 0;
+/* Delete-all: pushed to the far right of the "Show by" row, red icon. */
+.obwf-filterbar .obwf-btn-delete {
+	margin-left: auto;
+}
+.obwf-filterbar .obwf-btn-delete .obwf-icon {
+	color: var(--obwf-red);
 }
 
 /* A3: "Tasted N of M" progress stat. Deliberately quiet (small/muted, no
@@ -676,7 +680,7 @@ body.obwf-scroll-locked {
 }
 
 .obwf-sort-btn--on {
-	background: #ea751b; /* OBW brand orange */
+	background: var(--obwf-yellow); 
 	color: #fff;
 	font-weight: bold;
 }
