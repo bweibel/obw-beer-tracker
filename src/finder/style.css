@@ -662,30 +662,40 @@ body.obwf-scroll-locked {
 	font-weight: bold;
 }
 
-/* Venue chips under each to-try beer — where to get it. */
-.obwf-venue-chips {
+/* Venue group: a section per venue, its to-try beers listed beneath. */
+.obwf-mylist-venue {
+	margin-bottom: 1.25rem;
+}
+
+.obwf-mylist-venue-title {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 0.35rem;
-	margin-top: 0.4rem;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0 0 0.35rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 2px solid #ea751b; /* OBW brand orange */
+	font-size: 1.05rem;
 }
 
-.obwf-venue-chip {
-	display: inline-block;
-	padding: 0.15rem 0.5rem;
-	border-radius: 0.75rem;
+.obwf-mylist-venue-count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.35rem;
+	height: 1.35rem;
+	padding: 0 0.35rem;
+	border-radius: 0.7rem;
 	background: #f0f0f0;
-	border: 1px solid var(--obwf-line);
 	color: var(--obwf-gray);
-	font-size: 0.78rem;
-	line-height: 1.4;
+	font-size: 0.75rem;
+	font-weight: bold;
 }
 
-.obwf-venue-chip--none {
-	background: transparent;
-	border-style: dashed;
-	font-style: italic;
+.obwf-mylist-venue--none .obwf-mylist-venue-title {
+	border-bottom-color: var(--obwf-line);
+	border-bottom-style: dashed;
 	color: #999;
+	font-style: italic;
 }
 
 .obwf-mylist-empty {
