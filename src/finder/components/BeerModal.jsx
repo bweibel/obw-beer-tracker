@@ -5,13 +5,10 @@
  * action buttons. Closes on overlay click or the close button (replacing the
  * AngularJS `click-outside` directive).
  */
-import { useEffect, useState } from 'preact/hooks';
-import { cutText } from '../util.js';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { loadBeerContent } from '../api.js';
 import { Badges } from './Badges.jsx';
 import { IconClose, IconExternalLink } from './icons/Icons.jsx';
-
-const DESCRIPTION_TRUNCATE_LENGTH = 240;
 
 export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry }) {
 	// §4.2: `content` is not part of the bulk finder payload — fetch it lazily
@@ -24,12 +21,20 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	// Batch B / B1: "Read more" starts collapsed for every beer; reset when the
 	// modal is (re)opened for a different beer so it doesn't carry over.
 	const [expanded, setExpanded] = useState(false);
+	// Whether the collapsed (line-clamped) description actually overflows — set by
+	// measuring real heights, not a char-count guess, so "Read more" shows exactly
+	// when there's hidden text. Full content is always rendered and clamped via
+	// CSS; the clamp height matches the reserved min-height, so loading the text
+	// never grows the card.
+	const [overflows, setOverflows] = useState(false);
+	const innerRef = useRef(null);
 
 	useEffect(() => {
 		let cancelled = false;
 		setContent('');
 		setLoading(true);
 		setExpanded(false);
+		setOverflows(false);
 		if (!beer) return undefined;
 
 		loadBeerContent(beer.id).then((html) => {
@@ -43,6 +48,12 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 			cancelled = true;
 		};
 	}, [beer && beer.id]);
+
+	// After the (collapsed) description renders, measure whether it's clipped.
+	useEffect(() => {
+		const el = innerRef.current;
+		setOverflows(!!el && !!content && el.scrollHeight > el.clientHeight + 1);
+	}, [content]);
 
 	// Batch B / B2: lock background scroll while the modal is open, restoring
 	// it on close/unmount. App.jsx manages its own body classes (see its
@@ -136,18 +147,23 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 					) : null}
 
 					{loading || content ? (
-						<div class="obwf-description">
+						<div
+							class={
+								'obwf-description' +
+								(overflows && !expanded ? ' obwf-description--clamped' : '')
+							}
+						>
 							{content ? (
 								<div
-									class="obwf-description-inner"
-									dangerouslySetInnerHTML={{
-										__html: expanded
-											? content
-											: cutText(content, DESCRIPTION_TRUNCATE_LENGTH),
-									}}
+									ref={innerRef}
+									class={
+										'obwf-description-inner' +
+										(expanded ? '' : ' obwf-description-inner--collapsed')
+									}
+									dangerouslySetInnerHTML={{ __html: content }}
 								/>
 							) : null}
-							{content && content.length > DESCRIPTION_TRUNCATE_LENGTH ? (
+							{overflows ? (
 								<button
 									type="button"
 									class="obwf-description-toggle"

@@ -618,16 +618,27 @@ body.beer-tracker-page-body {
 	font-size: 0.95rem;
 }
 .obwf-card .obwf-description {
+	position: relative;
 	margin: 0.75rem 0;
 	font-size: 0.95rem;
 	line-height: 1.4;
-	/* Reserve roughly a typical 240-char description so the lazily-loaded text
-	   doesn't pop in and shove the action buttons down (§4.2). */
-	min-height: 4.5em;
+	/* Reserve exactly the collapsed (3-line-clamped) height. Most descriptions
+	   are short and fit; longer ones are clamped to this same height and revealed
+	   via "Read more" — so the lazily-loaded text fades in without ever growing
+	   the card or shoving the action buttons down (§4.2). 3 lines × 1.4 ≈ 4.2em. */
+	min-height: 4.2em;
 }
-/* Batch B / B1: "Read more" / "Read less" toggle under a truncated
-   description. Styled as a plain link-like control rather than a full
-   `obwf-btn` since it's a secondary, inline action. */
+/* Collapsed: clamp to a fixed 3 lines so a long description can't exceed the
+   reserved height. Full content is in the DOM; the clamp is purely visual. */
+.obwf-card .obwf-description-inner--collapsed {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	overflow: hidden;
+}
+/* Batch B / B1: "Read more" / "Read less" toggle. Expanded ("Read less") it's a
+   plain link-like block below the text. */
 .obwf-card .obwf-description-toggle {
 	display: inline-flex;
 	align-items: center;
@@ -642,6 +653,18 @@ body.beer-tracker-page-body {
 	font-size: 0.95rem;
 	text-decoration: underline;
 	cursor: pointer;
+}
+/* Collapsed + overflowing: overlay "Read more" at the bottom-right of the
+   clamped text with a white fade, so it never adds a reserved row (which would
+   itself shift the buttons). Card background is #fff. */
+.obwf-card .obwf-description--clamped .obwf-description-toggle {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	min-height: 0;
+	margin-top: 0;
+	padding: 0.1rem 0.35rem 0.1rem 2.5rem;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 45%);
 }
 
 /* Batch B / B2: applied to <html> AND <body> while the modal is open to lock
