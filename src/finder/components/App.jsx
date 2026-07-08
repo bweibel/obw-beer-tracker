@@ -131,8 +131,6 @@ export function App() {
 				setSearch={setSearch}
 				filters={filters}
 				toggleFilter={toggleFilter}
-				orderBy={orderBy}
-				toggleOrderBy={toggleOrderBy}
 				onDelete={tracker.deleteAll}
 			/>
 
@@ -153,6 +151,7 @@ export function App() {
 						beers={beers}
 						search={search}
 						orderBy={orderBy}
+						toggleOrderBy={toggleOrderBy}
 						filters={filters}
 						flagsFor={tracker.flagsFor}
 						onSelect={setActiveBeer}

@@ -4,13 +4,7 @@
  * toggleControls, deleteClick).
  */
 import { useState, useEffect, useRef } from 'preact/hooks';
-import {
-	IconChevronDown,
-	IconChevronUp,
-	IconClose,
-	IconFilter,
-	IconTrash,
-} from './icons/Icons.jsx';
+import { IconClose, IconFilter, IconTrash } from './icons/Icons.jsx';
 
 const SHOW_ONLY = [
 	{ key: 'notTasted', label: 'Not Tasted' },
@@ -37,8 +31,6 @@ export function FilterBar({
 	setSearch,
 	filters,
 	toggleFilter,
-	orderBy,
-	toggleOrderBy,
 	onDelete,
 }) {
 	const [open, setOpen] = useState(false);
@@ -61,12 +53,6 @@ export function FilterBar({
 		observer.observe(el);
 		return () => observer.disconnect();
 	}, []);
-
-	const orderArrow = (field) => {
-		if (orderBy === field) return <IconChevronDown />; // asc marker (legacy ▼)
-		if (orderBy === '-' + field) return <IconChevronUp />; // desc marker (legacy ▲)
-		return null;
-	};
 
 	return (
 		<>
@@ -167,25 +153,6 @@ export function FilterBar({
 						</button>
 					))}
 				</section>
-
-				{isBeer ? (
-					<>
-						<header class="obwf-card-header">
-							<h5>Order by:</h5>
-						</header>
-						<section class="obwf-card-content obwf-actions">
-							<button
-								class="obwf-btn"
-								onClick={() => toggleOrderBy('title.rendered')}
-							>
-								Name {orderArrow('title.rendered')}
-							</button>
-							<button class="obwf-btn" onClick={() => toggleOrderBy('abv')}>
-								ABV {orderArrow('abv')}
-							</button>
-						</section>
-					</>
-				) : null}
 
 				<div class="obwf-delete-wrap">
 					<button

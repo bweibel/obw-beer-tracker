@@ -3,6 +3,7 @@
  * plus the controller's orderBy / search / filterFunction behavior.
  */
 import { InteractiveBadges } from './Badges.jsx';
+import { IconChevronDown, IconChevronUp } from './icons/Icons.jsx';
 
 /**
  * Sort + filter beers to match the AngularJS pipeline:
@@ -45,10 +46,18 @@ function visibleBeers(beers, search, orderBy, filters, flagsFor) {
 	return filtered;
 }
 
+// The two sortable fields, shown as a segmented control (shared .obwf-sort
+// style with My List). Clicking the active field flips its direction.
+const SORTS = [
+	{ field: 'title.rendered', label: 'Name' },
+	{ field: 'abv', label: 'ABV' },
+];
+
 export function BeerList({
 	beers,
 	search,
 	orderBy,
+	toggleOrderBy,
 	filters,
 	flagsFor,
 	onSelect,
@@ -59,8 +68,31 @@ export function BeerList({
 	const showAbv = orderBy === 'abv' || orderBy === '-abv';
 	const list = visibleBeers(beers, search, orderBy, filters, flagsFor);
 
+	const isActive = (field) => orderBy === field || orderBy === '-' + field;
+	const orderArrow = (field) => {
+		if (orderBy === field) return <IconChevronDown />; // ascending
+		if (orderBy === '-' + field) return <IconChevronUp />; // descending
+		return null;
+	};
+
 	return (
 		<section class="obwf-page-content obwf-list obwf-cf">
+			<div class="obwf-list-toolbar">
+				<div class="obwf-sort" role="group" aria-label="Sort brews">
+					{SORTS.map((s) => (
+						<button
+							key={s.field}
+							type="button"
+							class={'obwf-sort-btn' + (isActive(s.field) ? ' obwf-sort-btn--on' : '')}
+							aria-pressed={isActive(s.field)}
+							onClick={() => toggleOrderBy(s.field)}
+						>
+							{s.label} {orderArrow(s.field)}
+						</button>
+					))}
+				</div>
+			</div>
+
 			{list.map((beer) => {
 				const flags = flagsFor(beer.id);
 				return (

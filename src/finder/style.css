@@ -645,14 +645,19 @@ body.obwf-scroll-locked {
 }
 
 /* Count / A–Z sort toggle, pushed to the right of the header. */
-.obwf-mylist-sort {
+.obwf-sort {
 	margin-left: auto;
 	display: inline-flex;
 	border: 1px solid var(--obwf-line);
+
 }
 
-.obwf-mylist-sort-btn {
-	padding: 0.2rem 0.6rem;
+.obwf-sort-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.3rem 0.6rem;
+	margin-bottom: 0;
 	background: #fff;
 	border: 0;
 	font: inherit;
@@ -660,15 +665,26 @@ body.obwf-scroll-locked {
 	color: var(--obwf-gray);
 	cursor: pointer;
 }
+/* Sort control's direction arrow sits at text size. */
+.obwf-sort-btn .obwf-icon {
+	width: 0.9em;
+	height: 0.9em;
+}
 
-.obwf-mylist-sort-btn + .obwf-mylist-sort-btn {
+.obwf-sort-btn + .obwf-sort-btn {
 	border-left: 1px solid var(--obwf-line);
 }
 
-.obwf-mylist-sort-btn--on {
+.obwf-sort-btn--on {
 	background: #ea751b; /* OBW brand orange */
 	color: #fff;
 	font-weight: bold;
+}
+
+/* Toolbar row above a list holding the sort control (Brews tab). */
+.obwf-list-toolbar {
+	display: flex;
+	padding-bottom: 0.75rem;
 }
 
 /* "Also at …" — the other venues a beer is poured at, under its row. */

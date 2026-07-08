@@ -144,10 +144,10 @@ export function MyList({
 			<header class="obwf-mylist-header">
 				<h2 class="obwf-mylist-title">My To-Try List</h2>
 				<span class="obwf-mylist-count">{toTry.length}</span>
-				<div class="obwf-mylist-sort" role="group" aria-label="Sort venues">
+				<div class="obwf-sort" role="group" aria-label="Sort venues">
 					<button
 						type="button"
-						class={'obwf-mylist-sort-btn' + (!byName ? ' obwf-mylist-sort-btn--on' : '')}
+						class={'obwf-sort-btn' + (!byName ? ' obwf-sort-btn--on' : '')}
 						aria-pressed={!byName}
 						onClick={() => onSortChange('count')}
 					>
@@ -155,7 +155,7 @@ export function MyList({
 					</button>
 					<button
 						type="button"
-						class={'obwf-mylist-sort-btn' + (byName ? ' obwf-mylist-sort-btn--on' : '')}
+						class={'obwf-sort-btn' + (byName ? ' obwf-sort-btn--on' : '')}
 						aria-pressed={byName}
 						title={desc ? 'Sorted Z–A — tap for A–Z' : 'Sorted A–Z — tap for Z–A'}
 						onClick={() => onSortChange(sort === 'name' ? 'name-desc' : 'name')}
