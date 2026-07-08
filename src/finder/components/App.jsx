@@ -33,6 +33,9 @@ export function App() {
 	const [filters, setFilters] = useState(DEFAULT_FILTERS);
 	const [openIds, setOpenIds] = useState({});
 	const [activeBeer, setActiveBeer] = useState(null);
+	// My List view state (kept here so it survives tab switches within a session).
+	const [myListSort, setMyListSort] = useState('count'); // 'count' | 'name'
+	const [myListCollapsed, setMyListCollapsed] = useState({}); // venueKey -> true = collapsed
 
 	const tracker = useTracker();
 	const listWrapRef = useRef(null);
@@ -100,6 +103,9 @@ export function App() {
 
 	const toggleOpen = (id) =>
 		setOpenIds((prev) => ({ ...prev, [id]: !prev[id] }));
+
+	const toggleMyListCollapsed = (key) =>
+		setMyListCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));
 
 	const closeModal = () => setActiveBeer(null);
 
@@ -197,6 +203,10 @@ export function App() {
 						toggleToTry={tracker.toggleToTry}
 						toggleTasted={tracker.toggleTasted}
 						toggleFavorited={tracker.toggleFavorited}
+						sort={myListSort}
+						onSortChange={setMyListSort}
+						collapsed={myListCollapsed}
+						onToggleCollapsed={toggleMyListCollapsed}
 					/>
 				) : null}
 
