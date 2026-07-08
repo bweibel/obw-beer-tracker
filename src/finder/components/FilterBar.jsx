@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from 'preact/hooks';
 import {
 	IconChevronDown,
 	IconChevronUp,
+	IconClose,
 	IconFilter,
 	IconTrash,
 } from './icons/Icons.jsx';
@@ -47,6 +48,8 @@ export function FilterBar({
 	// viewport, the bar is stuck) so we can restyle it — see `.is-stuck`.
 	const sentinelRef = useRef(null);
 	const [stuck, setStuck] = useState(false);
+	// A2: so the clear (×) button can refocus the field after wiping `search`.
+	const searchInputRef = useRef(null);
 	useEffect(() => {
 		const el = sentinelRef.current;
 		if (!el || typeof IntersectionObserver === 'undefined') return undefined;
@@ -85,13 +88,38 @@ export function FilterBar({
 						onSubmit={(e) => e.preventDefault()}
 						class="obwf-search-form"
 					>
-						<input
-							type="text"
-							placeholder="Search Brews by Name"
-							title="Search & Filter the list of brews"
-							value={search}
-							onInput={(e) => setSearch(e.currentTarget.value)}
-						/>
+						{/* A2: mobile ergonomics — `type="search"` + the input-mode/
+						   enterkeyhint hints surface a "search" action key on mobile
+						   keyboards; autocapitalize/autocorrect/spellcheck are off
+						   since beer/brewery names aren't prose. */}
+						<div class="obwf-search-field">
+							<input
+								ref={searchInputRef}
+								type="search"
+								inputmode="search"
+								enterkeyhint="search"
+								autocapitalize="off"
+								autocorrect="off"
+								spellcheck={false}
+								placeholder="Search Brews by Name"
+								title="Search & Filter the list of brews"
+								value={search}
+								onInput={(e) => setSearch(e.currentTarget.value)}
+							/>
+							{search ? (
+								<button
+									type="button"
+									class="obwf-search-clear"
+									aria-label="Clear search"
+									onClick={() => {
+										setSearch('');
+										searchInputRef.current?.focus();
+									}}
+								>
+									<IconClose />
+								</button>
+							) : null}
+						</div>
 						<button
 							type="button"
 							class="obwf-filter-toggle"

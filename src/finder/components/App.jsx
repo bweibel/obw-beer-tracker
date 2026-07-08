@@ -78,7 +78,9 @@ export function App() {
 
 	const setListType = (type) => {
 		setListTypeState(type);
-		setSearch('');
+		// A1: `search` intentionally survives tab switches (Beer/Venue/Brewery
+		// share one search box) — only `orderBy` resets, since sort fields differ
+		// per list.
 		setOrderBy('title.rendered');
 		// Gentle scroll to the list, replacing the jQuery animate() in the
 		// legacy listButtonClick. No theme-path dependency.
@@ -104,6 +106,15 @@ export function App() {
 		? tracker.flagsFor(activeBeer.id)
 		: DEFAULT_FILTERS;
 
+	// A3: "Tasted N of M" progress stat. Computed inline on every render
+	// (O(n), n≈300) rather than useMemo'd on `tracker` — `useTracker()` returns
+	// a fresh object each render, so a memo keyed on it would never invalidate
+	// and N would go stale as the user toggles Tasted.
+	const tastedCount = beers.reduce(
+		(n, b) => n + (tracker.flagsFor(b.id).tasted ? 1 : 0),
+		0
+	);
+
 	return (
 		<div class="obwf-app">
 			<FilterBar
@@ -119,6 +130,15 @@ export function App() {
 			/>
 
 			<div class="obwf-list-wrap" ref={listWrapRef}>
+				{/* A3: placement is provisional — top of the list wrap reads fine
+				   in a quick check, but needs on-device testing against the
+				   sticky filter bar before this is final. */}
+				{!loading && !error ? (
+					<p class="obwf-progress-stat">
+						Tasted {tastedCount} of {beers.length}
+					</p>
+				) : null}
+
 				{error ? <p class="obwf-error">{error}</p> : null}
 
 				{!loading && listType === 'beer' ? (
