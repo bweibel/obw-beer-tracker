@@ -151,7 +151,10 @@ export function FilterBar({
 						<button
 							key={t.key}
 							class={'obwf-btn' + (listType === t.key ? ' obwf-btn--active' : '')}
-							onClick={() => setListType(t.key)}
+							onClick={() => {
+								setListType(t.key);
+								setOpen(false); // collapse the dropdown as the view scrolls up
+							}}
 						>
 							{t.label}
 						</button>
