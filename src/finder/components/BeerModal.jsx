@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { loadBeerContent } from '../api.js';
 import { Badges } from './Badges.jsx';
-import { IconClose, IconExternalLink } from './icons/Icons.jsx';
+import { IconClose } from './icons/Icons.jsx';
 
 export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry }) {
 	// §4.2: `content` is not part of the bulk finder payload — fetch it lazily
@@ -184,11 +184,12 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 								rel="noopener"
 								class="obwf-btn--gold obwf-btn-untappd"
 								id="untappd-link"
+								aria-label="View on Untappd"
 							>
-								Untappd{' '}
-								<span class="obwf-btn-untappd-icon">
-									<IconExternalLink />
-								</span>
+								{/* Icon-only: the official Untappd mark is a single-color
+								    SVG rendered via CSS mask so it inherits the button's
+								    `color` (gold → white on the hover-fill). */}
+								<span class="obwf-untappd-ico" aria-hidden="true" />
 							</a>
 						) : null}
 						<a
@@ -197,7 +198,7 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 							target="_blank"
 							rel="noopener"
 						>
-							More Info <IconExternalLink />
+							More Info
 						</a>
 					</div>
 

@@ -5,18 +5,22 @@
  * the plugin-owned `.obwf-*` / `#obwf-*` namespace so the legacy theme
  * stylesheet (which still compiles `.beer-card`, `.obw-button`, etc. for its
  * own page chrome) can never match anything in the finder DOM. Badge PNGs are
- * plugin-owned assets referenced by relative path. As of the modal-button
- * pass (Feature 1) decorative styling — border-radius, tint fills, brand
- * color — is intentionally in scope for the modal's action buttons; the rest
- * of the sheet stays structural-first.
+ * plugin-owned assets referenced by relative path. As of the Feature 1 revision
+ * the modal's action buttons intentionally *mimic* the parent theme's
+ * `.obw-button` / `rtd-button` site-button look (OpenSans bold uppercase,
+ * square 1px outline, solid-fill hover/active) using real `$obw-*` palette
+ * values — replicated as `.obwf-*` rules, never by importing/applying the
+ * theme's own classes. The rest of the sheet stays structural-first.
  */
 
 :root {
 	--obwf-gray: #4a4a4a;
 	--obwf-line: #ddd;
 	--obwf-red: #cc4747;
-	--obwf-yellow: #e2a052;
-	--obwf-brown: #6b4423;
+	--obwf-yellow: #e2a052; /* site gold ($obw-gold) */
+	--obwf-orange: #f47238; /* site orange ($obw-orange) */
+	--obwf-brown: #483a34; /* site brown ($obw-brown) */
+	--obwf-btn-ink: #2c2c2c; /* site gray ($obw-gray) — modal buttons only, do not repurpose --obwf-gray */
 }
 
 .obwf-app {
@@ -686,62 +690,81 @@ body.obwf-scroll-locked {
 	flex-wrap: wrap;
 	margin-top: 1rem;
 }
-/* Shared type/size/spacing baseline for all five modal action buttons
-   (External-link row + tracker-toggle row) — the "standardize" half of
-   Feature 1. Weight is the only per-button variable (Untappd 700, toggles
-   600, More Info normal/500). */
+/* Shared site-button baseline for all five modal action buttons (External-link
+   row + tracker-toggle row) — mimics the theme's `.obw-button` / `rtd-button`
+   spec (see BEERLIST-FEATURES-PLAN.md "Site design reference"): OpenSans bold
+   uppercase, square 1px outline, white bg that fills solid on interaction. We
+   replicate the *values* only — never the theme's own classes — so the finder
+   stays decoupled from theme CSS at runtime. */
 .obwf-card .obwf-btn,
 .obwf-card .obwf-btn--gold,
 .obwf-card .obwf-track-btn {
-	padding: 0.5rem 0.85rem;
-	min-height: 44px;
-	font-size: 0.9rem;
-	line-height: 1;
-	letter-spacing: 0.01em;
+	font-family: "OpenSans", helvetica, arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0.75em 1em;
+	min-height: 44px; /* tap-target enhancement over the theme; doesn't change the look */
 	cursor: pointer;
 	text-decoration: none;
-	border: 1.5px solid currentColor;
-	border-radius: 6px;
+	text-align: center;
+	border: 1px solid currentColor;
+	border-radius: 0;
 	background: #fff;
 	color: currentColor;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.4rem;
-}
-.obwf-card .obwf-btn,
-.obwf-card .obwf-btn--gold {
-	border-width: 1px;
+	justify-content: center;
+	gap: 0.5rem;
+	transition: background-color 0.35s ease, color 0.2s ease;
 }
 
-/* Untappd — primary external link: solid brand-orange fill, white text/icon,
-   bold. This is the one loud button in the modal. */
+/* Untappd — icon-only gold button (official mark). Fills gold with a white
+   icon on hover/focus/active, matching the theme's `.gold-button`. */
 .obwf-card .obwf-btn--gold {
-	background: var(--obwf-yellow);
+	color: var(--obwf-yellow);
 	border-color: var(--obwf-yellow);
-	color: #fff;
-	font-weight: 700;
 }
-.obwf-card .obwf-btn--gold:hover {
-	background: #d18e3c;
-	border-color: #d18e3c;
+.obwf-card .obwf-btn--gold:hover,
+.obwf-card .obwf-btn--gold:focus,
+.obwf-card .obwf-btn--gold:active {
+	background: var(--obwf-yellow);
+	color: #fff;
+}
+/* Icon-only Untappd mark: the owner-provided single-color SVG
+   (src/finder/icons/untappd.svg) is painted via CSS mask so it takes the
+   button's `color` — gold by default, white on the hover-fill — exactly like
+   a labeled site button. Sized ~22px to read on its own without a text label. */
+.obwf-card .obwf-btn-untappd .obwf-untappd-ico {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	background-color: currentColor;
+	-webkit-mask: url("./icons/untappd.svg") center / contain no-repeat;
+	mask: url("./icons/untappd.svg") center / contain no-repeat;
 }
 
-/* More Info — secondary external link: quiet ghost/outline. */
+/* More Info — gray text-only site button, matching the theme's `.gray-button`. */
 .obwf-card .obwf-btn-more-info {
 	background: #fff;
-	border-color: var(--obwf-gray);
-	color: var(--obwf-gray);
-	font-weight: 500;
+	border-color: var(--obwf-btn-ink);
+	color: var(--obwf-btn-ink);
+}
+.obwf-card .obwf-btn-more-info:hover,
+.obwf-card .obwf-btn-more-info:focus,
+.obwf-card .obwf-btn-more-info:active {
+	background: var(--obwf-btn-ink);
+	color: #fff;
 }
 
-/* Tracker toggles (Want To Try / Tasted / Favorite): one uniform set, OFF by
-   default (neutral border/label + dimmed off-cap), with a per-action ON
-   state below (tint bg + colored border/label + on-cap swap). Never a
-   saturated fill behind the PNG cap — the caps are already full-color. */
+/* Tracker toggles (Want To Try / Tasted / Favorite): gray site-button OFF by
+   default, filling solid with the per-action color (white label) ON — see
+   the modifiers below. Never a saturated fill behind the PNG cap while OFF —
+   the caps are already full-color. */
 .obwf-card .obwf-track-btn {
-	font-weight: 600;
-	border-color: var(--obwf-line);
-	color: var(--obwf-gray);
+	border-color: var(--obwf-btn-ink);
+	color: var(--obwf-btn-ink);
 }
 
 .obwf-track-ico {
@@ -793,19 +816,19 @@ body.obwf-scroll-locked {
 }
 
 .obwf-track-btn--totry.obwf-track-btn--on {
-	background: rgba(107, 68, 35, 0.14);
+	background: var(--obwf-brown);
 	border-color: var(--obwf-brown);
-	color: var(--obwf-brown);
+	color: #fff;
 }
 .obwf-track-btn--tasted.obwf-track-btn--on {
-	background: rgba(226, 160, 82, 0.16);
+	background: var(--obwf-yellow);
 	border-color: var(--obwf-yellow);
-	color: var(--obwf-yellow);
+	color: #fff;
 }
 .obwf-track-btn--favorite.obwf-track-btn--on {
-	background: rgba(204, 71, 71, 0.14);
+	background: var(--obwf-red);
 	border-color: var(--obwf-red);
-	color: var(--obwf-red);
+	color: #fff;
 }
 
 /* Visible keyboard-focus ring on all five modal action buttons/links. */
