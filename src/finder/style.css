@@ -472,33 +472,60 @@ body.beer-tracker-page-body {
 .obwf-badges .obwf-badge-to-try,
 .obwf-badges .obwf-badge-tasted,
 .obwf-badges .obwf-badge-favorite {
+	position: relative;
 	width: 40px;
 	height: 40px;
 	display: inline-block;
+}
+/* Two stacked layers per badge — the OFF glyph (::before, dimmed) and the ON
+   glyph (::after, hidden) — crossfade on toggle. Transitions don't fire on
+   initial paint, so already-on badges don't animate when a list mounts. */
+.obwf-badges .obwf-badge-to-try::before,
+.obwf-badges .obwf-badge-to-try::after,
+.obwf-badges .obwf-badge-tasted::before,
+.obwf-badges .obwf-badge-tasted::after,
+.obwf-badges .obwf-badge-favorite::before,
+.obwf-badges .obwf-badge-favorite::after {
+	content: "";
+	position: absolute;
+	inset: 0;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+	transition: opacity 0.15s ease;
+}
+.obwf-badges .obwf-badge-to-try::before,
+.obwf-badges .obwf-badge-tasted::before,
+.obwf-badges .obwf-badge-favorite::before {
 	opacity: 0.6;
 }
-.obwf-badges .obwf-badge--on {
+.obwf-badges .obwf-badge-to-try::after,
+.obwf-badges .obwf-badge-tasted::after,
+.obwf-badges .obwf-badge-favorite::after {
+	opacity: 0;
+}
+.obwf-badges .obwf-badge--on::before {
+	opacity: 0;
+}
+.obwf-badges .obwf-badge--on::after {
 	opacity: 1;
 }
-.obwf-badges .obwf-badge-to-try {
+.obwf-badges .obwf-badge-to-try::before {
 	background-image: url("./icons/wishlist_off_icon.png");
 }
-.obwf-badges .obwf-badge-to-try.obwf-badge--on {
+.obwf-badges .obwf-badge-to-try::after {
 	background-image: url("./icons/wishlist_on_icon.png");
 }
-.obwf-badges .obwf-badge-tasted {
+.obwf-badges .obwf-badge-tasted::before {
 	background-image: url("./icons/tasted_off_icon.png");
 }
-.obwf-badges .obwf-badge-tasted.obwf-badge--on {
+.obwf-badges .obwf-badge-tasted::after {
 	background-image: url("./icons/tasted_on_icon.png");
 }
-.obwf-badges .obwf-badge-favorite {
+.obwf-badges .obwf-badge-favorite::before {
 	background-image: url("./icons/favorite_off_icon.png");
 }
-.obwf-badges .obwf-badge-favorite.obwf-badge--on {
+.obwf-badges .obwf-badge-favorite::after {
 	background-image: url("./icons/favorite_on_icon.png");
 }
 
@@ -730,7 +757,7 @@ body.obwf-scroll-locked {
 	height: 1.5rem;
 	padding: 0 0.4rem;
 	border-radius: 0.75rem;
-	background: #ea751b; /* OBW brand orange */
+	background: var(--obwf-yellow); /* OBW brand orange */
 	color: #fff;
 	font-size: 0.8rem;
 	font-weight: bold;
@@ -792,4 +819,84 @@ body.obwf-scroll-locked {
 	padding: 1.5rem 0.5rem;
 	text-align: center;
 	color: #777;
+}
+
+/* ── Motion polish ────────────────────────────────────────────────────────
+   Subtle, compositor-only (opacity/transform) entrance + press animations.
+   All short (<200ms) so nothing feels sluggish, and fully disabled under
+   prefers-reduced-motion (below). Entrance animations are mount-only: Preact
+   keeps a list section's DOM node across state updates, so they replay only on
+   a real view switch, not on every badge toggle. */
+@keyframes obwf-fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+@keyframes obwf-rise-in {
+	from { opacity: 0; transform: translateY(6px); }
+	to   { opacity: 1; transform: none; }
+}
+@keyframes obwf-modal-rise {
+	from { opacity: 0; transform: translateY(14px); }
+	to   { opacity: 1; transform: none; }
+}
+
+/* Beer modal: scrim fades, card rises. Entrance only (the element is removed
+   instantly on close, so no JS exit-timing is needed). */
+.obwf-modal-overlay--open {
+	animation: obwf-fade-in 140ms ease-out;
+}
+.obwf-card--modal {
+	animation: obwf-modal-rise 180ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* Lists gently fade/rise in when a tab mounts (view switch) or on first load. */
+.obwf-app .obwf-list {
+	animation: obwf-rise-in 160ms ease-out;
+}
+
+/* Filter panel fades in when opened (height still snaps; opacity softens it). */
+.obwf-filterbar .obwf-filters--open {
+	animation: obwf-fade-in 140ms ease-out;
+}
+
+/* Tactile press feedback + eased hover on the small tap targets. */
+.obwf-filterbar .obwf-btn,
+.obwf-filterbar .obwf-filter-toggle,
+.obwf-sort-btn,
+.obwf-badge-btn,
+.obwf-btn-delete {
+	transition: transform 90ms ease, background-color 0.12s ease, color 0.12s ease;
+}
+.obwf-filterbar .obwf-btn:active,
+.obwf-filterbar .obwf-filter-toggle:active,
+.obwf-sort-btn:active,
+.obwf-badge-btn:active,
+.obwf-btn-delete:active {
+	transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.obwf-app .obwf-modal-overlay--open,
+	.obwf-app .obwf-card--modal,
+	.obwf-app .obwf-list,
+	.obwf-filterbar .obwf-filters--open {
+		animation: none;
+	}
+	.obwf-app *,
+	.obwf-app *::before,
+	.obwf-app *::after {
+		transition: none !important;
+	}
+}
+
+/* Press feedback on the beer modal's action buttons/links (Want To Try /
+   Tasted / Favorite, plus Untappd & More Info), matching the list controls.
+   Covered by the reduced-motion transition:none guard above. */
+.obwf-card--modal .obwf-actions button,
+.obwf-card--modal .obwf-actions a {
+	transition: transform 90ms ease, background-color 0.12s ease, color 0.12s ease;
+}
+.obwf-card--modal .obwf-actions button:active,
+.obwf-card--modal .obwf-actions a:active {
+	transform: scale(0.96);
 }
