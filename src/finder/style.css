@@ -139,15 +139,52 @@ body.beer-tracker-page-body {
 	width: 100%;
 }
 
-.obwf-filterbar input[type="text"] {
+/* A2: search field + inline clear (×) button. Wrapped in its own flex item
+   (rather than styling the input directly) so the × can sit inside the field
+   without fighting the input's own padding/width. */
+.obwf-filterbar .obwf-search-field {
+	position: relative;
 	flex: 1 1 auto;
 	min-width: 0; /* let the field actually stretch/shrink in the flex row */
-	padding: 0.5rem 0.65rem;
+	display: flex;
+	align-items: center;
+}
+
+.obwf-filterbar input[type="search"] {
+	width: 100%;
+	min-height: 44px; /* match the other filter-bar tap targets */
+	padding: 0.5rem 2.25rem 0.5rem 0.65rem; /* right padding clears the × button */
 	border: 1px solid var(--obwf-line);
 	font-size: 1rem;
 	/* Stay a readable white field regardless of the bar's light/dark state. */
 	background: #fff;
 	color: #2b2b2b;
+}
+/* Safari/Chrome draw their own clear glyph on type="search" once it has a
+   value — suppress it so it doesn't double up with our own × button. */
+.obwf-filterbar input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
+.obwf-filterbar .obwf-search-clear {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	min-width: 44px;
+	min-height: 44px;
+	background: transparent;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	color: #4a4a4a;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.obwf-filterbar .obwf-search-clear .obwf-icon {
+	width: 1rem;
+	height: 1rem;
 }
 
 .obwf-filterbar .obwf-filter-toggle {
@@ -236,6 +273,14 @@ body.beer-tracker-page-body {
 .obwf-filterbar .obwf-delete-wrap {
 	text-align: right;
 	border: 0;
+}
+
+/* A3: "Tasted N of M" progress stat. Deliberately quiet (small/muted, no
+   border/background) — see App.jsx for the placement-provisional note. */
+.obwf-progress-stat {
+	margin: 0 0 0.75rem;
+	font-size: 0.85rem;
+	color: var(--obwf-gray);
 }
 
 /* ---- Lists -------------------------------------------------------------- */
