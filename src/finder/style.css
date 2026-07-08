@@ -308,6 +308,34 @@ body.beer-tracker-page-body {
 	height: 30px;
 }
 
+/* Batch C1: Tasted/Favorite render as real buttons on list rows so a tap
+   toggles tracker state inline without opening the modal (stopPropagation
+   keeps the tap from also bubbling to obwf-row-main's onClick). Padded to a
+   44x44px minimum tap target with the icon itself kept at its usual visual
+   size (28px) — NOTE: exact size/spacing flagged by product for on-device
+   testing before this ships. */
+.obwf-list .obwf-badges--interactive {
+	gap: 0.15rem;
+}
+.obwf-list .obwf-badges--interactive .obwf-badge-btn {
+	appearance: none;
+	-webkit-appearance: none;
+	border: 0;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 28px 28px;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+.obwf-list .obwf-badges--interactive .obwf-badge-btn:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
 /* ---- Skeleton (loading placeholders) ------------------------------------ */
 .obwf-row--skeleton .obwf-row-main {
 	cursor: default;

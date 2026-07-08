@@ -19,6 +19,16 @@ const STORAGE_KEY = 'beerData';
 const EMPTY = { tasted: false, favorited: false, toTry: false };
 
 /**
+ * Fire a very short, feature-guarded haptic tick for a user-initiated toggle.
+ * No-op (and no error) on devices/browsers without `navigator.vibrate`.
+ */
+function tick() {
+	if (typeof navigator !== 'undefined') {
+		navigator.vibrate?.(10);
+	}
+}
+
+/**
  * Read the stored tracker map from localStorage into an id -> flags object.
  *
  * @returns {Record<number, {tasted:boolean,favorited:boolean,toTry:boolean}>}
@@ -87,7 +97,8 @@ export function useTracker() {
 	}, []);
 
 	const toggleTasted = useCallback(
-		(id) =>
+		(id) => {
+			tick(); // subtle haptic feedback on the user-initiated toggle
 			update(id, (f) => {
 				f.tasted = !f.tasted;
 				if (f.favorited && !f.tasted) {
@@ -97,12 +108,14 @@ export function useTracker() {
 					f.toTry = false; // pull off the "to try" list
 				}
 				return f;
-			}),
+			});
+		},
 		[update]
 	);
 
 	const toggleFavorited = useCallback(
-		(id) =>
+		(id) => {
+			tick();
 			update(id, (f) => {
 				f.favorited = !f.favorited;
 				if (f.favorited && !f.tasted) {
@@ -112,16 +125,19 @@ export function useTracker() {
 					f.toTry = false;
 				}
 				return f;
-			}),
+			});
+		},
 		[update]
 	);
 
 	const toggleToTry = useCallback(
-		(id) =>
+		(id) => {
+			tick();
 			update(id, (f) => {
 				f.toTry = !f.toTry;
 				return f;
-			}),
+			});
+		},
 		[update]
 	);
 
