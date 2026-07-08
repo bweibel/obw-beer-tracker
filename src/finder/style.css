@@ -649,13 +649,10 @@ body.obwf-scroll-locked {
 	margin-left: auto;
 	display: inline-flex;
 	border: 1px solid var(--obwf-line);
-	border-radius: 0.35rem;
-	overflow: hidden;
 }
 
 .obwf-mylist-sort-btn {
-	min-height: 32px;
-	padding: 0 0.6rem;
+	padding: 0.2rem 0.6rem;
 	background: #fff;
 	border: 0;
 	font: inherit;
