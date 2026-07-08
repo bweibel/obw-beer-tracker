@@ -4,7 +4,7 @@
  * toggleControls, deleteClick).
  */
 import { useState, useEffect, useRef } from 'preact/hooks';
-import { IconClose, IconFilter, IconTrash } from './icons/Icons.jsx';
+import { IconClose, IconFilter } from './icons/Icons.jsx';
 
 const SHOW_ONLY = [
 	{ key: 'notTasted', label: 'Not Tasted' },
@@ -31,7 +31,6 @@ export function FilterBar({
 	setSearch,
 	filters,
 	toggleFilter,
-	onDelete,
 }) {
 	const [open, setOpen] = useState(false);
 	const isBeer = listType === 'beer';
@@ -157,14 +156,6 @@ export function FilterBar({
 							{t.label}
 						</button>
 					))}
-					<button
-						class="obwf-btn obwf-btn-delete"
-						onClick={onDelete}
-						title="Delete all tracker data"
-						aria-label="Delete all tracker data"
-					>
-						<IconTrash />
-					</button>
 				</section>
 
 			</div>

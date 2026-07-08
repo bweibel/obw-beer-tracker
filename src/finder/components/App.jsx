@@ -12,6 +12,7 @@ import { GroupList } from './GroupList.jsx';
 import { MyList } from './MyList.jsx';
 import { SkeletonList } from './Skeleton.jsx';
 import { BeerModal } from './BeerModal.jsx';
+import { IconTrash } from './icons/Icons.jsx';
 
 const DEFAULT_FILTERS = {
 	tasted: false,
@@ -131,7 +132,6 @@ export function App() {
 				setSearch={setSearch}
 				filters={filters}
 				toggleFilter={toggleFilter}
-				onDelete={tracker.deleteAll}
 			/>
 
 			<div class="obwf-list-wrap" ref={listWrapRef}>
@@ -211,6 +211,19 @@ export function App() {
 
 				{loading ? <SkeletonList /> : null}
 			</div>
+
+			{!loading && !error ? (
+				<div class="obwf-list-footer">
+					<button
+						class="obwf-btn-delete"
+						onClick={tracker.deleteAll}
+						title="Delete all tracker data"
+						aria-label="Delete all tracker data"
+					>
+						<IconTrash />
+					</button>
+				</div>
+			) : null}
 
 			<BeerModal
 				beer={activeBeer}
