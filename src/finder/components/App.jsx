@@ -9,6 +9,7 @@ import { useTracker } from '../tracker.js';
 import { FilterBar } from './FilterBar.jsx';
 import { BeerList } from './BeerList.jsx';
 import { GroupList } from './GroupList.jsx';
+import { MyList } from './MyList.jsx';
 import { SkeletonList } from './Skeleton.jsx';
 import { BeerModal } from './BeerModal.jsx';
 
@@ -179,6 +180,18 @@ export function App() {
 						openIds={openIds}
 						toggleOpen={toggleOpen}
 						beerLookup={beerLookup}
+						flagsFor={tracker.flagsFor}
+						onSelect={setActiveBeer}
+						toggleToTry={tracker.toggleToTry}
+						toggleTasted={tracker.toggleTasted}
+						toggleFavorited={tracker.toggleFavorited}
+					/>
+				) : null}
+
+				{!loading && listType === 'mylist' ? (
+					<MyList
+						beers={beers}
+						search={search}
 						flagsFor={tracker.flagsFor}
 						onSelect={setActiveBeer}
 						toggleToTry={tracker.toggleToTry}

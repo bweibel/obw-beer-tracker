@@ -632,3 +632,64 @@ body.obwf-scroll-locked {
 	background: var(--obwf-gray);
 	color: #fff;
 }
+
+/* ── "My List" tab (To-Try itinerary) ─────────────────────────────────────
+   A flat, name-sorted list of the user's to-try beers, each row tagged with
+   the venue(s) that pour it. Rows reuse .obwf-row / InteractiveBadges. */
+.obwf-mylist-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.25rem 0 0.75rem;
+}
+
+.obwf-mylist-title {
+	margin: 0;
+	font-size: 1.15rem;
+}
+
+.obwf-mylist-count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.5rem;
+	height: 1.5rem;
+	padding: 0 0.4rem;
+	border-radius: 0.75rem;
+	background: #ea751b; /* OBW brand orange */
+	color: #fff;
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+
+/* Venue chips under each to-try beer — where to get it. */
+.obwf-venue-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	margin-top: 0.4rem;
+}
+
+.obwf-venue-chip {
+	display: inline-block;
+	padding: 0.15rem 0.5rem;
+	border-radius: 0.75rem;
+	background: #f0f0f0;
+	border: 1px solid var(--obwf-line);
+	color: var(--obwf-gray);
+	font-size: 0.78rem;
+	line-height: 1.4;
+}
+
+.obwf-venue-chip--none {
+	background: transparent;
+	border-style: dashed;
+	font-style: italic;
+	color: #999;
+}
+
+.obwf-mylist-empty {
+	padding: 1.5rem 0.5rem;
+	text-align: center;
+	color: #777;
+}

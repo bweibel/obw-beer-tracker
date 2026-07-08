@@ -23,6 +23,7 @@ const TABS = [
 	{ key: 'beer', label: 'Brews' },
 	{ key: 'breweries', label: 'Brewery' },
 	{ key: 'venue', label: 'Venue' },
+	{ key: 'mylist', label: 'My List' },
 ];
 
 function Check({ on }) {
