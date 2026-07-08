@@ -203,21 +203,39 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 
 					<div class="obwf-actions obwf-actions--bottom">
 						<button
-							class={'obwf-btn--gray' + (flags.toTry ? ' obwf-btn--on' : '')}
+							type="button"
+							class={
+								'obwf-track-btn obwf-track-btn--totry' +
+								(flags.toTry ? ' obwf-track-btn--on' : '')
+							}
+							aria-pressed={flags.toTry}
 							onClick={() => onToTry(beer.id)}
 						>
+							<span class="obwf-track-ico obwf-track-ico--totry" />
 							Want To Try
 						</button>
 						<button
-							class={'obwf-btn--gray' + (flags.tasted ? ' obwf-btn--on' : '')}
+							type="button"
+							class={
+								'obwf-track-btn obwf-track-btn--tasted' +
+								(flags.tasted ? ' obwf-track-btn--on' : '')
+							}
+							aria-pressed={flags.tasted}
 							onClick={() => onTasted(beer.id)}
 						>
+							<span class="obwf-track-ico obwf-track-ico--tasted" />
 							Tasted
 						</button>
 						<button
-							class={'obwf-btn--gray' + (flags.favorited ? ' obwf-btn--on' : '')}
+							type="button"
+							class={
+								'obwf-track-btn obwf-track-btn--favorite' +
+								(flags.favorited ? ' obwf-track-btn--on' : '')
+							}
+							aria-pressed={flags.favorited}
 							onClick={() => onFavorited(beer.id)}
 						>
+							<span class="obwf-track-ico obwf-track-ico--favorite" />
 							Favorite
 						</button>
 					</div>

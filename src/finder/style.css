@@ -1,12 +1,14 @@
 /**
  * OBW Beer Finder — self-contained styles.
  *
- * Minimal structural CSS only (Phase 2 §1): no decorative/brand styling, no
- * border-radius, no box-shadow, no glyph overlays. Every selector is scoped
- * under the plugin-owned `.obwf-*` / `#obwf-*` namespace so the legacy theme
+ * Mostly minimal structural CSS (Phase 2 §1): every selector is scoped under
+ * the plugin-owned `.obwf-*` / `#obwf-*` namespace so the legacy theme
  * stylesheet (which still compiles `.beer-card`, `.obw-button`, etc. for its
  * own page chrome) can never match anything in the finder DOM. Badge PNGs are
- * plugin-owned assets referenced by relative path.
+ * plugin-owned assets referenced by relative path. As of the modal-button
+ * pass (Feature 1) decorative styling — border-radius, tint fills, brand
+ * color — is intentionally in scope for the modal's action buttons; the rest
+ * of the sheet stays structural-first.
  */
 
 :root {
@@ -14,6 +16,7 @@
 	--obwf-line: #ddd;
 	--obwf-red: #cc4747;
 	--obwf-yellow: #e2a052;
+	--obwf-brown: #6b4423;
 }
 
 .obwf-app {
@@ -683,27 +686,134 @@ body.obwf-scroll-locked {
 	flex-wrap: wrap;
 	margin-top: 1rem;
 }
+/* Shared type/size/spacing baseline for all five modal action buttons
+   (External-link row + tracker-toggle row) — the "standardize" half of
+   Feature 1. Weight is the only per-button variable (Untappd 700, toggles
+   600, More Info normal/500). */
 .obwf-card .obwf-btn,
 .obwf-card .obwf-btn--gold,
-.obwf-card .obwf-btn--gray {
+.obwf-card .obwf-track-btn {
 	padding: 0.5rem 0.85rem;
 	min-height: 44px;
-	font-size: 0.95rem;
+	font-size: 0.9rem;
+	line-height: 1;
+	letter-spacing: 0.01em;
 	cursor: pointer;
 	text-decoration: none;
-	border: 1px solid currentColor;
+	border: 1.5px solid currentColor;
+	border-radius: 6px;
 	background: #fff;
 	color: currentColor;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.35rem;
+	gap: 0.4rem;
 }
+.obwf-card .obwf-btn,
 .obwf-card .obwf-btn--gold {
-	font-weight: bold;
+	border-width: 1px;
 }
-.obwf-card .obwf-btn--on {
-	background: var(--obwf-gray);
+
+/* Untappd — primary external link: solid brand-orange fill, white text/icon,
+   bold. This is the one loud button in the modal. */
+.obwf-card .obwf-btn--gold {
+	background: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
 	color: #fff;
+	font-weight: 700;
+}
+.obwf-card .obwf-btn--gold:hover {
+	background: #d18e3c;
+	border-color: #d18e3c;
+}
+
+/* More Info — secondary external link: quiet ghost/outline. */
+.obwf-card .obwf-btn-more-info {
+	background: #fff;
+	border-color: var(--obwf-gray);
+	color: var(--obwf-gray);
+	font-weight: 500;
+}
+
+/* Tracker toggles (Want To Try / Tasted / Favorite): one uniform set, OFF by
+   default (neutral border/label + dimmed off-cap), with a per-action ON
+   state below (tint bg + colored border/label + on-cap swap). Never a
+   saturated fill behind the PNG cap — the caps are already full-color. */
+.obwf-card .obwf-track-btn {
+	font-weight: 600;
+	border-color: var(--obwf-line);
+	color: var(--obwf-gray);
+}
+
+.obwf-track-ico {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	flex-shrink: 0;
+}
+.obwf-track-ico::before,
+.obwf-track-ico::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	transition: opacity 0.15s ease;
+}
+.obwf-track-ico::before {
+	opacity: 0.6;
+}
+.obwf-track-ico::after {
+	opacity: 0;
+}
+.obwf-track-btn--on .obwf-track-ico::before {
+	opacity: 0;
+}
+.obwf-track-btn--on .obwf-track-ico::after {
+	opacity: 1;
+}
+.obwf-track-ico--totry::before {
+	background-image: url("./icons/wishlist_off_icon.png");
+}
+.obwf-track-ico--totry::after {
+	background-image: url("./icons/wishlist_on_icon.png");
+}
+.obwf-track-ico--tasted::before {
+	background-image: url("./icons/tasted_off_icon.png");
+}
+.obwf-track-ico--tasted::after {
+	background-image: url("./icons/tasted_on_icon.png");
+}
+.obwf-track-ico--favorite::before {
+	background-image: url("./icons/favorite_off_icon.png");
+}
+.obwf-track-ico--favorite::after {
+	background-image: url("./icons/favorite_on_icon.png");
+}
+
+.obwf-track-btn--totry.obwf-track-btn--on {
+	background: rgba(107, 68, 35, 0.14);
+	border-color: var(--obwf-brown);
+	color: var(--obwf-brown);
+}
+.obwf-track-btn--tasted.obwf-track-btn--on {
+	background: rgba(226, 160, 82, 0.16);
+	border-color: var(--obwf-yellow);
+	color: var(--obwf-yellow);
+}
+.obwf-track-btn--favorite.obwf-track-btn--on {
+	background: rgba(204, 71, 71, 0.14);
+	border-color: var(--obwf-red);
+	color: var(--obwf-red);
+}
+
+/* Visible keyboard-focus ring on all five modal action buttons/links. */
+.obwf-card .obwf-btn:focus-visible,
+.obwf-card .obwf-btn--gold:focus-visible,
+.obwf-card .obwf-track-btn:focus-visible {
+	outline: 2px solid #2b2b2b;
+	outline-offset: 2px;
 }
 
 /* ── "My List" tab (To-Try itinerary) ─────────────────────────────────────
