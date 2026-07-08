@@ -346,12 +346,6 @@ body.beer-tracker-page-body {
 	align-self: center;
 	padding-right: 0.5rem;
 }
-.obwf-list .obwf-badges .obwf-badge-to-try,
-.obwf-list .obwf-badges .obwf-badge-tasted,
-.obwf-list .obwf-badges .obwf-badge-favorite {
-	width: 30px;
-	height: 30px;
-}
 
 /* Batch C1: Tasted/Favorite render as real buttons on list rows so a tap
    toggles tracker state inline without opening the modal (stopPropagation
@@ -369,9 +363,8 @@ body.beer-tracker-page-body {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 28px 28px;
-	width: 44px;
-	height: 44px;
+	width: 40px;
+	height: 40px;
 	padding: 0;
 	margin: 0;
 	cursor: pointer;
@@ -601,9 +594,12 @@ body.beer-tracker-page-body {
 	cursor: pointer;
 }
 
-/* Batch B / B2: applied to <body> while the modal is open to lock background
-   scroll on mobile. Owned solely by BeerModal.jsx — App.jsx's own body
-   classes (`beer-tracker-page-body`, etc.) are untouched. */
+/* Batch B / B2: applied to <html> AND <body> while the modal is open to lock
+   background scroll. The theme's viewport scroll container is <html>, so the
+   root element must be locked too — body alone doesn't stop the page. Owned
+   solely by BeerModal.jsx — App.jsx's own body classes (`beer-tracker-page-body`,
+   etc.) are untouched. */
+html.obwf-scroll-locked,
 body.obwf-scroll-locked {
 	overflow: hidden;
 }

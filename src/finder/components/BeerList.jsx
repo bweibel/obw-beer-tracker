@@ -52,6 +52,7 @@ export function BeerList({
 	filters,
 	flagsFor,
 	onSelect,
+	toggleToTry,
 	toggleTasted,
 	toggleFavorited,
 }) {
@@ -82,6 +83,7 @@ export function BeerList({
 						</a>
 						<InteractiveBadges
 							flags={flags}
+							onToggleToTry={() => toggleToTry(beer.id)}
 							onToggleTasted={() => toggleTasted(beer.id)}
 							onToggleFavorited={() => toggleFavorited(beer.id)}
 						/>

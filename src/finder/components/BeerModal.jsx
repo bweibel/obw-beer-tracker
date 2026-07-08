@@ -50,8 +50,12 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	// class it owns, so it can't clobber App.jsx's.
 	useEffect(() => {
 		if (!beer) return undefined;
+		// Lock BOTH the root element and body: on this theme the viewport scroll
+		// container is <html>, so overflow:hidden on <body> alone does nothing.
+		document.documentElement.classList.add('obwf-scroll-locked');
 		document.body.classList.add('obwf-scroll-locked');
 		return () => {
+			document.documentElement.classList.remove('obwf-scroll-locked');
 			document.body.classList.remove('obwf-scroll-locked');
 		};
 	}, [beer]);

@@ -18,6 +18,7 @@ export function GroupList({
 	beerLookup,
 	flagsFor,
 	onSelect,
+	toggleToTry,
 	toggleTasted,
 	toggleFavorited,
 }) {
@@ -76,6 +77,7 @@ export function GroupList({
 												</a>
 												<InteractiveBadges
 													flags={flags}
+													onToggleToTry={() => toggleToTry(beer.id)}
 													onToggleTasted={() => toggleTasted(beer.id)}
 													onToggleFavorited={() => toggleFavorited(beer.id)}
 												/>
