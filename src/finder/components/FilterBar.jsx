@@ -48,7 +48,12 @@ export function FilterBar({
 		if (!el || typeof IntersectionObserver === 'undefined') return undefined;
 		const observer = new IntersectionObserver(
 			([entry]) => setStuck(!entry.isIntersecting),
-			{ threshold: [0] }
+			// Delay the stuck transition until the sentinel is ~40px above the
+			// viewport (positive top rootMargin grows the root upward), rather than
+			// firing exactly at the pin point. That buffer stops the bar from
+			// toggling (and its "Search" heading collapsing) on tiny scrolls right
+			// at the top, which read as a jump.
+			{ threshold: [0], rootMargin: '40px 0px 0px 0px' }
 		);
 		observer.observe(el);
 		return () => observer.disconnect();
