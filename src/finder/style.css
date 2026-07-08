@@ -95,6 +95,18 @@ body.beer-tracker-page-body {
 	color: #fff;
 	transition: background-color 0.15s ease, color 0.15s ease;
 }
+/* Mobile only: break the bar out to full viewport width (edge-to-edge app-bar
+   look). Works flush because the theme's mobile column is centered with equal
+   gutters; html/body already have `overflow-x: clip`, so 100vw adds no
+   horizontal scrollbar. Desktop keeps the offset column, so it's left alone. */
+@media (max-width: 767px) {
+	.obwf-filterbar {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		border-left: 0;
+		border-right: 0;
+	}
+}
 /* Zero-height marker at the bar's in-flow position; FilterBar observes it to
    toggle `.is-stuck` once the bar pins to the top. */
 .obwf-sticky-sentinel {
