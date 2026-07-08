@@ -1,227 +1,261 @@
 name,style,abv,ibu,untappd,description,brewery_id,brewery,venue_id,venue
-Erics English IPA,English IPA,6.3,,,A traditional English styled IPA that balances caramel malts with floral and fruity hop character. A throwback to the earliest beginnings of the India Pale Ale style.,10749,,10811,
-Diamond Lite,Kolsch,4,,,Black Diamond Lite is a Kolsch brewed with traditional German Hallertau Mittelfruh hops. Subtle maltiness and mild sweetness with pleasant hoppiness.,10749,,10811,
-Shandy Rush,Shandy,4.5,,,"Sunshine in a glass. This refreshing shandy combines a crisp Kolsch base with bright lemonade for citrus flavor and easy-drinking refreshment. Light, lively, and dangerously crushable.",10749,,10811,
-Pay Dirt,Brown Ale,5,,,"Smooth, rich, and easygoing with caramel, toasted malt, and a hint of chocolate. American honey adds warmth and sweetness, rounding out the deep malt character.",10749,,10811,
-Bumble Berry,Honey Blueberry Ale,5.3,,,"Brewed with spring honey and infused with fresh blueberry puree. Light, refreshing ale.",1351,,201|2744,
-Bumbleberry Lemonade,fruit beer / Shandy,3,,fat-head-s-brewery-bumble-berry-lemonade/6685297,"Vibrant shandy combining their classic honey blueberry ale with bright lemonade, featruring citrus aromas layered over the beers signature hopney sweetness and authentic blueberry notes",1351,,201|289,
-Hop Thunder Down Under Southern Hemisphere,IPA,6.8,,,,1351,,201,
-Head Hunter,West Coast IPA,7.5,,fat-head-s-brewery-head-hunter/11845,"Award Winning, agrressively dry hopped, west coast style IPA with a huge hop display of pine, grapefruit, citrus, and pineapple.",1351,,201|9843|289,
-Leafman Lager,American Lager,4.8,,,"A full bodied, American craft lager benefitting Cleveland Metroparks Trails Fund.",1351,,201,
-Lime Feeling Good Cerveza,Mexican-Style Lager,4.9,,,,1351,,201,
-Christmas Ale,,7.5,,,,1356,,201,
-Orange Honey Wheat,Wheat,5.5,,,,1356,,201,
-Midwest IPA,IPA,7,,,,1356,,201,
-Orange & Lime Shandy,Shandy,4,,,,1356,,201,
-Mexican Lager with Lime,Lager,5.4,,,,1356,,201,
-Independence,American Double IPA,8,,,,1356,,201,
-Lake Erie Sunset,Wheat,5.6,,,,10859,,201,
-Brewers Choice,Saison,,,,,10859,,201,
-Lime Feelin' Good,Lime Cerveza,4.9,,fat-head-s-brewery-lime-feelin-good/3323159,Lightly hopped lager fermented with Mexican style lager yeast for authenticity and infused with dehydrated pulvarized limes.,1351,,201|2744|179,
-Bumble Berry Lemonade Shandy,Fruit Beer,3,,fat-head-s-brewery-bumble-berry-lemonade/6685297,"A refreshing, vibrant, and sweet-tart version of Fat Head's Bumbleberry Honey Blueberry Ale",1351,,201|2744|187|289,
-Kiwi Breeze,Southern Hemisphere Extra Pale Ale,5.5,,,"Southern-hemisphere hop Galaxy of the Nectar delivers citrus, white wine, and peach flavors.",1351,,201,
-Kelly's Dry,Cider,6.7,,,Crisp and refreshing dry cider.,1894,,7151|118,
-All Ohio,Cider,6.2,,,"Ohio harvest driven varieties, semisweet, never too sweet.",1894,,7151|118,
-Peach Melba,Cider,6.3,,,"Red Raspberries and peaches with a hint of vanilla, semisweet.",1894,,7151|118,
-Tart Cherry Cider,Cider,6.3,,,"Cherry infused cider, tart and refreshing, semisweet.",1894,,7151|118,
-Roxbury,Cider,7.5,,,"Single variety dry cider from 2024 harvest, one of the OG American varieties, bitter-sharp apple.",1894,,7151|118,
-Rosa,Cider,6.2,,,"Rosehips + hibiscus tea blend steeped in cider, semidry.",1894,,7151,
-BBA Goldrush,Cider,8.7,,,Goldrush Dry aged 3 Years in 1st Gen Buffalo Trace barrel. 100% Goldrush apples,1894,,7151,
-Blueberry,Cider,6.1,,,"Semisweet, infused with blueberries.",1894,,7151,
-Zingiber,Cider,6.9,,,"Cider seasoned with fresh squeezed ginger root and lemons, semidry, year round favorite.",1894,,7151|118,
-Breakfast,Cider,6.4,,,"Irish Breakfast Tea infused cider, thirst quenching, semidry.",1894,,7151,
-Plum,Cider,7.2,,,"Plums offer a hint of fruity complexity, semisweet.",1894,,7151,
-Melomel,Mead,14.2,,,Dry mead aged with Montmorency cherries. Rich and warming.,1894,,118,
-Blackberry,Cider,7,,,"Blackberry infused cider, semidry.",1894,,118,
-Aged Mead,Mead,13.5,,,"Dry honey wine, aged in Elijah Craid bourbon barrel.",1894,,118,
-5 Star Strawberry,Cider,6.5,,,"Strawberry infused cider, semisweet, a seasonal pairing you won't want to miss.",1894,,118,
-Blue Lemon,Cider,6,,,"Blueberries and fresh lemon juice, light and refreshing, semidry.",1894,,118,
-Peach Bodhi,Double IPA,7.8,,,"A fresh, juicy burst of peach to the classic Bodhi profile. Smooth, vibrant, and fruit-forward",3096,,199,
-Ohio Light Lime,Lager,4.2,,,"Fresh squeeze of lime, low calorie, and delivers a crisp, refreshing flavor",3096,,199,
-Rainbow Road,Summer IPA,5.8,,,Summer IPA full of subtle lemon and strawberry flavors,1344,,199,
-Coast to Coast,IPA,6.8,,,Infused with blood oranges and hopped with Azacca and Centenial hops,1344,,199,
-Doom Pedal,White Ale,5.5,,,Belgium style white ale,1344,,199,
-Surfin' USA,Tropical Sour Ale,6.3,,,"Tropical sour stacked w/ pink guava, pineapple, and mango",1344,,199,
-Helles Awaits,Helles Lager,5,,devil-s-kettle-brewing-helles-awaits/2028826,A light but full flavored malty lager that's perfect for warmer weather.,1349,,196|2744|9843,
-Galatea Dunkel,Munich Dunkel Lager,5.2,,,,1349,,196,
-Dark Intentions,Black Pilsner,6,,,,1349,,196,
-Truck Wreck,Doppelbock,7.7,,,,1349,,196,
-Heathenweizen,Hefeweizen,5.1,,,,1349,,196,
-Anchor's Away,Amber Steam Beer,5.7,,,,1349,,196,
-Gen Zed,English Mild Ale,3.8,,,,1349,,196,
-Spider Silk,Blonde/Golden Ale,7,,devil-s-kettle-brewing-spider-silk/1111997,"Light but strong blonde ale that artfully blends elements of English, German and american brewing ingredients and traditions",1349,,196|2744|289,
-Ava's Maple Amber,American Amber/Red Ale,6,,devil-s-kettle-brewing-ava-s-maple-amber/6715482,"An American Amber/Red Ale with a rich, balanced malt profile with locally sourced maple for a subtle sweetness.",1349,,196|2744,
-Pawpaw Passion Fruit,Pilsner with Fruit,5.2,,,,1349,,196,
-McGinn's (Nitro),Dry Irish Stout,5.2,,,,1349,,196,
-Sam Owes Us,Coconut Chocolate Irish Stout,5.6,,,,1349,,196,
-Ragtag,Stout,6,,devil-s-kettle-brewing-ragtag/3123126,"Bourbon barrel aged stout infused with peanut butter, cocoa nibs, and coffee. Designed to mimick Tagalong cookies.",1349,,196|2744,
-Peach Mango Sour,Fruited Sour Ale,5,,,,1349,,196,
-Athens Standard,Pale Lager,5.5,,devil-s-kettle-brewing-athens-standard/3695729,Hybrid between a German pilsner and an American pale ale with a crisp lager backbone.,1349,,196|2744,
-Pale Satan,Pale Ale,5.2,,,,1349,,196,
-Sun Fest,West Coast Pilsner,5.5,,,,1349,,196,
-Fuller Nelson,IPA,6,,,,1349,,196,
-Dream Fluff,New England/Hazy IPA,6.6,,devil-s-kettle-brewing-dream-fluff/3205738,"Smooth bodied hazy IPA with Azacca, Citra, and Simcoe hops and a malt backbone of wheat and oats.",1349,,196|2744,
-DK Eleven,Double IPA,9,,,,1349,,196,
-Joneswood Slide,"Bourbon Barrel Stout with cacao, coffee, and vanilla beans",10,,,,1349,,196,
-Rye in 2,Ryewine aged in Rye Whiskey Barrels,12.5,,,,1349,,196,
-Vintage Barleywine,Barrel Aged Barelywine,13,,,,1349,,196,
-Royal Affair,Mead - Metheglin,13.5,,dutch-creek-winery-royal-affair/1692961,Earl Grey Tea Honey Wine,3006,,7688,
-Peach Blush,Mead - Pyment,11.5,,dutch-creek-winery-peach-blush/3908646,Peach Catawba Grape Honey Wine,3006,,7688,
-Peg Leg Cherry,Mead -  Melomel,11.5,,dutch-creek-winery-cherry-lime/2071729,Sweet Cherry Lime Honey Wine,3006,,7688,
-Dry Hard Cider,Cider - Dry,5.25,,dutch-creek-winery-dry-hard-cider/4228019,New England Hard Cider,3006,,7688,
-Sweet Tea Hard Cider,Cider - Sweet,5.25,,dutch-creek-winery-sweet-tea-hard-cider/5136123,Sweet Tea Hard Cider,3006,,7688,
-Chai Tea Cider,Cider - Spiced,5.25,,dutch-creek-winery-chair-tea-hard-cider/5407477,Chai Tea Cider,3006,,7688,
-Hopped Cider,Cider - Hopped,5.25,,,Cider with Cascade Hops,3006,,7688,
-Honey Lager,Lager - Amercian,5,,,A light lager brewed with barley roasted to a honey finish,9306,,7688,
-Pilsner,Pilsner,5.5,,,A big balanced Pilsner,9306,,7688,
-Nuke It From Orbit Strong Ale,American Strong Ale,7,,rice-family-brewing-nuke-it-from-orbit/6601930,A big balanced Pilsner,9306,,7688,
-Midnight Honey Porter,Porter,5,,rice-family-brewing-midnight-honey-porter/5216482,Honey Porter Brewed Using Dutch Creek Winery Honey,9306,,7688,
-Spring Cherry Belgian,Spring Belgian,6.2,,rice-family-brewing-cherry-spring/6735714,A smooth drinking Spring Belgian with a hint of cherries,9306,,7688,
-SquatchCoe,Hazy IPA,6,,rice-family-brewing-squatchcoe/5444300,Big Bold and Hazy IPA brewed with Simcoe in honor of Sasquatch,9306,,7688,
-Ol' 250 Blonde Ale,Belgian Blonde Ale,6.6,,,Blonde ale that is true to form,9306,,7688,
-RFB Straw Blonde,Strawberry Blonde Ale,4.5,,,Strawberry Blonde Ale,9306,,7688,
-Baker Ten Weiss,Wheat Beer - Hefeweizen,5.2,,rice-family-brewing-baker-ten-weiss/5464008,A German Inspired Wheat Ale,9306,,7688,
-Thanksgiving Leftovers,Wheat Beer - American Pale Wheat,5,,rice-family-brewing-baker-ten-weiss/5464008,A Wheat Ale with the tartness of cranberries,9306,,7688,
-Green Bridge Ale,Pale Ale - American,6.4,,rice-family-brewing-green-bridge-ale/5460763,A pale American Ale,9306,,7688,
-City Tricks Amber,Belgian Dubbel,7.7,,,Belgian Dubbel,9306,,7688,
-American Mead,Mead,13.5,,dutch-creek-winery-american-mead/1926220,Honey Wine - Dryer and Well-Balanced,3006,,7688|2744,
-Commonwealth's Revenge,Mead,13.5,,dutch-creek-winery-commonwealth-revenge/1957310,Bourbon Barrell Aged Honey Wine,3006,,7688|2744,
-Booty Blue,Mead - Melomel,11.5,,dutch-creek-winery-blueberry-lemon/2021218,Sweet Blueberry Lemon Honey Wine,3006,,7688|2744,
-Black Diamond Sangria,Mead - Pyment,11.5,,dutch-creek-winery-black-diamond-sangria/2763302,Blackberry Diamond Grape Honey Wine,3006,,7688|2744,
-Strawberry Dreams,Mead - Pyment,11.5,,dutch-creek-winery-autumn-harvest/1870120,Strawberry Cayuga Grape Honey Wine,3006,,7688|2744,
-Apple Harvest Spice,Cider - Spiced,5.25,,,Apple Pie in a Glass,3006,,7688|2744,
-Mint Julep Cider,Cider - Spiced,5.25,,dutch-creek-winery-mint-julep/5529096,Mint Spiced Cider aged with Bourbon Barrell wood,3006,,7688|2744,
-Goggle Fogger,German Style Hefeweizen,5.4,,fat-head-s-brewery-goggle-fogger-hefe-weizen/8091,"Award winning with aromas and falvors of wheat, bubblegum, clove, and spice. A truly refreshing beer.",1351,,2744|289,
-Sunshine Daydream,Session IPA,4.9,,fat-head-s-brewery-sunshine-daydream/181608,"Big hop aromas and flavors of citrus, tangerine, and tropical fruit. Peace, love & hoppiness!",1351,,2744,
-Hazy Head Hunter,Hazy IPA,6.5,,fat-head-s-brewery-hazy-head-hunter-ipa/6526974,"Juicy hazy bursting with notes of ripe berries, fresh squeezed citrus, and a medley of stone fruits from copious amounts of Citra, Krush, and Simcoe hops with our house hazy yeast.",1351,,2744,
-InfraRed,Red Ale,5,,,"Toasted and sweet caramel malts are balanced with citrus hops for a crisp, clean, delicate balance.",1351,,2744,
-Goggle Fogger Hefe Weizen,Hefeweizen,5.2,,fat-head-s-brewery-goggle-fogger-hefe-weizen/8091,"Unfiltered wheat beer with flavors and aromas of wheat. bubblegum, clove, and spice",1351,,2744,
-Infra-Red Red Ale,American Amber/Red Ale,5,,fat-head-s-brewery-infra-red-red-ale/6715357,Toasted and sweet caramel malts are balanced with citrus hops in a crisp and clean Red Ale.,1351,,2744,
-Abseil Pils,German Pilsner,5.5,,little-fish-brewing-company-abseil-pils/5563473,"A German-style pilsner, brewed with European noble hops, Weyermann Barke Pilsner malt, and fermented cold.",1362,,2744|190,
-Karmanfest,Vienna Lager,5.7,,little-fish-brewing-company-karmanfest/1259165,German-style amber lager made with the finest German malt and hops to create this smooth-sippin lager.,1362,,2744|190,
-Lil' Harvey's Milk Stout,Milk Stout,5.5,,little-fish-brewing-company-lil-harvey-s-milk-stout/1154710,"A rich and smooth milk stout made with lactose sugar, derived from milk to increase its velvety body.",1362,,2744|190,
-Sylph,Cold IPA,6.5,,little-fish-brewing-company-sylph/6446953,"Brewed with flaked rice and pilsner malt, and fermented with a lager yeast at cold temps.",1362,,2744|190,
-Soft Distortion,New England/Hazy IPA,6.7,,little-fish-brewing-company-soft-distortion/6708546,"Hazy IPA brewed with individually selected, rotating hops. Batches will probably never be made the same way twice.",1362,,2744|190,
-White Rajah,American IPA,6.8,,the-brew-kettle-white-rajah/23046,West Coast style IPA full of citrus-like and tropical fruit-like hop flavor and aroma with a smooth bitter finish.,1346,,2744,
-Mango Rajah,American IPA,6,,the-brew-kettle-mango-rajah/5767052,West Coast style IPA with a tropical twist. Ripe mangoes blended with piney hops and tangy citrus notes.,1346,,2744,
-Major Lager,American Light Lager,4.5,,the-brew-kettle-major-lager/3155700,A traditional light American Lager with a crisp taste and a slight bite of American hops.,1346,,2744,
-Light Rajah,Session IPA,4.3,,the-brew-kettle-light-rajah/5788138,"Light and refreshing taste on a classic West Coast-style IPA bursting with citrus flavor and a crisp, clean finish.",1346,,2744,
-Headlands Ohio Pilsner,Pilsner,4.7,,the-brew-kettle-headlands-ohio-pilsner/4939720,Crisp and clean with a floral hop nose and finish and brewed using west branch malting pilsner out of Brunswick.,1346,,2744,
-Galaxy Brain,Imperial/Double IPA,8.7,,land-grant-brewing-company-galaxy-brain/4006154,"Blend of Australia's finest Galaxy hops deliver world-expanding citrus, peach, and passionfruit aromatics.",1360,,2744,
-Jeni's Spendid Strawberry Rhubarb Ale,Fruit Beer,5.3,,land-grant-brewing-company-jeni-s-splendid-strawberry-rhubarb-ale/5372534,"Wheat ale featuring Columbus hops and concentrates of strawberry, aronia, and rhubarb for a berry-forward flavor. Made in collaboration with Ohio based Jeni's Splendid Ice Cream.",1360,,2744,
-LG Light,American Light Lager,4.2,,land-grant-brewing-company-lg-light/6269944,A crisp and clean light American Lager that's brewed for maximum refreshment with a smooth finish,1360,,2744,
-Death By A Thousand Hops,Cold IPA,7.2,,,"Cold IPA brewed with 100% Weyermann Pilsner malt. Notes of tangerine, tropical fruit, and bright citrus with a crisp bitterness and bone-dry finish.",1360,,2744,
-Cincy Light Lime,American Light Lager,4.2,,rhinegeist-brewery-cincy-light-lime/6060621,Rhinegeist's take on a classic American Light Lager with a lime twist. In partnership with Cincy Reigns benefitting student athletes.,1373,,2744,
-Juicy Truth,New England/Hazy IPA,6.5,,rhinegeist-brewery-juicy-truth/1082937,"Hazy IPA brimming with notes of juicy pineapple, fresh mango, and bright citrus.",1373,,2744|9081|289,
-Bubbles,Fruit Beer,6.2,,rhinegeist-brewery-grapefruit-bubbles/6667809,"A bright, dry, bubbly blend of apple and grapefruit. A clean and crisp citrus twist on a Rhinegeist fan favorite.",1373,,2744|9081,
-Cheetah,Pale Lager,4.8,,rhinegeist-brewery-cheetah/2651136,"An agile, easy-drinking Lager that is bright and light with a tinge of malt and citrus character.",1373,,2744,
-Marg Monday,Sour,7.4,,rhinegeist-brewery-marg-monday/3027482,"A tart sour ale brimming with notes of fruity tequila, mellow oak, bright citrus, and palate-cleansing salinity.",1373,,2744,
-Cold Beer Blueberry,American Light Lager,4.5,,brewdog-usa-cold-beer-blueberry/6719212,Light American Lager that is lightly hopped and malted with a crisp clean finish that's topped off with a hint of blueberry.,4079,,2744|9843,
-95,Fruited IPA,4,,brewdog-usa-95/5535236,"Hazy IPA with only 95 calories! A light beer with flavors of apricot, peach, citrus and light floral notes.",4079,,2744,
-Imperial IPA,Imperial/Double IPA,8.5,,brewdog-usa-imperial-ipa/6563116,Imperial IPA built for balance and intensity featuring bright citrus and a layered piney and floral hop character.,4079,,2744,
-Elvis Juice,Fruited IPA,6.5,,brewdog-elvis-juice/1441008,"An American IPA with pine, orange, and grapefruit paired with a caramel malt base and intense U.S. aroma hops.",4079,,2744,
-Mystic,,,,,,1357,,26|71,
-Razz,,,,,,1357,,26|71,
-O'Hooley's,,,,,,1357,,26|71,
-Ricky,Lager,4.5,,,Southeastern Ohio's blue collar beer,1357,,26|71|183,
-Homer's,,,,,,1357,,26,
-Bourbon Barrel Aged Dark Apparition,BA Imperial Stout,14.8,,,"Seven malts were used to create deep flavors of coffee, chocolate, caramel, and molasses. A hint of bitterness and herbal character from carefully selected European and American hops help support the monolithic maltiness. After conditioning in stainless steel, the beer was transferred to into bourbon barrels. Dark Apparition waited patiently in oak barrels until the time was right to spring forth with its ghostly gusto. A truly decadent brew that is intended to be poured into your favorite snifter and given time to warm up from its dark and cool resting place.",1357,,26|71,
-Blueberry Lemon Vanilla Dinosaurs on TV,Craft Hard Seltzer,4.5,,,"Real fruit Hard Seltzer made with blueberry, lemon and vanilla beans!",1357,,26|71,
-Brown Bag #1,Northeast IPA,7,,,"Juiced up, limited release Northeastern IPA. Brewed with heaps of oats and wheat for a smooth and supple mouthfeel, then hopped with a ripe combination of Krush, Citra and Motueka hops. Bright notes of tropical citrus dazzle amongst the flavors of a whole fruit cornucopia. This is the first release of our ultra limited 'Brown Bag' series that pushes our boundaries with the way we make IPA, and is only available at Jackie O's locations. FAF Alert!!",1357,,26,
-Whole Lotta Colada,Fruited Hazy IPA,7,,,The official beer of Ohio Brew Week! A Pina Colada inspired Hazy IPA fermented with pineapple puree and conditioned on flaked coconut and vanilla beans. Made in collaboration with OU's Chemistry 4501 Principles of Brewing class.,1357,,26|71,
-Pineapple Tangerine Ginger Perpetum,American Sour Ale,5.5,,,"Our Houe Sour Wheat Ale refermented with pineapple, tangerine and ginger.",1357,,26|71,
-The Wheated Man,BA Imperial Stout,15.1,,,Wheated Imperial Stout aged in Bourbon barrels for 29 months,1357,,26,
-Sing to the Sun,Hazy IPA,6.5,,,"Light and easy drinking Hazy IPA with tropical notes of mango, passionfruit and sweet tangerine",1357,,26,
-Hard Cider,Hard Cider,5.8,,,"Craft Hard Cider made with apples from New York and Michigan. Smooth, approachable and easy drinking",1357,,26|71,
-Black Currant Perpetum,American Sour Ale,5.5,,,House Sour Wheat Ale refermented with black currants.,1357,,26,
-Primary,Mixed Fermentation style Saison,5.5,,,Mixed Fermentation style Saison aged in wine barrels.,1357,,26,
-Ridgetop Radler,Radler style Lager,4.6,,,Crispy lager with Rio Red grapefruit juice added.,1357,,26,
-Combustion IPA,American IPA,6.5,,,"Vibrant tropical fruit, orange, mango, and notes of lemon. Huge Hop character + low bitterness = A highly drinkable IPA",4195,,71|179,
-Honey Saison,Farmhouse Ale,5,,,Collaborative Farmhouse Ale brewed with Ohio malts and Fermented with multiple varietals of Ohio Honey.,1382|1362|1357,,71,
-Who Cooks,,,,,,1357,,71,
-Homer's Hazy,,,,,,1357,,71,
-Gone Festin',Hard Ginger Beer,4.5,,,Hard Ginger Beer style seltzer made with fruity pineapple and mango juice.,1357,,71,
-Stroud's Shandy,Shandy style Lager,4.2,,,Crisp lager blended with Pink Lemonade!,1357,,71,
-NY HopGuild 3Cone IPA,West Coast IPA,6.2,,,A collaborative West Coast IPA brewed with New York grown Vista hops and the brand new experimental 3Cone hop. Come enjoy a pint with Chris from the HopGuild!,1357,,71,
-Bernarda,Mixed Fermentation style Saison,5,,,"Slowly fermented with our house mixed fermentation saison culture, Bernarda’s restful transformation delivers deep yet delicate notes of tropical fruit and peppery yeast. Bernarda is named in tribute to Bernarda Bryson Shahn, a prolific artist from the New Deal era who was born in Athens, Ohio.",1357,,71,
-Prodigality,BA Barleywine,13.7,,,"Churning out complexity through time and heat. The solo grain, Maris Otter, brims the mash tun for a long soak. A portion of the first runnings were boiled and reduced, triggering the Maillard Reaction; through which, the vigorous heating of sugars adds a deeper color and flavor. Continuing on with an extended boil to increase said reaction. A prolonged nap of 20 months in bourbon barrels finishes off this luxurious prize. Indulge in Prodigality’s warm embrace with notes of burnt sugar, sweet prune, oak, and leather.",1357,,71,
-Temple of Minerva,BA Imperial Stout,14.5,,,Extravagant Imperial Stout aged for 20 months in mixed bourbon barrels.,1357,,71,
-Time Beyond Time,BA Barleywine,11,,,This Barleywine was brewed from a single high quality English barley and a single high quality English hop with the addition of brown sugar added during the extended boil in the kettle. It was then aged in a blend of bourbon barrels for 21 months.,1357,,71,
-Cherry Lime Dinosaurs on TV,Craft Hard Seltzer,4.5,,,Real fruit Hard Seltzer made with Montmorency cherries and lime,1357,,71,
-3 Lines of Rotating Draft Cocktails,,,,,,1357,,71,
-Maker of Things,Sour Red Ale,9.3,,little-fish-brewing-company-maker-of-things/1650366,Foeder & wine barrel-aged sour red ale,1362,,190,
-Ohio Weizen,Hefeweizen,5.5,,little-fish-brewing-company-ohio-weizen/5988225,Hefeweizen,1362,,190,
-Woodthrush,Farmhouse Ale,6.7,,little-fish-brewing-company-woodthrush/1164839,"Amber farmhouse ale, lightly spiced",1362,,190,
-Spruce Crispy,Lager - Pale,5.4,,little-fish-brewing-company-spruce-crispy/6299173,"100 % Ohio-grown pale lager with spruce tips, chinook and Crystal Hops",1362,,190|289,
-Guava Reinheitsgewhat!?,Tart Wheat Ale,4.2,,little-fish-brewing-company-guava-reinheitsgewhat/4835324,Quick-sour wheat ale with guava & spices,1362,,190,
-Dear Science,Hazy IPA,6.7,,little-fish-brewing-company-dear-science/4234967,"Hazy IPA with Citra, Mosaic, and Sabro hops",1362,,190,
-Ridge Runner Lil' Harvey's,Coffee Milk Stout,5.5,,little-fish-brewing-company-ridge-runner-lil-harvey-s/2091817,"Milk Stout with coffee, on nitro",1362,,190,
-Pescado Relajado,Mexican Lager,4.8,,little-fish-brewing-company-pescado-relajado/5420441,Mexican Light Lager,1362,,190,
-Saison du Sud,Saison,6.2,,little-fish-brewing-company-saison-du-sud/6755107,Saison with sumac,1362|2727,,190,
-Pinche Guey,Mexican Chocolate Imperial Stout,13.5,,little-fish-brewing-company-pinche-guey-2026-blend-batch-4/6655658,Bourbon Barrel-aged Mexican Chocolate Imperial Stout,1362,,190,
-"Appalachian Spontaneous Ale, Batch 2",Sour Blond Ale,7.3,,little-fish-brewing-company-appalachian-spontaneous-ale-batch-2/6590789,Spontaneously-fermented sour blond ale,1362,,190,
-Safari Flaps,Hazy IPA,6.7,,little-fish-brewing-company-safari-flaps/4475695,Hazy IPA with Citra & Azacca hops,1362,,190,
-Kalsarikannit,Baltic Porter,8.5,,little-fish-brewing-company-kalsarikannit/2023579,Baltic Porter,1362,,190,
-Untamed Shrew,Spiced Brown Ale,6,,little-fish-brewing-company-untamed-shrew/6622522,"Brown ale with sorghum molasses, spicebush, ginger, and pink peppercorn",1362,,190,
-Appalachian Iron,Smoked Amber Lager,5,,sixth-sense-brewing-appalachian-iron/6741008,Cherrywood-smoked amber lager,2727|1362,,190,
-(To Be Named),Saison,,,,Saison with Ohio honey,1382|1362,,190,
-Metaphysical Graffiti,Vegan Milkshake IPA,7.7,,seventh-son-brewing-company-metaphysical-graffiti/3774091,Hazy IPA with pineapple juice & vanilla,1376|1362,,190,
-Moonville Stout - 2026 Blend,Imperial Stout,16.4,,little-fish-brewing-company-moonville-stout-2026-blend/6755122,Bourbon Barrel-aged Imperial Stout,1362,,190,
-Everett's Ale,Extra Pale Ale,5.2,,little-fish-brewing-company-everett-s-pale-ale/2170992,Pale ale with Mosaic hops,1362,,190,
-Green Bridge IPA,West Coast IPA,6.5,,little-fish-brewing-company-green-bridge-ipa/3929377,West Coast IPA,1362,,190,
-Sunfish,Sour Blond Ale,8,,little-fish-brewing-company-sunfish/1609982,Sour blond ale with Ohio honey,1362,,190,
-Batch 664 + Woods,Imperial Stout,14,,little-fish-brewing-company-batch-664-woods/6755138,Bourbon barrrel-aged imperial stout conditioned on palo santo & amburana wood,1362,,190,
-Truth IPA,IPA,7.2,,,"Brewed with a nod to the Pacific, tropical fruit aroma, grapefruit and mango",1373,,9081,
-House Cat,Pilsner,5.2,,,"Swift in body and mind, House Cat sprints ever forward. Pure crisp, clean",1373,,9081,
-Grapefruit Bubbles,Hard Craft,6.2,,rhinegeist-brewery-grapefruit-bubbles/6667809,A bright blend of apple and grapefruit that acts as a vacation for your tastebuds,1373,,9081|289,
-"Love You, Bye",Hazy Imperial IPA,8,,,Super juicy and permantely hazy,7610,,9081,
-Citramax,IPA,7.4,,,West Coast IPA dry-hopped w/ citra hops and citrus fruited aromas,3003,,9081,
-Shandy,Lemon Shandy,4.5,,,Blend of a pale wheat beer and sparkling lemon soda,3003,,9081,
-Benjamin Danklin,American Style IPA,7.4,,fat-head-s-brewery-benjamin-danklin/1521592,"A potent blemd of Citra, Simicoe and other west coast hops, delivering robust notes of citrus, tropical fruit, mango and pine.  Crisp,, dry and a distinctly ""Dank"" finish",1351,,187|289,
-Kitty Paw Concord Grape Selzer,Concord Grape Selzer,4.2,,,,1376,,186,
-Assistant Manager,Golden Ale,4.5,,,Delicate hops and golden malts give way to firm bitterness and a clean finish,1376,,186|191,
-Lemon Glow,Hazy Pale Ale,5.7,,,,1360,,186,
-Low Hanging Cider,Tangerine Cider,5,,,,1360,,186,
-Truth,IPA,7.2,,,,1373,,186,
-Expressionism,American Style IPA,6.3,,rhinegeist-brewery-expressionism/5819017,"Strawberry-banana, with some tropical notes,  pineapple/pasionfruit. Low/light bodied. Clear, pale yellow",1373,,186|289,
-Apple Light,Lager,4.2,,fifty-west-brewing-company-apple-light/6682390,"Light lager layered with vibrant green apple character. Big, bright green apple jumps from the glass with a candy-like aroma,delivering bold flavor up front before finishing clean and dry for an easy-drinking, refreshing pint.",1344,,200,
-Juiced Up,Mango Berry Blonde,4.7,,,"Layered with vibrant fruit character, this fruited blonde starts  bhy7",1344,,200,
-Hearth Fire Mexican Hot Chocolate Stout,Stout,6.3,,,"This beer is built around rich chocolate, coffee, and warming spice. Cocoa nibs, lactose, cinnamon, orange peel, and fresh-crushed nutmeg create a silky, dessert-like body, while Deeper Roots Alchemy Espresso layers in deep roasted coffee character. A carefully balanced six-pepper blend adds warmth rather than heat. Brewed on a base on abase of English malts with just a hint of vanilla, the result is spicy, sweet, and complex, with lingering chocolate-coffee depth.",1344,,200,
-Lemon Frostie,IPA,6.7,,fifty-west-brewing-company-lemon-frostie/5805399,"This bad boy, originally created in collaboration with our friends at Brewfontaine, is brewed with lactose, Madagascar vanilla beans, lemon purée,lemon zest and Lemondrop hops create a creamy, citrusy flavor reminiscent of a sticky lemon frostier! This brew ain't no lemon, but it's packed to the heckin' lid with 'em",1344,,200,
-Extra Pickles,Gose,4.5,,fifty-west-brewing-company-extra-pickles/6755370,"Extra Pickles is a tart, salty, goes-style sour beer brewed with pilsner malt, wheat, coriander, and real pickle brine from the same kitchen pickles we serve on our burgers. Bright, briny, and unmistakably dill, it's crisp pickle punch built for anyone who thinks pickles are no longer just a burger topping.",1344,,200,
-Peak,Pilsner,5.2,,,"This Pilsner is brewed with a base of Ohio-grown Pilsner and Vienna malts and hopped throughout the process with American-grown Aleena and German-grown Saphir. Notes of rich,crackers malt are balanced by delicate floral, herbal, and citrus hop aromas with a crisp, snappy finish",1360,,200,
-Mixed Berry Cider,Cider,5,,,"Craft cider featuring blueberry,blackberry, raspberry and strawberry flavors",1360,,200,
-Classic Lime,Lager,4,,garage-beer-classic-lime-beer/4410368,"GARAGE BEER LIME IS BEER-FLAVORED BEER WITH A HIT OF LIME. CRISP, EASY-DRINKING BEER, WITH A BRIGHT SQUEEZE OF LIME TO KEEP THINGS EXTRA REFRESHING",10177,,197|289,
-Bohdi JR,IPA,4.7,,,"Light, crisp, and sessionable, with IPA level aromatics including notes of tropical passionfruit, citrus, and stone fruit. Featuring a blend of Citra®, Cashmere and Dolcita®.",3096,,197,
-American 250 - OHIO,IPA,5.7,,,"In partnership with the bi-partisan America 250 Committee of Ohio, we're proud to brew this limited release IPA to celebrate America's 250th birthday. Pale in color, with a med-low bitterness, Idaho 7® and the American-classic Chinook hops combine for aromas of pineapple, citrus, and pine.",3096,,197,
-Dank Charmer,Terpene IPA,7.5,,,"Deep golden in color and bright. Brewed with a combination of Mosaic®, Strata®, and Abstrax® botanical terpenes. Powerful, dank aromatics followed by notes of citrus and tropical fruit.",3096,,197,
-Rounding Third,Red IPA,6.4,,,Slight carmel semi-sweet malt backbone balanced by a strong hop profile,1364,,191,
-Seeing Colors,Hazy IPA,6.5,,,Brewed to maximize all the fruity notes from hops without any of the bitterness,1364,,191,
-Dreamsicle,Orange and Vanilla Ale,4.8,,,"Light body with delicate feel and a mild, balanced flavor",1364,,191,
-Humulus Nimbus,Super Pale Ale,6,,,Summer friendly golden ale that is both super crisp and hop forward,1376,,191,
-Kitty Paw Lime Guava,Fruited Seltzer,4.2,,,"Refreshing guava with a lime bite that scrubs the palate and makes for a spritzy, clean finish",1376,,191,
-Cold Beer,Blueberry Lager,4.5,,,Crisp and clean balanced lager with blueberry notes,4079,,183,
-Baby Hazy,Light IPA,3.2,,,Crushable light IPA,4079,,183,
-Strawberry Blonde,Fruited Ale,5,,,"Wanderlust Blonde Ale with Strawberries. ""Like a liquid strawberry muffin""",4195,,183|179,
-American IPA,IPA,6.5,,,Vibrant and tropical,4195,,183,
-Hoppin Frog Turbo Shandy (can),Shandy,7,,,"Half citrus, half chaos",1349,,183,
-Ultra Razz,Fruited Wheat,8,,,Razz wheat turned to 11!,1357,,183,
-Who Cooks For You (can),Hazy IPA,5.5,,,Dank and juicy AF,1357,,183,
-Mystic Mama (can),West Coast IPA,7,,,"Grapefruit, resin and pine",1357,,183,
-Truth IPA (can),IPA,7.2,,,Mango punch and dry finish,1373,,183,
-Hoppy Session,Session,4,,,"Grapefruit, Stone fruit, Tangerine",1360,,9843,
-Pool Party,Pilsner - Czech / Bohemian,5.4,,land-grant-brewing-company-pool-party/1665945,"Summer-centric Pilsner. Crisp, light, and refreshing. Easy-drinking option during hot weather.",1360,,9843,
-Prickly Pear,Modern Cider,6.5,,west-end-ciderhouse-prickly-pear/6337718,Dry-to-sweet scale dry,1894,,9843,
-Bean Me Up,Imperial Coffee Stout,8.8,,fat-head-s-brewery-bean-me-up-imperial-coffee-stout/75902,Imperial Stout conditioned on whole bean coffee lending aromas of fresh roasted coffee and dark chocolate with a medium-full body and sweet finish.,1351,,9843,
-Mc’ginns Irish Stout,Irish Stout,5.5,,devil-s-kettle-brewing-mcginn-s/2597696,Brewed in honor of our late friend Dick McGinn and based off his award winning homebrew recipe,1349,,9843,
-Firefly Amber Ale,American Amber/Red,4.5,,jackie-o-s-brewery-firefly-amber/42630,Lightly roasted malt gives Firefly a biscuit-like finish. Carefully selected hops provide an herbal and mildly citrus aroma and flavor.,1357,,9843,
-Guava Gone Wild,Sour/Fruited Berliner Weisse,10,,dafuque-beer-company-guava-gone-wild/6624453,Spontaniously fermented belgin based fruited with fresh guava puree,10014,,9843,
-DFQ IPA,American IPA,6.8,,,"Classic American IPA, medium body, citrus and pine hop character. Balanced by a clean malt back bone with a crisp finish.",10014,,9843,
-Lake Erie Pilsner,German Pilsner,5.5,,,"Crisp, clean and refreshing German style lager crafted with German Pilsner malt, Noble hops, lager yeast, and locally sourced, purified Lake Erie water.",1351,,289,
-Lake Erie Pills,"Pilser,. German",5.7,,fat-head-s-brewery-lake-erie-pils/4577913,"Crisp, clean and refreshing German-style lager crafted with German pilsner malt, Noble hops, lager yeast and locally sourced, purified Lake Erie water",1351,,289,
-Homers Hazy,New England/Hazy IPA,6.6,,jackie-o-s-brewery-homer-s-hazy/4870687,"Fruited, Hazy IPA brewed with bright and vibrant hops, pineapple and tangerine",1357,,289,
-Lime Feeling Good Lime Cerveza,Mexican-Style Lager,4.9,,,"Mexican-Style lager with an IBU of 17. Hops: Magnum, Tettnang. Malt: Golden Pils Vienna, Flaked Corn, Pale Malt. Yeast: Mexican Lager",1351,,179,
-Buckeye Ferryman,Milk Stout,7.2,,,Milk Stout with Peanut Butter & Chocolate,1370,,179,
-Salty Mermaid,Gose,4.5,,,"Margarita Gose with sea salt, watermelon & lime",1370,,179,
-Buckeye Daybreak,Daybreak infused with Chocolate and Peanut Butter,5,,wolf-s-ridge-brewing-buckeye-daybreak/5052904,Coffee Cream Ale infused with Chocolate and peanut butter,3002,,184,
-White,Belgian Witbier,5.3,,,"Lots and lots of wheat lends this beer its silky-smooth mouthfeel that is the perfect vehicle for the Belgian yeast, real orange peel, and coriander that combine to make this classic style a staple in the Belgian beer world.",1374,,203,
+Erics English IPA,English IPA,6.3,,,A traditional English styled IPA that balances caramel malts with floral and fruity hop character. A throwback to the earliest beginnings of the India Pale Ale style.,10749,Black Diamond Brewery,10811,Black Diamond Brewery & Distillery
+Diamond Lite,Kolsch,4,,,Black Diamond Lite is a Kolsch brewed with traditional German Hallertau Mittelfruh hops. Subtle maltiness and mild sweetness with pleasant hoppiness.,10749,Black Diamond Brewery,10811,Black Diamond Brewery & Distillery
+Shandy Rush,Shandy,4.5,,,"Sunshine in a glass. This refreshing shandy combines a crisp Kolsch base with bright lemonade for citrus flavor and easy-drinking refreshment. Light, lively, and dangerously crushable.",10749,Black Diamond Brewery,10811,Black Diamond Brewery & Distillery
+Pay Dirt,Brown Ale,5,,,"Smooth, rich, and easygoing with caramel, toasted malt, and a hint of chocolate. American honey adds warmth and sweetness, rounding out the deep malt character.",10749,Black Diamond Brewery,10811,Black Diamond Brewery & Distillery
+Heathenweizen,Hefeweizen,5.1,,,,1349,Devil's Kettle,203|196,Casa Nueva|Devil's Kettle Brewing
+Guava Reinheitsgewhat!?,Tart Wheat Ale,4.2,,little-fish-brewing-company-guava-reinheitsgewhat/4835324,Quick-sour wheat ale with guava & spices,1362,Little Fish Brewing Co.,203|190,Casa Nueva|Little Fish Brewing Co
+Rotating Kombucha,Kombucha,0,,,,11158,Constellation,203,Casa Nueva
+Blonde Stout,Blonde Stout,,,,,9306,Rice Family Brewing,203,Casa Nueva
+Tickle Me IPA,American IPA,,,,,1380,Weasel Boy Brewing Co,203,Casa Nueva
+White,Belgian Ale,,,,,1374,Rockmill Brewery,203,Casa Nueva
+Lonesome Suzie,Helles Lager,4.8,,,"Crisp, clean with a nice balance between a soft, bready malt character with a subtle, spicy finish.",5082,Three Tigers,203|26,Casa Nueva|Jackie O's Brewpub
+Razz Wheat,Raspberry Wheat Ale,,,,,1357,Jackie O's,203,Casa Nueva
+Bumble Berry,Honey Blueberry Ale,5.3,,,"Brewed with spring honey and infused with fresh blueberry puree. Light, refreshing ale.",1351,Fat Head's Brewery,201|2744,Cat's Eye Saloon|Eclipse Company Store Craft Beer Hall
+Bumbleberry Lemonade,Shandy,3,,,,1351,Fat Head's Brewery,201,Cat's Eye Saloon
+Hop Thunder Down Under Southern Hemisphere,IPA,6.8,,,,1351,Fat Head's Brewery,201,Cat's Eye Saloon
+Head Hunter,West Coast IPA,7.5,,fat-head-s-brewery-head-hunter/11845,"Award Winning, agrressively dry hopped, west coast style IPA with a huge hop display of pine, grapefruit, citrus, and pineapple.",1351,Fat Head's Brewery,201|9843|289,Cat's Eye Saloon|The Side Bar|The Union
+Leafman Lager,American Lager,4.8,,,"A full bodied, American craft lager benefitting Cleveland Metroparks Trails Fund.",1351,Fat Head's Brewery,201,Cat's Eye Saloon
+Lime Feeling Good Cerveza,Mexican-Style Lager,4.9,,,,1351,Fat Head's Brewery,201,Cat's Eye Saloon
+Christmas Ale,,7.5,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Orange Honey Wheat,Wheat,5.5,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Midwest IPA,IPA,7,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Orange & Lime Shandy,Shandy,4,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Mexican Lager with Lime,Lager,5.4,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Independence,American Double IPA,8,,,,1356,Great Lakes Brewing Co.,201,Cat's Eye Saloon
+Lake Erie Sunset,Wheat,5.6,,,,10859,Collision Bend,201,Cat's Eye Saloon
+Brewers Choice,Saison,,,,,10859,Collision Bend,201,Cat's Eye Saloon
+Beta Flash,NE IPA,6.5,,nocterra-brewing-co-beta-flash/2895195,"It's double dry-hopped and packed full of citrus, grapefruit and hints of pineapple.",7104,Nocterra Brewing Co,201|200,Cat's Eye Saloon|The C.I.
+Carfagna's Bocce Beer,Italian Pilsner,5.2,,,,7104,Nocterra Brewing Co,201,Cat's Eye Saloon
+Lime Feelin' Good,Lime Cerveza,4.9,,fat-head-s-brewery-lime-feelin-good/3323159,Lightly hopped lager fermented with Mexican style lager yeast for authenticity and infused with dehydrated pulvarized limes.,1351,Fat Head's Brewery,201|2744|179,Cat's Eye Saloon|Eclipse Company Store Craft Beer Hall|Tony's Tavern
+Bumble Berry Lemonade Shandy,Fruit Beer,3,,fat-head-s-brewery-bumble-berry-lemonade/6685297,"A refreshing, vibrant, and sweet-tart version of Fat Head's Bumbleberry Honey Blueberry Ale",1351,Fat Head's Brewery,201|2744|187|289,Cat's Eye Saloon|Eclipse Company Store Craft Beer Hall|Ohio University Inn and Conference Center|The Union
+Kiwi Breeze,Southern Hemisphere Extra Pale Ale,5.5,,,"Southern-hemisphere hop Galaxy of the Nectar delivers citrus, white wine, and peach flavors.",1351,Fat Head's Brewery,201,Cat's Eye Saloon
+Kelly's Dry,Cider,6.7,,,Crisp and refreshing dry cider.,1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+All Ohio,Cider,6.2,,,"Ohio harvest driven varieties, semisweet, never too sweet.",1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+Peach Melba,Cider,6.3,,,"Red Raspberries and peaches with a hint of vanilla, semisweet.",1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+Tart Cherry Cider,Cider,6.3,,,"Cherry infused cider, tart and refreshing, semisweet.",1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+Roxbury,Cider,7.5,,,"Single variety dry cider from 2024 harvest, one of the OG American varieties, bitter-sharp apple.",1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+Rosa,Cider,6.2,,,"Rosehips + hibiscus tea blend steeped in cider, semidry.",1894,West End Ciderhouse,7151,West End Distillery
+BBA Goldrush,Cider,8.7,,,Goldrush Dry aged 3 Years in 1st Gen Buffalo Trace barrel. 100% Goldrush apples,1894,West End Ciderhouse,7151,West End Distillery
+Blueberry,Cider,6.1,,,"Semisweet, infused with blueberries.",1894,West End Ciderhouse,7151,West End Distillery
+Zingiber,Cider,6.9,,,"Cider seasoned with fresh squeezed ginger root and lemons, semidry, year round favorite.",1894,West End Ciderhouse,7151|118,West End Distillery|West End Ciderhouse
+Breakfast,Cider,6.4,,,"Irish Breakfast Tea infused cider, thirst quenching, semidry.",1894,West End Ciderhouse,7151,West End Distillery
+Plum,Cider,7.2,,,"Plums offer a hint of fruity complexity, semisweet.",1894,West End Ciderhouse,7151,West End Distillery
+Melomel,Mead,14.2,,,Dry mead aged with Montmorency cherries. Rich and warming.,1894,West End Ciderhouse,118,West End Ciderhouse
+Blackberry,Cider,7,,,"Blackberry infused cider, semidry.",1894,West End Ciderhouse,118,West End Ciderhouse
+Aged Mead,Mead,13.5,,,"Dry honey wine, aged in Elijah Craid bourbon barrel.",1894,West End Ciderhouse,118,West End Ciderhouse
+5 Star Strawberry,Cider,6.5,,,"Strawberry infused cider, semisweet, a seasonal pairing you won't want to miss.",1894,West End Ciderhouse,118,West End Ciderhouse
+Blue Lemon,Cider,6,,,"Blueberries and fresh lemon juice, light and refreshing, semidry.",1894,West End Ciderhouse,118,West End Ciderhouse
+The Path Back,Imperial Coffee Stout,12.5,,,"Conditioned on fresh beans from Brew X Coffee Roasting in Montana, owned and operated by a Southern Ohio native now in Hamilton, MT",11796,Appalachian Artisan Ales,118,West End Ciderhouse
+Doc B's Elixir,Hard Seltzer,4,,,Blueberry Pomegranate hard seltzer,11796,Appalachian Artisan Ales,118,West End Ciderhouse
+Peach Bodhi,Double IPA,7.8,,,"A fresh, juicy burst of peach to the classic Bodhi profile. Smooth, vibrant, and fruit-forward",3096,Columbus Brewing Co.,199,Courtside Pizza
+Ohio Light Lime,Lager,4.2,,,"Fresh squeeze of lime, low calorie, and delivers a crisp, refreshing flavor",3096,Columbus Brewing Co.,199,Courtside Pizza
+Rainbow Road,Summer IPA,5.8,,,Summer IPA full of subtle lemon and strawberry flavors,1344,Fifty West Brewing Company,199,Courtside Pizza
+Coast to Coast,IPA,6.8,,,Infused with blood oranges and hopped with Azacca and Centenial hops,1344,Fifty West Brewing Company,199,Courtside Pizza
+Doom Pedal,White Ale,5.5,,,Belgium style white ale,1344,Fifty West Brewing Company,199,Courtside Pizza
+Surfin' USA,Tropical Sour Ale,6.3,,,"Tropical sour stacked w/ pink guava, pineapple, and mango",1344,Fifty West Brewing Company,199,Courtside Pizza
+Helles Awaits,Helles Lager,5,,devil-s-kettle-brewing-helles-awaits/2028826,A light but full flavored malty lager that's perfect for warmer weather.,1349,Devil's Kettle,196|2744|9843,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall|The Side Bar
+Galatea Dunkel,Munich Dunkel Lager,5.2,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Dark Intentions,Black Pilsner,6,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Truck Wreck,Doppelbock,7.7,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Anchor's Away,Amber Steam Beer,5.7,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Gen Zed,English Mild Ale,3.8,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Spider Silk,Blonde/Golden Ale,7,,devil-s-kettle-brewing-spider-silk/1111997,"Light but strong blonde ale that artfully blends elements of English, German and american brewing ingredients and traditions",1349,Devil's Kettle,196|2744|289,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall|The Union
+Ava's Maple Amber,American Amber/Red Ale,6,,devil-s-kettle-brewing-ava-s-maple-amber/6715482,"An American Amber/Red Ale with a rich, balanced malt profile with locally sourced maple for a subtle sweetness.",1349,Devil's Kettle,196|2744,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall
+Pawpaw Passion Fruit,Pilsner with Fruit,5.2,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+McGinn's (Nitro),Dry Irish Stout,5.2,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Sam Owes Us,Coconut Chocolate Irish Stout,5.6,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Ragtag,Stout,6,,devil-s-kettle-brewing-ragtag/3123126,"Bourbon barrel aged stout infused with peanut butter, cocoa nibs, and coffee. Designed to mimick Tagalong cookies.",1349,Devil's Kettle,196|2744,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall
+Peach Mango Sour,Fruited Sour Ale,5,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Athens Standard,Pale Lager,5.5,,devil-s-kettle-brewing-athens-standard/3695729,Hybrid between a German pilsner and an American pale ale with a crisp lager backbone.,1349,Devil's Kettle,196|2744,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall
+Pale Satan,Pale Ale,5.2,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Sun Fest,West Coast Pilsner,5.5,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Fuller Nelson,IPA,6,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Dream Fluff,New England/Hazy IPA,6.6,,devil-s-kettle-brewing-dream-fluff/3205738,"Smooth bodied hazy IPA with Azacca, Citra, and Simcoe hops and a malt backbone of wheat and oats.",1349,Devil's Kettle,196|2744,Devil's Kettle Brewing|Eclipse Company Store Craft Beer Hall
+DK Eleven,Double IPA,9,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Joneswood Slide,"Bourbon Barrel Stout with cacao, coffee, and vanilla beans",10,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Rye in 2,Ryewine aged in Rye Whiskey Barrels,12.5,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Vintage Barleywine,Barrel Aged Barelywine,13,,,,1349,Devil's Kettle,196,Devil's Kettle Brewing
+Royal Affair,Mead - Metheglin,13.5,,dutch-creek-winery-royal-affair/1692961,Earl Grey Tea Honey Wine,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Peach Blush,Mead - Pyment,11.5,,dutch-creek-winery-peach-blush/3908646,Peach Catawba Grape Honey Wine,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Peg Leg Cherry,Mead -  Melomel,11.5,,dutch-creek-winery-cherry-lime/2071729,Sweet Cherry Lime Honey Wine,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Dry Hard Cider,Cider - Dry,5.25,,dutch-creek-winery-dry-hard-cider/4228019,New England Hard Cider,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Sweet Tea Hard Cider,Cider - Sweet,5.25,,dutch-creek-winery-sweet-tea-hard-cider/5136123,Sweet Tea Hard Cider,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Chai Tea Cider,Cider - Spiced,5.25,,dutch-creek-winery-chair-tea-hard-cider/5407477,Chai Tea Cider,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Hopped Cider,Cider - Hopped,5.25,,,Cider with Cascade Hops,3006,Dutch Creek Winery,7688,Dutch Creek Winery
+Honey Lager,Lager - Amercian,5,,,A light lager brewed with barley roasted to a honey finish,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Pilsner,Pilsner,5.5,,,A big balanced Pilsner,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Nuke It From Orbit Strong Ale,American Strong Ale,7,,rice-family-brewing-nuke-it-from-orbit/6601930,A big balanced Pilsner,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Midnight Honey Porter,Porter,5,,rice-family-brewing-midnight-honey-porter/5216482,Honey Porter Brewed Using Dutch Creek Winery Honey,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Spring Cherry Belgian,Spring Belgian,6.2,,rice-family-brewing-cherry-spring/6735714,A smooth drinking Spring Belgian with a hint of cherries,9306,Rice Family Brewing,7688,Dutch Creek Winery
+SquatchCoe,Hazy IPA,6,,rice-family-brewing-squatchcoe/5444300,Big Bold and Hazy IPA brewed with Simcoe in honor of Sasquatch,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Ol' 250 Blonde Ale,Belgian Blonde Ale,6.6,,,Blonde ale that is true to form,9306,Rice Family Brewing,7688,Dutch Creek Winery
+RFB Straw Blonde,Strawberry Blonde Ale,4.5,,,Strawberry Blonde Ale,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Baker Ten Weiss,Wheat Beer - Hefeweizen,5.2,,rice-family-brewing-baker-ten-weiss/5464008,A German Inspired Wheat Ale,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Thanksgiving Leftovers,Wheat Beer - American Pale Wheat,5,,rice-family-brewing-baker-ten-weiss/5464008,A Wheat Ale with the tartness of cranberries,9306,Rice Family Brewing,7688,Dutch Creek Winery
+Green Bridge Ale,Pale Ale - American,6.4,,rice-family-brewing-green-bridge-ale/5460763,A pale American Ale,9306,Rice Family Brewing,7688,Dutch Creek Winery
+City Tricks Amber,Belgian Dubbel,7.7,,,Belgian Dubbel,9306,Rice Family Brewing,7688,Dutch Creek Winery
+American Mead,Mead,13.5,,dutch-creek-winery-american-mead/1926220,Honey Wine - Dryer and Well-Balanced,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Commonwealth's Revenge,Mead,13.5,,dutch-creek-winery-commonwealth-revenge/1957310,Bourbon Barrell Aged Honey Wine,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Booty Blue,Mead - Melomel,11.5,,dutch-creek-winery-blueberry-lemon/2021218,Sweet Blueberry Lemon Honey Wine,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Black Diamond Sangria,Mead - Pyment,11.5,,dutch-creek-winery-black-diamond-sangria/2763302,Blackberry Diamond Grape Honey Wine,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Strawberry Dreams,Mead - Pyment,11.5,,dutch-creek-winery-autumn-harvest/1870120,Strawberry Cayuga Grape Honey Wine,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Apple Harvest Spice,Cider - Spiced,5.25,,,Apple Pie in a Glass,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Mint Julep Cider,Cider - Spiced,5.25,,dutch-creek-winery-mint-julep/5529096,Mint Spiced Cider aged with Bourbon Barrell wood,3006,Dutch Creek Winery,7688|2744,Dutch Creek Winery|Eclipse Company Store Craft Beer Hall
+Sunshine Daydream,Session IPA,4.9,,fat-head-s-brewery-sunshine-daydream/181608,"This beer has big hop aromas and flavors of citrus, tangerine, and tropical fruit.",1351,Fat Head's Brewery,2744,Eclipse Company Store Craft Beer Hall
+Hazy Head Hunter,New England/Hazy IPA,6.5,,fat-head-s-brewery-hazy-head-hunter-ipa/6526974,"A juicy, unfiltered twist on Fat Head's Brewery's iconic West Coast-style Head Hunter",1351,Fat Head's Brewery,2744,Eclipse Company Store Craft Beer Hall
+Goggle Fogger Hefe Weizen,Hefeweizen,5.2,,fat-head-s-brewery-goggle-fogger-hefe-weizen/8091,"Unfiltered wheat beer with flavors and aromas of wheat. bubblegum, clove, and spice",1351,Fat Head's Brewery,2744,Eclipse Company Store Craft Beer Hall
+Infra-Red Red Ale,American Amber/Red Ale,5,,fat-head-s-brewery-infra-red-red-ale/6715357,Toasted and sweet caramel malts are balanced with citrus hops in a crisp and clean Red Ale.,1351,Fat Head's Brewery,2744,Eclipse Company Store Craft Beer Hall
+Abseil Pils,German Pilsner,5.5,,little-fish-brewing-company-abseil-pils/5563473,"A German-style pilsner, brewed with European noble hops, Weyermann Barke Pilsner malt, and fermented cold.",1362,Little Fish Brewing Co.,2744|190,Eclipse Company Store Craft Beer Hall|Little Fish Brewing Co
+Karmanfest,Vienna Lager,5.7,,little-fish-brewing-company-karmanfest/1259165,German-style amber lager made with the finest German malt and hops to create this smooth-sippin lager.,1362,Little Fish Brewing Co.,2744|190,Eclipse Company Store Craft Beer Hall|Little Fish Brewing Co
+Lil' Harvey's Milk Stout,Milk Stout,5.5,,little-fish-brewing-company-lil-harvey-s-milk-stout/1154710,"A rich and smooth milk stout made with lactose sugar, derived from milk to increase its velvety body.",1362,Little Fish Brewing Co.,2744|190,Eclipse Company Store Craft Beer Hall|Little Fish Brewing Co
+Sylph,Cold IPA,6.5,,little-fish-brewing-company-sylph/6446953,"Brewed with flaked rice and pilsner malt, and fermented with a lager yeast at cold temps.",1362,Little Fish Brewing Co.,2744|190,Eclipse Company Store Craft Beer Hall|Little Fish Brewing Co
+Soft Distortion,New England/Hazy IPA,6.7,,little-fish-brewing-company-soft-distortion/6708546,"Hazy IPA brewed with individually selected, rotating hops. Batches will probably never be made the same way twice.",1362,Little Fish Brewing Co.,2744|190,Eclipse Company Store Craft Beer Hall|Little Fish Brewing Co
+White Rajah,American IPA,6.8,,the-brew-kettle-white-rajah/23046,West Coast style IPA full of citrus-like and tropical fruit-like hop flavor and aroma with a smooth bitter finish.,1346,Brew Kettle Production Works,2744,Eclipse Company Store Craft Beer Hall
+Mango Rajah,American IPA,6,,the-brew-kettle-mango-rajah/5767052,West Coast style IPA with a tropical twist. Ripe mangoes blended with piney hops and tangy citrus notes.,1346,Brew Kettle Production Works,2744,Eclipse Company Store Craft Beer Hall
+Major Lager,American Light Lager,4.5,,the-brew-kettle-major-lager/3155700,A traditional light American Lager with a crisp taste and a slight bite of American hops.,1346,Brew Kettle Production Works,2744,Eclipse Company Store Craft Beer Hall
+Light Rajah,Session IPA,4.3,,the-brew-kettle-light-rajah/5788138,"Light and refreshing taste on a classic West Coast-style IPA bursting with citrus flavor and a crisp, clean finish.",1346,Brew Kettle Production Works,2744,Eclipse Company Store Craft Beer Hall
+Headlands Ohio Pilsner,Pilsner,4.7,,the-brew-kettle-headlands-ohio-pilsner/4939720,Crisp and clean with a floral hop nose and finish and brewed using west branch malting pilsner out of Brunswick.,1346,Brew Kettle Production Works,2744,Eclipse Company Store Craft Beer Hall
+Heckler,New England/Hazy IPA,7,,northern-row-brewery-heckler/3587529,Citrus forward Hazy IPA with hints of juicy tangerine and grapefruit.,11798,Northern Row,2744,Eclipse Company Store Craft Beer Hall
+Redlegger Amber Ale,Traditional Altbier,5.2,,northern-row-brewery-redlegger-amber-ale/6645258,Traditional Altbier with a balanced malt sweetness and clean finish created in honor of the first pro baseball team that emerged out of Cincinnati.,11798,Northern Row,2744,Eclipse Company Store Craft Beer Hall
+Hustler,Helles Lager,4.5,,northern-row-brewery-hustler/3825852,Light German lager with all traditional malt and noble hops.,11798,Northern Row,2744,Eclipse Company Store Craft Beer Hall
+Designer,Hefeweizen,5.2,,northern-row-brewery-designer/3701384,German-style hefeweizen featuring expressions of banana and clove. Brewed with wheat and a weissbier yeast strain.,11798,Northern Row,2744,Eclipse Company Store Craft Beer Hall
+Nirvana or Bust,NEIPA,7,,third-eye-brewing-company-nirvana-or-bust/4110810,"Medium in body and smooth in mouthfeel, this easy drinking NEIPA is ripe with juicy notes of citrus, grapefruit, and a little bit of pine. It’s double dry-hopped with Nelson Sauvin hops as well as some Citra and Columbus for heightened hop aroma and flavor. Contains Lactose.",11800,Third Eye Brewing,2744,Eclipse Company Store Craft Beer Hall
+Third Eye P.A,IPA,6.3,,third-eye-brewing-company-third-eye-p-a/3827506,"A beer lover’s delight, this beer has plenty of hops to go around. The grain bill was designed to balance the dank, piney, and grapefruit hop flavors. Old and new school hops Simcoe, Centennial, Cascade, and Columbus combine to give a prominent bouquet of aroma and flavor.",11800,Third Eye Brewing,2744,Eclipse Company Store Craft Beer Hall
+Untapped Potential,Kolsch,5,,third-eye-brewing-company-untapped-potential/3827501,"The Kölsch style originated in Cologne, Germany. German malts, hops, and yeast keep this beer true to its heritage making it crisp, delicate, and extremely drinkable. This beer has won awards in the 2020, 2021, 2022 and 2023 Ohio Craft Brewer’s Cup and took “Best in Show” for the competition in 2020.",11800,Third Eye Brewing,2744,Eclipse Company Store Craft Beer Hall
+Enlightenment,Wheat,5,,third-eye-brewing-company-enlightenment/3827493,"American wheats make for refreshing, light, thirst quenching beer. 400 lbs of raspberries coupled with a wheaty malt bill make for smooth, sweet sips. Overall, it’s tart and mildly sweet, like biting into fresh fruit.",11800,Third Eye Brewing,2744,Eclipse Company Store Craft Beer Hall
+Galaxy Brain,Imperial/Double IPA,8.7,,land-grant-brewing-company-galaxy-brain/4006154,"Blend of Australia's finest Galaxy hops deliver world-expanding citrus, peach, and passionfruit aromatics.",1360,Land Grant Brewing Company,2744,Eclipse Company Store Craft Beer Hall
+Jeni's Spendid Strawberry Rhubarb Ale,Fruit Beer,5.3,,land-grant-brewing-company-jeni-s-splendid-strawberry-rhubarb-ale/5372534,"Wheat ale featuring Columbus hops and concentrates of strawberry, aronia, and rhubarb for a berry-forward flavor. Made in collaboration with Ohio based Jeni's Splendid Ice Cream.",1360,Land Grant Brewing Company,2744,Eclipse Company Store Craft Beer Hall
+LG Light,American Light Lager,4.2,,land-grant-brewing-company-lg-light/6269944,A crisp and clean light American Lager that's brewed for maximum refreshment with a smooth finish,1360,Land Grant Brewing Company,2744,Eclipse Company Store Craft Beer Hall
+Death By A Thousand Hops,Cold IPA,7.2,,,"Cold IPA brewed with 100% Weyermann Pilsner malt. Notes of tangerine, tropical fruit, and bright citrus with a crisp bitterness and bone-dry finish.",1360,Land Grant Brewing Company,2744,Eclipse Company Store Craft Beer Hall
+Cincy Light Lime,American Light Lager,4.2,,rhinegeist-brewery-cincy-light-lime/6060621,Rhinegeist's take on a classic American Light Lager with a lime twist. In partnership with Cincy Reigns benefitting student athletes.,1373,Rhinegeist,2744,Eclipse Company Store Craft Beer Hall
+Juicy Truth,New England/Hazy IPA,6.5,,rhinegeist-brewery-juicy-truth/1082937,"Hazy IPA brimming with notes of juicy pineapple, fresh mango, and bright citrus.",1373,Rhinegeist,2744|9081|289,Eclipse Company Store Craft Beer Hall|North End Kitchen + Bar|The Union
+Bubbles,Fruit Beer,6.2,,rhinegeist-brewery-grapefruit-bubbles/6667809,"A bright, dry, bubbly blend of apple and grapefruit. A clean and crisp citrus twist on a Rhinegeist fan favorite.",1373,Rhinegeist,2744|9081,Eclipse Company Store Craft Beer Hall|North End Kitchen + Bar
+Cheetah,Pale Lager,4.8,,rhinegeist-brewery-cheetah/2651136,"An agile, easy-drinking Lager that is bright and light with a tinge of malt and citrus character.",1373,Rhinegeist,2744,Eclipse Company Store Craft Beer Hall
+Marg Monday,Sour,7.4,,rhinegeist-brewery-marg-monday/3027482,"A tart sour ale brimming with notes of fruity tequila, mellow oak, bright citrus, and palate-cleansing salinity.",1373,Rhinegeist,2744,Eclipse Company Store Craft Beer Hall
+Cold Beer Blueberry,American Light Lager,4.5,,brewdog-usa-cold-beer-blueberry/6719212,Light American Lager that is lightly hopped and malted with a crisp clean finish that's topped off with a hint of blueberry.,4079,BrewDog,2744|9843,Eclipse Company Store Craft Beer Hall|The Side Bar
+95,Fruited IPA,4,,brewdog-usa-95/5535236,"Hazy IPA with only 95 calories! A light beer with flavors of apricot, peach, citrus and light floral notes.",4079,BrewDog,2744,Eclipse Company Store Craft Beer Hall
+Imperial IPA,Imperial/Double IPA,8.5,,brewdog-usa-imperial-ipa/6563116,Imperial IPA built for balance and intensity featuring bright citrus and a layered piney and floral hop character.,4079,BrewDog,2744,Eclipse Company Store Craft Beer Hall
+Elvis Juice,Fruited IPA,6.5,,brewdog-elvis-juice/1441008,"An American IPA with pine, orange, and grapefruit paired with a caramel malt base and intense U.S. aroma hops.",4079,BrewDog,2744,Eclipse Company Store Craft Beer Hall
+Juice Bazooka,Hazy IPA,7.1,,,"Smooth, full bodied, and super juicy, this IPA was brewed with huge additions of Citra, Chinook and Mosaic hops",5082,Three Tigers,26,Jackie O's Brewpub
+Mystic,,,,,,1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Razz,,,,,,1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+O'Hooley's,,,,,,1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Ricky,Lager,4.5,,,Southeastern Ohio's blue collar beer,1357,Jackie O's,26|71|183,Jackie O's Brewpub|Jackie O's Taproom|The Pub
+Homer's,,,,,,1357,Jackie O's,26,Jackie O's Brewpub
+Bourbon Barrel Aged Dark Apparition,BA Imperial Stout,14.8,,,"Seven malts were used to create deep flavors of coffee, chocolate, caramel, and molasses. A hint of bitterness and herbal character from carefully selected European and American hops help support the monolithic maltiness. After conditioning in stainless steel, the beer was transferred to into bourbon barrels. Dark Apparition waited patiently in oak barrels until the time was right to spring forth with its ghostly gusto. A truly decadent brew that is intended to be poured into your favorite snifter and given time to warm up from its dark and cool resting place.",1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Blueberry Lemon Vanilla Dinosaurs on TV,Craft Hard Seltzer,4.5,,,"Real fruit Hard Seltzer made with blueberry, lemon and vanilla beans!",1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Brown Bag #1,Northeast IPA,7,,,"Juiced up, limited release Northeastern IPA. Brewed with heaps of oats and wheat for a smooth and supple mouthfeel, then hopped with a ripe combination of Krush, Citra and Motueka hops. Bright notes of tropical citrus dazzle amongst the flavors of a whole fruit cornucopia. This is the first release of our ultra limited 'Brown Bag' series that pushes our boundaries with the way we make IPA, and is only available at Jackie O's locations. FAF Alert!!",1357,Jackie O's,26,Jackie O's Brewpub
+Whole Lotta Colada,Fruited Hazy IPA,7,,,The official beer of Ohio Brew Week! A Pina Colada inspired Hazy IPA fermented with pineapple puree and conditioned on flaked coconut and vanilla beans. Made in collaboration with OU's Chemistry 4501 Principles of Brewing class.,1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Pineapple Tangerine Ginger Perpetum,American Sour Ale,5.5,,,"Our Houe Sour Wheat Ale refermented with pineapple, tangerine and ginger.",1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+The Wheated Man,BA Imperial Stout,15.1,,,Wheated Imperial Stout aged in Bourbon barrels for 29 months,1357,Jackie O's,26,Jackie O's Brewpub
+Sing to the Sun,Hazy IPA,6.5,,,"Light and easy drinking Hazy IPA with tropical notes of mango, passionfruit and sweet tangerine",1357,Jackie O's,26,Jackie O's Brewpub
+Hard Cider,Hard Cider,5.8,,,"Craft Hard Cider made with apples from New York and Michigan. Smooth, approachable and easy drinking",1357,Jackie O's,26|71,Jackie O's Brewpub|Jackie O's Taproom
+Black Currant Perpetum,American Sour Ale,5.5,,,House Sour Wheat Ale refermented with black currants.,1357,Jackie O's,26,Jackie O's Brewpub
+Primary,Mixed Fermentation style Saison,5.5,,,Mixed Fermentation style Saison aged in wine barrels.,1357,Jackie O's,26,Jackie O's Brewpub
+Ridgetop Radler,Radler style Lager,4.6,,,Crispy lager with Rio Red grapefruit juice added.,1357,Jackie O's,26,Jackie O's Brewpub
+Combustion IPA,American IPA,6.5,,,"Vibrant tropical fruit, orange, mango, and notes of lemon. Huge Hop character + low bitterness = A highly drinkable IPA",4195,Combustion,71|179,Jackie O's Taproom|Tony's Tavern
+Honey Saison,Farmhouse Ale,5,,,Collaborative Farmhouse Ale brewed with Ohio malts and Fermented with multiple varietals of Ohio Honey.,1382|1362|1357,Yellow Springs Brewery|Little Fish Brewing Co.|Jackie O's,71,Jackie O's Taproom
+Who Cooks,,,,,,1357,Jackie O's,71,Jackie O's Taproom
+Homer's Hazy,,,,,,1357,Jackie O's,71,Jackie O's Taproom
+Gone Festin',Hard Ginger Beer,4.5,,,Hard Ginger Beer style seltzer made with fruity pineapple and mango juice.,1357,Jackie O's,71,Jackie O's Taproom
+Stroud's Shandy,Shandy style Lager,4.2,,,Crisp lager blended with Pink Lemonade!,1357,Jackie O's,71,Jackie O's Taproom
+NY HopGuild 3Cone IPA,West Coast IPA,6.2,,,A collaborative West Coast IPA brewed with New York grown Vista hops and the brand new experimental 3Cone hop. Come enjoy a pint with Chris from the HopGuild!,1357,Jackie O's,71,Jackie O's Taproom
+Bernarda,Mixed Fermentation style Saison,5,,,"Slowly fermented with our house mixed fermentation saison culture, Bernarda’s restful transformation delivers deep yet delicate notes of tropical fruit and peppery yeast. Bernarda is named in tribute to Bernarda Bryson Shahn, a prolific artist from the New Deal era who was born in Athens, Ohio.",1357,Jackie O's,71,Jackie O's Taproom
+Prodigality,BA Barleywine,13.7,,,"Churning out complexity through time and heat. The solo grain, Maris Otter, brims the mash tun for a long soak. A portion of the first runnings were boiled and reduced, triggering the Maillard Reaction; through which, the vigorous heating of sugars adds a deeper color and flavor. Continuing on with an extended boil to increase said reaction. A prolonged nap of 20 months in bourbon barrels finishes off this luxurious prize. Indulge in Prodigality’s warm embrace with notes of burnt sugar, sweet prune, oak, and leather.",1357,Jackie O's,71,Jackie O's Taproom
+Temple of Minerva,BA Imperial Stout,14.5,,,Extravagant Imperial Stout aged for 20 months in mixed bourbon barrels.,1357,Jackie O's,71,Jackie O's Taproom
+Time Beyond Time,BA Barleywine,11,,,This Barleywine was brewed from a single high quality English barley and a single high quality English hop with the addition of brown sugar added during the extended boil in the kettle. It was then aged in a blend of bourbon barrels for 21 months.,1357,Jackie O's,71,Jackie O's Taproom
+Cherry Lime Dinosaurs on TV,Craft Hard Seltzer,4.5,,,Real fruit Hard Seltzer made with Montmorency cherries and lime,1357,Jackie O's,71,Jackie O's Taproom
+3 Lines of Rotating Draft Cocktails,,,,,,1357,Jackie O's,71,Jackie O's Taproom
+Maker of Things,Sour Red Ale,9.3,,little-fish-brewing-company-maker-of-things/1650366,Foeder & wine barrel-aged sour red ale,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Ohio Weizen,Hefeweizen,5.5,,little-fish-brewing-company-ohio-weizen/5988225,Hefeweizen,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Woodthrush,Farmhouse Ale,6.7,,little-fish-brewing-company-woodthrush/1164839,"Amber farmhouse ale, lightly spiced",1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Spruce Crispy,Lager - Pale,5.4,,little-fish-brewing-company-spruce-crispy/6299173,"100 % Ohio-grown pale lager with spruce tips, chinook and Crystal Hops",1362,Little Fish Brewing Co.,190|289,Little Fish Brewing Co|The Union
+Dear Science,Hazy IPA,6.7,,little-fish-brewing-company-dear-science/4234967,"Hazy IPA with Citra, Mosaic, and Sabro hops",1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Ridge Runner Lil' Harvey's,Coffee Milk Stout,5.5,,little-fish-brewing-company-ridge-runner-lil-harvey-s/2091817,"Milk Stout with coffee, on nitro",1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Pescado Relajado,Mexican Lager,4.8,,little-fish-brewing-company-pescado-relajado/5420441,Mexican Light Lager,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Saison du Sud,Saison,6.2,,little-fish-brewing-company-saison-du-sud/6755107,Saison with sumac,1362|2727,Little Fish Brewing Co.|Sixth Sense Brewing Company,190,Little Fish Brewing Co
+Pinche Guey,Mexican Chocolate Imperial Stout,13.5,,little-fish-brewing-company-pinche-guey-2026-blend-batch-4/6655658,Bourbon Barrel-aged Mexican Chocolate Imperial Stout,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+"Appalachian Spontaneous Ale, Batch 2",Sour Blond Ale,7.3,,little-fish-brewing-company-appalachian-spontaneous-ale-batch-2/6590789,Spontaneously-fermented sour blond ale,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Safari Flaps,Hazy IPA,6.7,,little-fish-brewing-company-safari-flaps/4475695,Hazy IPA with Citra & Azacca hops,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Kalsarikannit,Baltic Porter,8.5,,little-fish-brewing-company-kalsarikannit/2023579,Baltic Porter,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Untamed Shrew,Spiced Brown Ale,6,,little-fish-brewing-company-untamed-shrew/6622522,"Brown ale with sorghum molasses, spicebush, ginger, and pink peppercorn",1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Appalachian Iron,Smoked Amber Lager,5,,sixth-sense-brewing-appalachian-iron/6741008,Cherrywood-smoked amber lager,2727|1362,Sixth Sense Brewing Company|Little Fish Brewing Co.,190,Little Fish Brewing Co
+(To Be Named),Smoked Blond Lager,6.1,,,Mulberry wood-smoked blond lager,1362|11799,Little Fish Brewing Co.|Wooly Pig,190,Little Fish Brewing Co
+(To Be Named),Saison,,,,Saison with Ohio honey,1382|1362,Yellow Springs Brewery|Little Fish Brewing Co.,190,Little Fish Brewing Co
+Metaphysical Graffiti,Vegan Milkshake IPA,7.7,,seventh-son-brewing-company-metaphysical-graffiti/3774091,Hazy IPA with pineapple juice & vanilla,1376|1362,Seventh Son Brewing Co.|Little Fish Brewing Co.,190,Little Fish Brewing Co
+Moonville Stout - 2026 Blend,Imperial Stout,16.4,,little-fish-brewing-company-moonville-stout-2026-blend/6755122,Bourbon Barrel-aged Imperial Stout,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Everett's Ale,Extra Pale Ale,5.2,,little-fish-brewing-company-everett-s-pale-ale/2170992,Pale ale with Mosaic hops,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Green Bridge IPA,West Coast IPA,6.5,,little-fish-brewing-company-green-bridge-ipa/3929377,West Coast IPA,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Sunfish,Sour Blond Ale,8,,little-fish-brewing-company-sunfish/1609982,Sour blond ale with Ohio honey,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Batch 664 + Woods,Imperial Stout,14,,little-fish-brewing-company-batch-664-woods/6755138,Bourbon barrrel-aged imperial stout conditioned on palo santo & amburana wood,1362,Little Fish Brewing Co.,190,Little Fish Brewing Co
+Truth IPA,IPA,7.2,,,"Brewed with a nod to the Pacific, tropical fruit aroma, grapefruit and mango",1373,Rhinegeist,9081,North End Kitchen + Bar
+House Cat,Pilsner,5.2,,,"Swift in body and mind, House Cat sprints ever forward. Pure crisp, clean",1373,Rhinegeist,9081,North End Kitchen + Bar
+Grapefruit Bubbles,Hard Craft,6.2,,rhinegeist-brewery-grapefruit-bubbles/6667809,A bright blend of apple and grapefruit that acts as a vacation for your tastebuds,1373,Rhinegeist,9081|289,North End Kitchen + Bar|The Union
+"Love You, Bye",Hazy Imperial IPA,8,,,Super juicy and permantely hazy,7610,Saucy Brew Works,9081,North End Kitchen + Bar
+Citramax,IPA,7.4,,,West Coast IPA dry-hopped w/ citra hops and citrus fruited aromas,3003,Market Garden Brewery,9081,North End Kitchen + Bar
+Shandy,Lemon Shandy,4.5,,,Blend of a pale wheat beer and sparkling lemon soda,3003,Market Garden Brewery,9081,North End Kitchen + Bar
+Benjamin Danklin,American Style IPA,7.4,,fat-head-s-brewery-benjamin-danklin/1521592,"A potent blemd of Citra, Simicoe and other west coast hops, delivering robust notes of citrus, tropical fruit, mango and pine.  Crisp,, dry and a distinctly ""Dank"" finish",1351,Fat Head's Brewery,187|289,Ohio University Inn and Conference Center|The Union
+Kitty Paw Concord Grape Selzer,Concord Grape Selzer,4.2,,,,1376,Seventh Son Brewing Co.,186,The Over Hang
+Assistant Manager,Golden Ale,4.5,,,Delicate hops and golden malts give way to firm bitterness and a clean finish,1376,Seventh Son Brewing Co.,186|191,The Over Hang|J Bar
+Lemon Glow,Hazy Pale Ale,5.7,,,,1360,Land Grant Brewing Company,186,The Over Hang
+Low Hanging Cider,Tangerine Cider,5,,,,1360,Land Grant Brewing Company,186,The Over Hang
+Southern Terminus,Mexican Lager,5,,,,7104,Nocterra Brewing Co,186,The Over Hang
+Truth,IPA,7.2,,,,1373,Rhinegeist,186,The Over Hang
+Expressionism,American Style IPA,6.3,,rhinegeist-brewery-expressionism/5819017,"Strawberry-banana, with some tropical notes,  pineapple/pasionfruit. Low/light bodied. Clear, pale yellow",1373,Rhinegeist,186|289,The Over Hang|The Union
+Buckeye Daybreak,Daybreak infused with Chocolate and Peanut Butter,5,,wolf-s-ridge-brewing-buckeye-daybreak/5052904,Coffee Cream Ale infused with Chocolate and peanut butter,3002,Wolf's Ridge Brewing,184,The Pigskin Bar and Grille
+Beta-Mosa,New England IPA,6.5,,nocterra-brewing-co-beta-mosa/6332251,"Beta-Mosa, a vibrant twist on our flagship Beta Flash, is a mimosa-inspired Hazy IPA brewed with Mosaic, Citra & El Dorado Hops. Layered with juicy Tangerine & Cara Cara Orange, it bursts with citrus & brunch-vibe refreshment!",7104,Nocterra Brewing Co,184,The Pigskin Bar and Grille
+Murk Juice,NEIPA-,6.8,,,"Mosaic, El Dorado and citra hops give this super hazy NEIPA a juicy, clean finish",2727,Sixth Sense Brewing Company,184,The Pigskin Bar and Grille
+Watermelon Lime Shift Beer,Blonde,5,,,NEW refreshing watermelon lime golden ale just in time for the summer,2727,Sixth Sense Brewing Company,184,The Pigskin Bar and Grille
+Palo Santo,Aged Scotch Ale,8.6,,,Scotch ale aged on Brazilian Palo Santo Wood,2727,Sixth Sense Brewing Company,184,The Pigskin Bar and Grille
+Sun Scream,Summer Wheat,5,,,"Bursting with bright, citrus aroma, this summer wheat is a total summer crusher",7104,Nocterra Brewing Co,184,The Pigskin Bar and Grille
+Ultra Razz,Fruited Wheat,8,,,Razz wheat turned to 11!,1357,Jackie O's,184|183,The Pigskin Bar and Grille|The Pub
+Familiar Voice,Flanders Red Ale,5.8,,,,1382,Yellow Springs Brewery,184,The Pigskin Bar and Grille
+Apple Light,Lager,4.2,,fifty-west-brewing-company-apple-light/6682390,"Light lager layered with vibrant green apple character. Big, bright green apple jumps from the glass with a candy-like aroma,delivering bold flavor up front before finishing clean and dry for an easy-drinking, refreshing pint.",1344,Fifty West Brewing Company,200,The C.I.
+Juiced Up,Mango Berry Blonde,4.7,,,"Layered with vibrant fruit character, this fruited blonde starts  bhy7",1344,Fifty West Brewing Company,200,The C.I.
+Hearth Fire Mexican Hot Chocolate Stout,Stout,6.3,,,"This beer is built around rich chocolate, coffee, and warming spice. Cocoa nibs, lactose, cinnamon, orange peel, and fresh-crushed nutmeg create a silky, dessert-like body, while Deeper Roots Alchemy Espresso layers in deep roasted coffee character. A carefully balanced six-pepper blend adds warmth rather than heat. Brewed on a base on abase of English malts with just a hint of vanilla, the result is spicy, sweet, and complex, with lingering chocolate-coffee depth.",1344,Fifty West Brewing Company,200,The C.I.
+Lemon Frostie,IPA,6.7,,fifty-west-brewing-company-lemon-frostie/5805399,"This bad boy, originally created in collaboration with our friends at Brewfontaine, is brewed with lactose, Madagascar vanilla beans, lemon purée,lemon zest and Lemondrop hops create a creamy, citrusy flavor reminiscent of a sticky lemon frostier! This brew ain't no lemon, but it's packed to the heckin' lid with 'em",1344,Fifty West Brewing Company,200,The C.I.
+Peak,Pilsner,5.2,,,"This Pilsner is brewed with a base of Ohio-grown Pilsner and Vienna malts and hopped throughout the process with American-grown Aleena and German-grown Saphir. Notes of rich,crackers malt are balanced by delicate floral, herbal, and citrus hop aromas with a crisp, snappy finish",1360,Land Grant Brewing Company,200,The C.I.
+Mixed Berry Cider,Cider,5,,,"Craft cider featuring blueberry,blackberry, raspberry and strawberry flavors",1360,Land Grant Brewing Company,200,The C.I.
+Drift a Bit,Shandy,5,,nocterra-brewing-co-take-a-hike/6178456,"Brewed in partnership with Great Ohio Lodges and Ohio State Parks Foundation, Take A Hike is an IPA made for the trailblazer in all of us. Brewed with Citra, Mosaic and Simone hops. It delivers vibrant Burt's of citrus, tropical fruit and stone fruit layered over hints of pine and a crisp balanced bitterness.",7104,Nocterra Brewing Co,200|183,The C.I.|The Pub
+Cali Swell,Blackberry and Raspberry Gose,6,,nocterra-brewing-co-beta-flash/2895195,"It's double dry-hopped and packed full of citrus, grapefruit and hints of pineapple.",7104,Nocterra Brewing Co,200,The C.I.
+Extra Pickles,Gose,4.5,,fifty-west-brewing-company-extra-pickles/6755370,"Extra Pickles is a tart, salty, goes-style sour beer brewed with pilsner malt, wheat, coriander, and real pickle brine from the same kitchen pickles we serve on our burgers. Bright, briny, and unmistakably dill, it's crisp pickle punch built for anyone who thinks pickles are no longer just a burger topping.",1344,Fifty West Brewing Company,200,The C.I.
+Classic Lime,Lager,4,,garage-beer-classic-lime-beer/4410368,"GARAGE BEER LIME IS BEER-FLAVORED BEER WITH A HIT OF LIME. CRISP, EASY-DRINKING BEER, WITH A BRIGHT SQUEEZE OF LIME TO KEEP THINGS EXTRA REFRESHING",10177,Garage Beer,197|289,The Crystal|The Union
+Bohdi JR,IPA,4.7,,,"Light, crisp, and sessionable, with IPA level aromatics including notes of tropical passionfruit, citrus, and stone fruit. Featuring a blend of Citra®, Cashmere and Dolcita®.",3096,Columbus Brewing Co.,197,The Crystal
+American 250 - OHIO,IPA,5.7,,,"In partnership with the bi-partisan America 250 Committee of Ohio, we're proud to brew this limited release IPA to celebrate America's 250th birthday. Pale in color, with a med-low bitterness, Idaho 7® and the American-classic Chinook hops combine for aromas of pineapple, citrus, and pine.",3096,Columbus Brewing Co.,197,The Crystal
+Dank Charmer,Terpene IPA,7.5,,,"Deep golden in color and bright. Brewed with a combination of Mosaic®, Strata®, and Abstrax® botanical terpenes. Powerful, dank aromatics followed by notes of citrus and tropical fruit.",3096,Columbus Brewing Co.,197,The Crystal
+Surfer,Pineapple Hefeweizen,5.2,,,"Notes of banana, bubblegum, and clove in a soft wheat body, brightened by juicy pineapple. Light, slightly tart, and clean with a refreshing finish",11798,Northern Row,197,The Crystal
+Islander,Juicy IPA,6.1,,,"Expect aromas of ripening mangos, tangerine peel, a glass of sauv blanc soaking up some rays, and a freshly rolled 'lefty' for good measure. Big tropical energy up front, with juicy orange and apricot flavors riding the wave all the way in.",11798,Northern Row,197,The Crystal
+Rounding Third,Red IPA,6.4,,,Slight carmel semi-sweet malt backbone balanced by a strong hop profile,1364,MadTree Brewing,191,J Bar
+Seeing Colors,Hazy IPA,6.5,,,Brewed to maximize all the fruity notes from hops without any of the bitterness,1364,MadTree Brewing,191,J Bar
+Dreamsicle,Orange and Vanilla Ale,4.8,,,"Light body with delicate feel and a mild, balanced flavor",1364,MadTree Brewing,191,J Bar
+Humulus Nimbus,Super Pale Ale,6,,,Summer friendly golden ale that is both super crisp and hop forward,1376,Seventh Son Brewing Co.,191,J Bar
+Kitty Paw Lime Guava,Fruited Seltzer,4.2,,,"Refreshing guava with a lime bite that scrubs the palate and makes for a spritzy, clean finish",1376,Seventh Son Brewing Co.,191,J Bar
+Cold Beer,Blueberry Lager,4.5,,,Crisp and clean balanced lager with blueberry notes,4079,BrewDog,183,The Pub
+Baby Hazy,Light IPA,3.2,,,Crushable light IPA,4079,BrewDog,183,The Pub
+Strawberry Blonde,Fruited Ale,5,,,"Wanderlust Blonde Ale with Strawberries. ""Like a liquid strawberry muffin""",4195,Combustion,183|179,The Pub|Tony's Tavern
+American IPA,IPA,6.5,,,Vibrant and tropical,4195,Combustion,183,The Pub
+Turbo Shandy (can),Shandy,7,,,"Half citrus, half chaos",3741,Hoppin' Frog,183,The Pub
+Who Cooks For You (can),Hazy IPA,5.5,,,Dank and juicy AF,1357,Jackie O's,183,The Pub
+Mystic Mama (can),West Coast IPA,7,,,"Grapefruit, resin and pine",1357,Jackie O's,183,The Pub
+Truth IPA (can),IPA,7.2,,,Mango punch and dry finish,1373,Rhinegeist,183,The Pub
+Hoppy Session,Session,4,,,"Grapefruit, Stone fruit, Tangerine",1360,Land Grant Brewing Company,9843,The Side Bar
+Pool Party,Pilsner - Czech / Bohemian,5.4,,land-grant-brewing-company-pool-party/1665945,"Summer-centric Pilsner. Crisp, light, and refreshing. Easy-drinking option during hot weather.",1360,Land Grant Brewing Company,9843,The Side Bar
+Prickly Pear,Modern Cider,6.5,,west-end-ciderhouse-prickly-pear/6337718,Dry-to-sweet scale dry,1894,West End Ciderhouse,9843,The Side Bar
+Bean Me Up,Imperial Coffee Stout,8.8,,fat-head-s-brewery-bean-me-up-imperial-coffee-stout/75902,Imperial Stout conditioned on whole bean coffee lending aromas of fresh roasted coffee and dark chocolate with a medium-full body and sweet finish.,1351,Fat Head's Brewery,9843,The Side Bar
+Mc’ginns Irish Stout,Irish Stout,5.5,,devil-s-kettle-brewing-mcginn-s/2597696,Brewed in honor of our late friend Dick McGinn and based off his award winning homebrew recipe,1349,Devil's Kettle,9843,The Side Bar
+Firefly Amber Ale,American Amber/Red,4.5,,jackie-o-s-brewery-firefly-amber/42630,Lightly roasted malt gives Firefly a biscuit-like finish. Carefully selected hops provide an herbal and mildly citrus aroma and flavor.,1357,Jackie O's,9843,The Side Bar
+Guava Gone Wild,Sour/Fruited Berliner Weisse,10,,dafuque-beer-company-guava-gone-wild/6624453,Spontaniously fermented belgin based fruited with fresh guava puree,10014,Dafuque Beer Company,9843,The Side Bar
+DFQ IPA,American IPA,6.8,,,"Classic American IPA, medium body, citrus and pine hop character. Balanced by a clean malt back bone with a crisp finish.",10014,Dafuque Beer Company,9843,The Side Bar
+Lake Erie Pills,"Pilser,. German",5.7,,fat-head-s-brewery-lake-erie-pils/4577913,"Crisp, clean and refreshing German-style lager crafted with German pilsner malt, Noble hops, lager yeast and locally sourced, purified Lake Erie water",1351,Fat Head's Brewery,289,The Union
+Goggle Fogger,"Hefeweizen, Wheat Beer",5.4,,fat-head-s-brewery-goggle-fogger-hefe-weizen/8091,"Aromas and flavors of wheat, bubblegum, clove and spice swirl",1351,Fat Head's Brewery,289,The Union
+Homers Hazy,New England/Hazy IPA,6.6,,jackie-o-s-brewery-homer-s-hazy/4870687,"Fruited, Hazy IPA brewed with bright and vibrant hops, pineapple and tangerine",1357,Jackie O's,289,The Union
+Buckeye Ferryman,Milk Stout,7.2,,,Milk Stout with Peanut Butter & Chocolate,1370,The Phoenix Brewing Company,179,Tony's Tavern
+Salty Mermaid,Gose,4.5,,,"Margarita Gose with sea salt, watermelon & lime",1370,The Phoenix Brewing Company,179,Tony's Tavern
+Third Eye IPA,West Coast IPA,6.3,,,"Dank, piney, and grapefruit hop flavors.",11800,Third Eye Brewing,189,Lucky's Sports Tavern
+Getting Twisted,German Pretzel Ale,5.2,,,"German Barley, rye, and wheat migle with a touch of salt to deliver a one of a king liquor pretzel flavor",11800,Third Eye Brewing,189,Lucky's Sports Tavern
+Walking Taco,Mexican Lager,4.5,,,"A classic Mexican brew gets the Midwestern treatment! Like tasty tacos crunched up in your favorite bag of chips, our Mexican-style lager with lime is sure to be a crushable crowd pleaser for any occasion.",3002,Wolf's Ridge Brewing,189,Lucky's Sports Tavern
+Trip Sitter,New England/Hazy IPA,6.5,,,pineapple infused,3002,Wolf's Ridge Brewing,189,Lucky's Sports Tavern
+Take A Hike,West Coast IPA,6.5,,nocterra-brewing-co-take-a-hike/6178456,"Brewed in partnership with Great Ohio Lodges and Ohio State Parks Foundation, Take A Hike is an IPA made for the trailblazer in all of us. Brewed with Citra, Mosaic and Simone hops. It delivers vibrant Burt's of citrus, tropical fruit and stone fruit layered over hints of pine and a crisp balanced bitterness.",7104,Nocterra Brewing Co,200,The C.I.
+Marimba,Pineapple Ale,5.2,,,"This tart fruit beer is brewed with a simple base of Pilson malt and conditioned on huge portions of sweet pineapple concentrate. Notes of vibrant, tropical pineapple are balanced by a clean, refreshing snappy acidity with a light sweetness.",1360,Land Grant Brewing Company,200,The C.I.
+Dog Day,IPA,6.8,,,"American IPA brewed with Pilsner,Vienna, and Dextrin malt and hopped with Mosaic, El Dorado, and Krush. Bright golden with aromas of citrus and tropical fruit, followed by flavors of orange, mango, and stone fruit with firm bitterness and a clean, dry finish.",1360,Land Grant Brewing Company,200,The C.I.

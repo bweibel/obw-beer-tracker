@@ -28,15 +28,17 @@ BREWERY_ID = {
     "collision bend": 10859,
     "columbus brewing co": 3096, "columbus brewing company": 3096,
     "combustion": 4195, "combustion brewery": 4195, "combustion brewing": 4195,
+    "constellation": 11158,
     "dafuque beer company": 10014,
     "devil's kettle": 1349, "devils kettle": 1349,
     "dutch creek winery": 3006,
     "fat head": 1351, "fat head's": 1351, "fat head's brewery": 1351, "fat heads": 1351,
-    "garare beer": 10177, "grarage beer": 10177,
+    "garage beer": 10177, "garare beer": 10177, "grarage beer": 10177,
     "great lakes": 1356,
+    "hoppin frog": 3741, "hoppin' frog": 3741,
     "jackie o's": 1357, "jackie o's brewery": 1357,
     "land grant": 1360,
-    "little fish": 1362, "little fish brewing company": 1362,
+    "little fish": 1362, "little fish brewing company": 1362, "littlefish": 1362,
     "mad tree brewing": 1364,
     "market garden brewery": 3003,
     "phoenix brewing company": 1370,
@@ -63,9 +65,19 @@ NEW_BREWERY_TITLE = {
     "appalachian artisan ales": "Appalachian Artisan Ales",
     "three tigers brewing": "Three Tigers Brewing",
     "wooly pig": "Wooly Pig",
+    "weaselboy": "Weasel Boy Brewing Company",
 }
-# Fill these after pre-creation, e.g. {"Nocterra Brewing Company": 12345, ...}
-NEW_BREWERY_ID: dict[str, int] = {}
+# Filled from prod (GET /wp-json/wp/v2/obw_brewery). Third Eye was newly created;
+# Three Tigers (5082) and Weasel Boy (1380) already existed in the directory.
+NEW_BREWERY_ID: dict[str, int] = {
+    "Nocterra Brewing Company": 7104,  # canonical; 11797 was a duplicate (delete in prod)
+    "Northern Row": 11798,
+    "Appalachian Artisan Ales": 11796,
+    "Wooly Pig": 11799,
+    "Third Eye Brewing": 11800,
+    "Three Tigers Brewing": 5082,
+    "Weasel Boy Brewing Company": 1380,
+}
 
 # When a brewery can't be resolved to a directory ID (an as-yet-uncreated new
 # brewery), drop the whole row rather than fall back to name matching. Flip to
@@ -92,6 +104,7 @@ VENUE_ID = {
     "eclipse": 2744, "eclipse company store": 2744,
     "jackie o's brewpub": 26, "jackie o's taproom": 71,
     "little fish brewing company": 190,
+    "lucky's": 189, "luckys sports tavern": 189,
     "north end kitchen & bar": 9081,
     "ou inn": 187,
     "overhang": 186,
@@ -116,6 +129,7 @@ def id2title(path):
     return out
 
 BREW_TITLE = id2title("breweries.json")
+VENUE_TITLE = id2title("venues.json")
 
 def clean_abv(s, flags):
     s = (s or "").replace("%", "").strip()
@@ -275,6 +289,17 @@ def main():
     dedupe_info = {"merged": 0, "groups": 0, "abv_conf": []}
     if DEDUPE:
         out_rows, dedupe_info = dedupe_beers(out_rows)
+
+    # Populate the human-readable brewery/venue name columns from the directory
+    # titles for ID-matched rows (the importer still matches on ID; names are for
+    # reviewability). Name-fallback rows keep whatever name they already carry.
+    def titles(ids, lookup):
+        return "|".join(lookup.get(int(i), "") for i in ids.split("|") if i.strip())
+    for row in out_rows:
+        if row["brewery_id"]:
+            row["brewery"] = titles(row["brewery_id"], BREW_TITLE)
+        if row["venue_id"]:
+            row["venue"] = titles(row["venue_id"], VENUE_TITLE)
 
     cols = ["name", "style", "abv", "ibu", "untappd", "description",
             "brewery_id", "brewery", "venue_id", "venue"]
