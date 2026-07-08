@@ -149,6 +149,8 @@ export function App() {
 						filters={filters}
 						flagsFor={tracker.flagsFor}
 						onSelect={setActiveBeer}
+						toggleTasted={tracker.toggleTasted}
+						toggleFavorited={tracker.toggleFavorited}
 					/>
 				) : null}
 
@@ -162,6 +164,8 @@ export function App() {
 						beerLookup={beerLookup}
 						flagsFor={tracker.flagsFor}
 						onSelect={setActiveBeer}
+						toggleTasted={tracker.toggleTasted}
+						toggleFavorited={tracker.toggleFavorited}
 					/>
 				) : null}
 
@@ -175,6 +179,8 @@ export function App() {
 						beerLookup={beerLookup}
 						flagsFor={tracker.flagsFor}
 						onSelect={setActiveBeer}
+						toggleTasted={tracker.toggleTasted}
+						toggleFavorited={tracker.toggleFavorited}
 					/>
 				) : null}
 

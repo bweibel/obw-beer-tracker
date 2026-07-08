@@ -2,7 +2,7 @@
  * The "Brews" tab: flat, filterable, sortable beer list. Ports beerlist.html
  * plus the controller's orderBy / search / filterFunction behavior.
  */
-import { Badges } from './Badges.jsx';
+import { InteractiveBadges } from './Badges.jsx';
 
 /**
  * Sort + filter beers to match the AngularJS pipeline:
@@ -45,7 +45,16 @@ function visibleBeers(beers, search, orderBy, filters, flagsFor) {
 	return filtered;
 }
 
-export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }) {
+export function BeerList({
+	beers,
+	search,
+	orderBy,
+	filters,
+	flagsFor,
+	onSelect,
+	toggleTasted,
+	toggleFavorited,
+}) {
 	const showAbv = orderBy === 'abv' || orderBy === '-abv';
 	const list = visibleBeers(beers, search, orderBy, filters, flagsFor);
 
@@ -71,7 +80,11 @@ export function BeerList({ beers, search, orderBy, filters, flagsFor, onSelect }
 								</div>
 							) : null}
 						</a>
-						<Badges flags={flags} />
+						<InteractiveBadges
+							flags={flags}
+							onToggleTasted={() => toggleTasted(beer.id)}
+							onToggleFavorited={() => toggleFavorited(beer.id)}
+						/>
 					</div>
 				);
 			})}

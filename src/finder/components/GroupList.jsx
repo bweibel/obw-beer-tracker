@@ -6,7 +6,7 @@
  * legacy templates did). Beer rows resolve to the full beer via `beerLookup`
  * so tracker badges and the modal work identically to the Brews tab.
  */
-import { Badges } from './Badges.jsx';
+import { InteractiveBadges } from './Badges.jsx';
 import { IconChevronRight } from './icons/Icons.jsx';
 
 export function GroupList({
@@ -18,6 +18,8 @@ export function GroupList({
 	beerLookup,
 	flagsFor,
 	onSelect,
+	toggleTasted,
+	toggleFavorited,
 }) {
 	const term = (search || '').toLowerCase();
 	// Resolve each group's renderable (published, in-lookup) beers up front so we
@@ -72,7 +74,11 @@ export function GroupList({
 														</div>
 													) : null}
 												</a>
-												<Badges flags={flags} />
+												<InteractiveBadges
+													flags={flags}
+													onToggleTasted={() => toggleTasted(beer.id)}
+													onToggleFavorited={() => toggleFavorited(beer.id)}
+												/>
 											</div>
 										);
 								  })
