@@ -509,6 +509,31 @@ body.beer-tracker-page-body {
 	   doesn't pop in and shove the action buttons down (§4.2). */
 	min-height: 4.5em;
 }
+/* Batch B / B1: "Read more" / "Read less" toggle under a truncated
+   description. Styled as a plain link-like control rather than a full
+   `obwf-btn` since it's a secondary, inline action. */
+.obwf-card .obwf-description-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.25rem;
+	padding: 0.4rem 0.5rem;
+	min-height: 44px;
+	background: transparent;
+	border: 0;
+	color: var(--obwf-gray);
+	font-weight: bold;
+	font-size: 0.95rem;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Batch B / B2: applied to <body> while the modal is open to lock background
+   scroll on mobile. Owned solely by BeerModal.jsx — App.jsx's own body
+   classes (`beer-tracker-page-body`, etc.) are untouched. */
+body.obwf-scroll-locked {
+	overflow: hidden;
+}
 
 .obwf-card .obwf-actions {
 	display: flex;

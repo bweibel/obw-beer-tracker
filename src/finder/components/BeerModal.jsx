@@ -11,6 +11,8 @@ import { loadBeerContent } from '../api.js';
 import { Badges } from './Badges.jsx';
 import { IconClose, IconExternalLink } from './icons/Icons.jsx';
 
+const DESCRIPTION_TRUNCATE_LENGTH = 240;
+
 export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry }) {
 	// §4.2: `content` is not part of the bulk finder payload — fetch it lazily
 	// per beer when the modal opens, cached in memory (api.js) for the
@@ -19,11 +21,15 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	// Track the in-flight fetch so we can reserve description space (min-height)
 	// while loading and avoid the content popping in and shoving the buttons down.
 	const [loading, setLoading] = useState(true);
+	// Batch B / B1: "Read more" starts collapsed for every beer; reset when the
+	// modal is (re)opened for a different beer so it doesn't carry over.
+	const [expanded, setExpanded] = useState(false);
 
 	useEffect(() => {
 		let cancelled = false;
 		setContent('');
 		setLoading(true);
+		setExpanded(false);
 		if (!beer) return undefined;
 
 		loadBeerContent(beer.id).then((html) => {
@@ -37,6 +43,31 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 			cancelled = true;
 		};
 	}, [beer && beer.id]);
+
+	// Batch B / B2: lock background scroll while the modal is open, restoring
+	// it on close/unmount. App.jsx manages its own body classes (see its
+	// `beer-tracker-page-body` add/remove) — this only ever touches the one
+	// class it owns, so it can't clobber App.jsx's.
+	useEffect(() => {
+		if (!beer) return undefined;
+		document.body.classList.add('obwf-scroll-locked');
+		return () => {
+			document.body.classList.remove('obwf-scroll-locked');
+		};
+	}, [beer]);
+
+	// Batch B / B3: close on Escape, in addition to overlay-click and the
+	// close button.
+	useEffect(() => {
+		if (!beer) return undefined;
+		const onKeyDown = (e) => {
+			if (e.key === 'Escape') onClose();
+		};
+		document.addEventListener('keydown', onKeyDown);
+		return () => {
+			document.removeEventListener('keydown', onKeyDown);
+		};
+	}, [beer, onClose]);
 
 	if (!beer) return null;
 
@@ -106,9 +137,21 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 								<div
 									class="obwf-description-inner"
 									dangerouslySetInnerHTML={{
-										__html: cutText(content, 240),
+										__html: expanded
+											? content
+											: cutText(content, DESCRIPTION_TRUNCATE_LENGTH),
 									}}
 								/>
+							) : null}
+							{content && content.length > DESCRIPTION_TRUNCATE_LENGTH ? (
+								<button
+									type="button"
+									class="obwf-description-toggle"
+									onClick={() => setExpanded((v) => !v)}
+									aria-expanded={expanded}
+								>
+									{expanded ? 'Read less' : 'Read more'}
+								</button>
 							) : null}
 						</div>
 					) : null}
