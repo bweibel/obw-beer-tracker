@@ -17,7 +17,7 @@ import { IconChevronRight } from './icons/Icons.jsx';
 
 const NO_VENUE_KEY = 'none';
 
-const byName = (a, b) =>
+const nameAsc = (a, b) =>
 	(a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' });
 
 export function MyList({
@@ -28,7 +28,7 @@ export function MyList({
 	toggleToTry,
 	toggleTasted,
 	toggleFavorited,
-	sort, // 'count' | 'name'
+	sort, // 'count' | 'name' (A–Z) | 'name-desc' (Z–A)
 	onSortChange,
 	collapsed, // { [venueId]: true } — present & truthy means collapsed
 	onToggleCollapsed,
@@ -59,19 +59,20 @@ export function MyList({
 		}
 	}
 
+	const byName = sort === 'name' || sort === 'name-desc';
+	const desc = sort === 'name-desc';
+	const cmpName = (a, b) => (desc ? -nameAsc(a, b) : nameAsc(a, b));
+
 	const groups = [...venueMap.values()];
-	if (sort === 'name') {
-		groups.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+	if (byName) {
+		groups.sort(cmpName);
 	} else {
 		// Most-to-try venues first (biggest payoff per stop), then alphabetical.
-		groups.sort(
-			(a, b) =>
-				b.beers.length - a.beers.length ||
-				a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
-		);
+		groups.sort((a, b) => b.beers.length - a.beers.length || nameAsc(a, b));
 	}
-	groups.forEach((g) => g.beers.sort(byName));
-	noVenue.sort(byName);
+	// Beers within a section follow the same A–Z / Z–A direction.
+	groups.forEach((g) => g.beers.sort(cmpName));
+	noVenue.sort(cmpName);
 
 	if (toTry.length === 0) {
 		return (
@@ -146,19 +147,20 @@ export function MyList({
 				<div class="obwf-mylist-sort" role="group" aria-label="Sort venues">
 					<button
 						type="button"
-						class={'obwf-mylist-sort-btn' + (sort !== 'name' ? ' obwf-mylist-sort-btn--on' : '')}
-						aria-pressed={sort !== 'name'}
+						class={'obwf-mylist-sort-btn' + (!byName ? ' obwf-mylist-sort-btn--on' : '')}
+						aria-pressed={!byName}
 						onClick={() => onSortChange('count')}
 					>
 						Most
 					</button>
 					<button
 						type="button"
-						class={'obwf-mylist-sort-btn' + (sort === 'name' ? ' obwf-mylist-sort-btn--on' : '')}
-						aria-pressed={sort === 'name'}
-						onClick={() => onSortChange('name')}
+						class={'obwf-mylist-sort-btn' + (byName ? ' obwf-mylist-sort-btn--on' : '')}
+						aria-pressed={byName}
+						title={desc ? 'Sorted Z–A — tap for A–Z' : 'Sorted A–Z — tap for Z–A'}
+						onClick={() => onSortChange(sort === 'name' ? 'name-desc' : 'name')}
 					>
-						A–Z
+						{desc ? 'Z–A' : 'A–Z'}
 					</button>
 				</div>
 			</header>
