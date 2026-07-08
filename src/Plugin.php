@@ -73,6 +73,9 @@ final class Plugin {
 		// the finder's three paginated core-REST fetches with one payload).
 		( new Rest\FinderController() )->register_hooks();
 
+		// PWA: installable manifest + offline service worker for the finder.
+		( new ServiceWorker() )->register_hooks();
+
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );
@@ -126,10 +129,23 @@ final class Plugin {
 		// interaction on our ES-module bundle; the JS falls back to /wp-json/
 		// when the attributes are absent, so a mocked/standalone mount still
 		// works.)
+		// PWA registration data — only emitted when the killswitch is off. Absent
+		// attributes make the finder JS skip service-worker registration and
+		// manifest dedup entirely, so flipping the switch stops new installs.
+		$pwa_attrs = '';
+		if ( ServiceWorker::is_enabled() ) {
+			$pwa_attrs = sprintf(
+				' data-sw-url="%s" data-manifest-url="%s"',
+				esc_url( home_url( '/obw-beer-tracker-sw.js' ) ),
+				esc_url( home_url( '/obw-beer-tracker.webmanifest' ) )
+			);
+		}
+
 		return sprintf(
-			'<div id="obw-beer-finder-root" class="obw-beer-finder" data-rest-url="%s" data-nonce="%s"></div>',
+			'<div id="obw-beer-finder-root" class="obw-beer-finder" data-rest-url="%s" data-nonce="%s"%s></div>',
 			esc_url( rest_url() ),
-			esc_attr( wp_create_nonce( 'wp_rest' ) )
+			esc_attr( wp_create_nonce( 'wp_rest' ) ),
+			$pwa_attrs
 		);
 	}
 

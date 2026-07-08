@@ -1,5 +1,6 @@
 import { render } from 'preact';
 import { App } from './components/App.jsx';
+import { initPwa } from './pwa.js';
 import './style.css';
 
 /**
@@ -14,6 +15,7 @@ function mount() {
 	const el = document.getElementById(MOUNT_ID);
 	if (el) {
 		render(<App />, el);
+		initPwa();
 	}
 }
 

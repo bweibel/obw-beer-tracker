@@ -132,4 +132,44 @@ final class CliCommand {
 				: sprintf( '%d beer(s) imported.', $result->rows_created )
 		);
 	}
+
+	/**
+	 * Turn the beer-finder PWA (service worker + installable manifest) on or off.
+	 *
+	 * The killswitch for production. Turning it OFF stops new service-worker
+	 * registrations, hides the manifest, and — crucially — makes the served
+	 * worker a self-destruct build so browsers that already installed it
+	 * uninstall themselves and clear the finder's caches on their next visit.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <state>
+	 * : on|off
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp obw pwa off
+	 *     wp obw pwa on
+	 *
+	 * @when after_wp_load
+	 *
+	 * @param array<int,string> $args Positional args ([0] => on|off).
+	 */
+	public function pwa( array $args ): void {
+		$state = strtolower( $args[0] ?? '' );
+
+		if ( 'off' === $state ) {
+			update_option( 'obw_beer_tracker_pwa_disabled', 1, false );
+			\WP_CLI::success( 'PWA disabled. The service worker will self-destruct on visitors\' next update check.' );
+			return;
+		}
+
+		if ( 'on' === $state ) {
+			delete_option( 'obw_beer_tracker_pwa_disabled' );
+			\WP_CLI::success( 'PWA enabled.' );
+			return;
+		}
+
+		\WP_CLI::error( 'Usage: wp obw pwa <on|off>' );
+	}
 }
