@@ -831,6 +831,38 @@ body.obwf-scroll-locked {
 	color: #fff;
 }
 
+/* Rollover: hovering a tracker toggle previews its ON state — fills solid with
+   the per-action color (white label) and swaps to the "on" cap — matching the
+   site-button "fills on interaction" pattern used by the Untappd/More Info
+   buttons above. These :hover/:focus rules outrank the `--on` fills (extra
+   pseudo-class), so an already-ON button just holds its fill on hover. */
+.obwf-card .obwf-track-btn--totry:hover,
+.obwf-card .obwf-track-btn--totry:focus-visible {
+	background: var(--obwf-brown);
+	border-color: var(--obwf-brown);
+	color: #fff;
+}
+.obwf-card .obwf-track-btn--tasted:hover,
+.obwf-card .obwf-track-btn--tasted:focus-visible {
+	background: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
+	color: #fff;
+}
+.obwf-card .obwf-track-btn--favorite:hover,
+.obwf-card .obwf-track-btn--favorite:focus-visible {
+	background: var(--obwf-red);
+	border-color: var(--obwf-red);
+	color: #fff;
+}
+.obwf-card .obwf-track-btn:hover .obwf-track-ico::before,
+.obwf-card .obwf-track-btn:focus-visible .obwf-track-ico::before {
+	opacity: 0;
+}
+.obwf-card .obwf-track-btn:hover .obwf-track-ico::after,
+.obwf-card .obwf-track-btn:focus-visible .obwf-track-ico::after {
+	opacity: 1;
+}
+
 /* Visible keyboard-focus ring on all five modal action buttons/links. */
 .obwf-card .obwf-btn:focus-visible,
 .obwf-card .obwf-btn--gold:focus-visible,
