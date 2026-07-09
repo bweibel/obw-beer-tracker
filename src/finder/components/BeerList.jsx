@@ -7,7 +7,12 @@ import { IconChevronDown, IconChevronUp } from './icons/Icons.jsx';
 
 /**
  * Sort + filter beers to match the AngularJS pipeline:
- *   orderBy (name / abv, asc|desc)  →  title search  →  tracker filter.
+ *   orderBy (name / abv, asc|desc)  →  name/style search  →  tracker filter.
+ *
+ * The typed search matches the beer name OR its style (`acf.style`) — style is
+ * how beer folks actually browse ("IPA", "sour", "stout"). Brewery/venue are
+ * deliberately NOT searched here: both have their own dedicated tabs, and
+ * folding them in adds noise (a common brewery name would swamp results).
  */
 function visibleBeers(beers, search, orderBy, filters, flagsFor) {
 	const term = (search || '').toLowerCase();
@@ -15,8 +20,11 @@ function visibleBeers(beers, search, orderBy, filters, flagsFor) {
 		filters.tasted || filters.notTasted || filters.favorited || filters.toTry;
 
 	const filtered = beers.filter((beer) => {
-		if (term && !beer.name.toLowerCase().includes(term)) {
-			return false;
+		if (term) {
+			const style = (beer.acf && beer.acf.style ? beer.acf.style : '').toLowerCase();
+			if (!beer.name.toLowerCase().includes(term) && !style.includes(term)) {
+				return false;
+			}
 		}
 		if (!anyFilter) return true;
 		const f = flagsFor(beer.id);

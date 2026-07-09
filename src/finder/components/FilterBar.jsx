@@ -92,7 +92,7 @@ export function FilterBar({
 								autocapitalize="off"
 								autocorrect="off"
 								spellcheck={false}
-								placeholder="Search Brews by Name"
+								placeholder="Search Brews by Name or Style"
 								title="Search & Filter the list of brews"
 								value={search}
 								onInput={(e) => setSearch(e.currentTarget.value)}
