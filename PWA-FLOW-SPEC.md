@@ -1,9 +1,12 @@
 # PWA homescreen-flow enhancements
 
-**Status:** IMPLEMENTED on `main`, pending LIVE verification (could not be tested
-locally — Local serves an insecure origin, so the SW won't register there).
-Ships to prod behind the `wp obw pwa off` kill switch; rollback target if the
-whole change misbehaves is commit `6adcc7f` (Feature 2). Two additions to the
+**Status:** DONE — shipped and verified live (2026-07-09). Android install coach
+functions well; iOS Safari coach confirmed; desktop update toast confirmed
+working (Brave/Chromium). Could not be tested locally (Local serves an insecure
+origin, so the SW won't register there), so verification was done in prod behind
+the `wp obw pwa off` kill switch; rollback target was commit `6adcc7f` (Feature
+2). Known limitations left as-is: no coach on iPadOS (desktop UA) or iOS non-
+Safari browsers. Two additions to the
 existing (working) PWA: an **install coach** (discovery) and an **update toast**
 (freshness). All client work lives in `src/finder/pwa.js` + `src/finder/style.css`,
 plus one line removed from `assets/pwa/sw-template.js`. No PHP / REST / manifest
