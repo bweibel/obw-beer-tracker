@@ -1147,3 +1147,117 @@ body.obwf-scroll-locked {
 .obwf-card--modal .obwf-actions a:active {
 	transform: scale(0.96);
 }
+
+/* ── PWA install coach + update toast ─────────────────────────────────────
+   Built as vanilla DOM by pwa.js and appended to <body> (so they can react to
+   beforeinstallprompt before the app mounts) — i.e. OUTSIDE `.obwf-app`, so the
+   global reduced-motion guard doesn't reach them; they carry their own below.
+   Fixed to the bottom, dark to match the finder's app chrome, brand-accented
+   CTAs, above the modal-less page but out of the way. */
+.obwf-pwa-coach,
+.obwf-pwa-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 1rem;
+	transform: translateX(-50%);
+	z-index: 1000;
+	width: calc(100% - 2rem);
+	max-width: 30rem;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.75rem 0.9rem;
+	background: #2b2b2b;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+	font-family: "OpenSans", helvetica, arial, sans-serif;
+	animation: obwf-pwa-rise 200ms ease-out;
+}
+.obwf-pwa-coach-body {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+}
+.obwf-pwa-coach-text,
+.obwf-pwa-toast-text {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.35;
+	flex: 1 1 12rem;
+}
+/* Inline iOS share glyph sits on the text baseline. */
+.obwf-pwa-share {
+	display: inline-flex;
+	vertical-align: middle;
+	width: 1.05em;
+	height: 1.05em;
+}
+.obwf-pwa-share svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Primary CTAs: solid brand fills, site OpenSans bold UPPERCASE, square. */
+.obwf-pwa-install,
+.obwf-pwa-refresh {
+	flex: 0 0 auto;
+	font-family: inherit;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.03em;
+	padding: 0.6rem 0.9rem;
+	min-height: 44px;
+	border: 0;
+	cursor: pointer;
+	color: #fff;
+}
+.obwf-pwa-install {
+	background: var(--obwf-orange);
+}
+.obwf-pwa-refresh {
+	background: var(--obwf-yellow);
+	color: #2b2b2b;
+}
+.obwf-pwa-refresh:disabled {
+	opacity: 0.7;
+	cursor: default;
+}
+
+/* × dismiss — quiet, but a real 44px tap target. */
+.obwf-pwa-dismiss {
+	flex: 0 0 auto;
+	width: 44px;
+	height: 44px;
+	border: 0;
+	background: transparent;
+	color: #fff;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.obwf-pwa-dismiss:hover {
+	opacity: 1;
+}
+
+.obwf-pwa-coach :focus-visible,
+.obwf-pwa-toast :focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+@keyframes obwf-pwa-rise {
+	from { opacity: 0; transform: translate(-50%, 12px); }
+	to   { opacity: 1; transform: translate(-50%, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.obwf-pwa-coach,
+	.obwf-pwa-toast {
+		animation: none;
+	}
+}

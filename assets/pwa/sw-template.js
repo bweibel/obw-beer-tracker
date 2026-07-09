@@ -28,8 +28,12 @@ self.addEventListener('install', (event) => {
 			.then((cache) => cache.addAll(CONFIG.precache))
 			// A single missing precache entry must not abort the whole install.
 			.catch(() => undefined)
-			.then(() => self.skipWaiting())
 	);
+	// NOTE: intentionally NO self.skipWaiting() here. On an update (a controller
+	// already exists) the new worker enters `waiting` and stays there until the
+	// page tells it to take over — pwa.js surfaces a "new version — Refresh"
+	// toast and posts `obw-skip-waiting` (handled below). A first-ever install
+	// has no waiting phase, so it still activates immediately.
 });
 
 self.addEventListener('activate', (event) => {
