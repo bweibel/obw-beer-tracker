@@ -223,3 +223,118 @@ enhancement, leave it).
 List-row / badge styling; filter bar; REST/data; the global `--obwf-gray`
 reconciliation (possible later token cleanup); the "Read more" toggle and close
 button (leave unless the shared type change trivially covers them).
+
+---
+
+## Feature 2 — Filter bar: site type + gold selected state, tabs vs filters
+
+**Status:** ready for handoff (Sonnet / medium). **Depends on Feature 1 being
+committed** (both touch `style.css`; sequence after `3dfb843`).
+
+### Goal
+The sticky filter bar is a **dark app-bar** (`#2b2b2b`, white text). Its two control
+groups — the multi-select **"Show only"** filters and the single-select **"Show by"**
+view tabs — currently look identical (small `system-ui` 0.8rem white-outline chips),
+and the selected/active state fills `--obwf-gray` (#4a4a4a), which barely separates
+from the `#2b2b2b` bar. Make it cohesive with the site + the restyled modal: site
+typography, a clear tabs-vs-filters distinction, a strong **gold** selected state,
+and a cleaner checkbox. **Keep the dark-bar model** (it's the finder's app-bar
+identity, not a drift to fix).
+
+### Files to touch
+- `src/finder/components/FilterBar.jsx` — the "Show only" and "Show by" sections
+  (~lines 126–163) and the `Check` component (~lines 23–25).
+- `src/finder/components/icons/Icons.jsx` — add an `IconCheck` glyph.
+- `src/finder/style.css` — the filter-bar rules (`.obwf-filterbar .obwf-btn`,
+  `.obwf-check*`, ~lines 244–287). Leave the container/search/sticky rules
+  (~78–235) alone.
+- No PHP / REST changes.
+
+### Current state (so you don't re-derive it)
+- Bar container `.obwf-filterbar`: `background:#2b2b2b; color:#fff`, sticky, goes
+  translucent+blur under `.is-stuck`. **Don't change this.**
+- Both groups render as `<button class="obwf-btn">` (tabs add `obwf-btn--active`
+  when selected); filters wrap a `<Check on={…}>` (a `.obwf-check` 14px box whose
+  `--on` state paints a `\2713` via `::after`). `.obwf-filterbar .obwf-btn`:
+  transparent, `1px solid currentColor` (white on the dark bar), `0.8rem`,
+  `min-height:44px`; hover/active fill `--obwf-gray` #4a4a4a white.
+- `SHOW_ONLY` = Not Tasted / Tasted / Favorited / Want to Try (multi-select,
+  `toggleFilter`). `TABS` = Brews / Brewery / Venue / My List (single-select,
+  `setListType`; also closes the panel).
+
+### Design spec
+Reuse the site palette tokens Feature 1 added (`--obwf-yellow` = gold #e2a052).
+Selected state = **gold fill + dark text** (`#2b2b2b`) — gold is light, so dark
+text on it is legible AND it pops hard on the dark bar. Hover (non-selected) = a
+faint white overlay `rgba(255,255,255,0.12)`, distinct from the gold "selected".
+
+**Shared control typography** (both chips and tabs): `font-family: "OpenSans",
+helvetica, arial, sans-serif; font-weight:bold; text-transform:uppercase;
+font-size:13px; letter-spacing:.03em;`. (Deliberately smaller than the site's 16px
+button size — this is a dense app-bar; we match the *character*, not the exact size.
+Keep `min-height:44px` tap targets.)
+
+**A) "Show by" → segmented tab control.** Wrap the tabs in a container
+`.obwf-tabs` (inline-flex; `1px solid currentColor`; segments share borders via
+`border-left` between them — no gaps). Each becomes `.obwf-tab` (transparent, white
+label, no individual outline); selected = `.obwf-tab--active` → **gold fill, dark
+text**; hover (non-active) = the white overlay. This reads as one navigation
+control, not four loose buttons. In `FilterBar.jsx` swap the tabs' `obwf-btn` /
+`obwf-btn--active` for `obwf-tab` / `obwf-tab--active` and wrap the `TABS.map` in
+`<div class="obwf-tabs" role="tablist">` (keep the existing onClick incl. the
+`setOpen(false)`).
+
+**B) "Show only" → gold filter chips.** Each filter is `.obwf-filter-chip`
+(individual square chip, `1px solid currentColor`, white label + checkbox). OFF =
+transparent/white. ON = **gold fill, dark text**, checkbox checked. Keep them
+separate chips (multi-select), `gap` between. Swap the filters' `obwf-btn` for
+`obwf-filter-chip` (drop `obwf-btn--active`; ON is driven by the existing
+`filters[f.key]` — add an `obwf-filter-chip--on` class when true).
+
+**C) Refined checkbox.** Replace the `.obwf-check::after "\2713"` hack: add
+`IconCheck` to `Icons.jsx` (a Feather-style check, using the shared `BASE_PROPS`
+stroke style already in that file), and render it inside the `Check` span. Box OFF =
+hollow (1px current-color square, empty). Box ON = show the check; on a gold chip
+`currentColor` is dark, so the tick reads dark-on-gold. Size the box ~16px, the tick
+to fit. Keep `aria-hidden` on the visual box (state is conveyed by the chip's label +
+an `aria-pressed`/`aria-checked` you should add to the chip button — currently the
+filter buttons expose no pressed state; add `aria-pressed={filters[f.key]}`).
+
+**Keep:** the search field, the sliders filter-toggle, the sticky/`.is-stuck`
+behavior, and the section `h5` headings — all out of scope, unchanged.
+
+### Cleanup
+- Remove the now-unused `.obwf-filterbar .obwf-btn`, `.obwf-btn--active`, and the old
+  `.obwf-check::after` rule once both groups are reclassed (grep to confirm
+  `.obwf-filterbar .obwf-btn` has no remaining consumer).
+- Do **not** touch `--obwf-gray` (#4a4a4a) — it's used elsewhere (list/sort/modal).
+  The filter bar simply stops referencing it (gold + white-overlay replace it).
+
+### Acceptance criteria
+1. Filter/tab labels are OpenSans **bold UPPERCASE**, of a piece with the site + the
+   restyled modal; the bar stays dark.
+2. "Show by" is a single **segmented tab control**; the active view is unmistakable
+   (**gold fill, dark text**). "Show only" filters are visibly a **different**
+   control (separate gold chips), not the same as the tabs.
+3. Selecting a tab / toggling a filter shows the **gold** selected state; hover on an
+   unselected control is a subtle, clearly-different white overlay. All behavior
+   (`setListType`, `toggleFilter`, panel-close-on-tab) is unchanged.
+4. The checkbox is a crisp `IconCheck` (no pseudo-element glyph); filter chips expose
+   `aria-pressed`; `:focus-visible` rings remain visible on the dark bar; keyboard
+   operates every control.
+5. `prefers-reduced-motion` still honored (global guard); `.is-stuck` translucent
+   state still works and the gold selected state stays legible on it.
+6. No `.obwf-*` change leaks outside the filter bar; `--obwf-gray` untouched.
+
+### Verification (Local)
+1. `npm run build`; report the tail; confirm clean.
+2. `/brews/beer-finder/`: switch all four views (gold active tab moves correctly);
+   on the Brews tab, toggle each "Show only" filter (gold chip + check on/off, list
+   filters correctly, multi-select works).
+3. Scroll to pin the bar (`.is-stuck` translucent/blur) and confirm the gold selected
+   state is still legible; keyboard + reduced-motion passes.
+4. Narrow-viewport (≤390px, full-bleed bar): the 4 segmented tabs fit/wrap cleanly
+   and the uppercase labels don't overflow.
+
+### Out of scope
+Search field, filter-toggle glyph, sticky mechanics, list rows/badges, modal, REST.
