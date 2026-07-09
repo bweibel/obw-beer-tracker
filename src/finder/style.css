@@ -249,41 +249,98 @@ body.beer-tracker-page-body {
 	margin-bottom: 0.5rem;
 }
 
-.obwf-filterbar .obwf-btn {
-	background: transparent;
-	border: 1px solid currentColor;
-	padding: 0.4rem 0.7rem;
+/* Shared control type for both filter groups: site OpenSans bold UPPERCASE, a
+   touch smaller than the modal's 16px because this is a dense app-bar — we match
+   the character, not the exact size. 44px tap targets preserved. On the dark bar
+   the "selected" signal is a strong GOLD fill with dark text (gold is light, so
+   dark ink reads AND pops off #2b2b2b); hovering an *un*selected control is a
+   faint white overlay, deliberately distinct from gold. `--obwf-gray` is no
+   longer referenced here (it stays in use for the list/sort/modal). */
+.obwf-filterbar .obwf-tab,
+.obwf-filterbar .obwf-filter-chip {
+	font-family: "OpenSans", helvetica, arial, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 13px;
+	letter-spacing: 0.03em;
 	min-height: 44px;
-	font-size: 0.8rem;
 	cursor: pointer;
+	color: #fff;
+	background: transparent;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.35rem;
-}
-.obwf-filterbar .obwf-btn:hover,
-.obwf-filterbar .obwf-btn--active {
-	background: var(--obwf-gray);
-	color: #fff;
+	justify-content: center;
 }
 
-.obwf-filterbar .obwf-check {
-	display: inline-block;
-	width: 14px;
-	height: 14px;
+/* A) "Show by" → one segmented tab control. Segments collapse their shared
+   borders (margin-left:-1px); the active segment lifts above its neighbors so
+   its gold edge isn't clipped. flex-wrap keeps it from overflowing the full-
+   bleed mobile bar on the narrowest screens. */
+.obwf-filterbar .obwf-tabs {
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+.obwf-filterbar .obwf-tab {
 	border: 1px solid currentColor;
+	margin-left: -1px;
+	padding: 0 0.8rem;
 }
-.obwf-filterbar .obwf-check--on {
-	background: var(--obwf-gray);
-	border-color: var(--obwf-gray);
+.obwf-filterbar .obwf-tab:first-child {
+	margin-left: 0;
+}
+.obwf-filterbar .obwf-tab:hover:not(.obwf-tab--active) {
+	background: rgba(255, 255, 255, 0.12);
+}
+.obwf-filterbar .obwf-tab--active {
+	background: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
+	color: #2b2b2b;
 	position: relative;
+	z-index: 1;
 }
-.obwf-filterbar .obwf-check--on::after {
-	content: "\2713";
-	position: absolute;
-	top: -3px;
-	left: 1px;
-	font-size: 12px;
-	color: #fff;
+
+/* B) "Show only" → separate gold filter chips (multi-select). */
+.obwf-filterbar .obwf-filter-chip {
+	border: 1px solid currentColor;
+	padding: 0 0.7rem;
+	gap: 0.4rem;
+}
+.obwf-filterbar .obwf-filter-chip:hover:not(.obwf-filter-chip--on) {
+	background: rgba(255, 255, 255, 0.12);
+}
+.obwf-filterbar .obwf-filter-chip--on {
+	background: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
+	color: #2b2b2b;
+}
+
+/* C) Checkbox: a 1px current-color square holding an IconCheck that fades in on
+   ON. currentColor tracks the chip (white OFF, dark on the gold fill), so the
+   tick is white-on-dark-bar when hollow-adjacent and dark-on-gold when checked. */
+.obwf-filterbar .obwf-check {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	border: 1px solid currentColor;
+	flex-shrink: 0;
+}
+.obwf-filterbar .obwf-check .obwf-icon {
+	width: 13px;
+	height: 13px;
+	opacity: 0;
+}
+.obwf-filterbar .obwf-check--on .obwf-icon {
+	opacity: 1;
+}
+
+/* Keyboard focus ring, white so it reads on the dark bar (and around a gold
+   selected control). */
+.obwf-filterbar .obwf-tab:focus-visible,
+.obwf-filterbar .obwf-filter-chip:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
 }
 
 /* Delete-all: a standalone solid-red button below the list content. */
@@ -1048,14 +1105,16 @@ body.obwf-scroll-locked {
 }
 
 /* Tactile press feedback + eased hover on the small tap targets. */
-.obwf-filterbar .obwf-btn,
+.obwf-filterbar .obwf-tab,
+.obwf-filterbar .obwf-filter-chip,
 .obwf-filterbar .obwf-filter-toggle,
 .obwf-sort-btn,
 .obwf-badge-btn,
 .obwf-btn-delete {
 	transition: transform 90ms ease, background-color 0.12s ease, color 0.12s ease;
 }
-.obwf-filterbar .obwf-btn:active,
+.obwf-filterbar .obwf-tab:active,
+.obwf-filterbar .obwf-filter-chip:active,
 .obwf-filterbar .obwf-filter-toggle:active,
 .obwf-sort-btn:active,
 .obwf-badge-btn:active,

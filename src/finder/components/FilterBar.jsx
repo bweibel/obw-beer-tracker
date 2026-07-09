@@ -4,7 +4,7 @@
  * toggleControls, deleteClick).
  */
 import { useState, useEffect, useRef } from 'preact/hooks';
-import { IconClose, IconFilter } from './icons/Icons.jsx';
+import { IconCheck, IconClose, IconFilter } from './icons/Icons.jsx';
 
 const SHOW_ONLY = [
 	{ key: 'notTasted', label: 'Not Tasted' },
@@ -21,7 +21,15 @@ const TABS = [
 ];
 
 function Check({ on }) {
-	return <span class={'obwf-check' + (on ? ' obwf-check--on' : '')} aria-hidden="true" />;
+	// Box is decorative — the chip's label + aria-pressed convey state. The tick
+	// (IconCheck) is always rendered and revealed via `--on` (opacity), so its
+	// stroke inherits the chip's `currentColor`: white on an OFF chip's border,
+	// dark on the gold ON fill.
+	return (
+		<span class={'obwf-check' + (on ? ' obwf-check--on' : '')} aria-hidden="true">
+			<IconCheck />
+		</span>
+	);
 }
 
 export function FilterBar({
@@ -133,7 +141,11 @@ export function FilterBar({
 							{SHOW_ONLY.map((f) => (
 								<button
 									key={f.key}
-									class="obwf-btn"
+									class={
+										'obwf-filter-chip' +
+										(filters[f.key] ? ' obwf-filter-chip--on' : '')
+									}
+									aria-pressed={filters[f.key]}
 									onClick={() => toggleFilter(f.key)}
 								>
 									<Check on={filters[f.key]} /> {f.label}
@@ -147,18 +159,22 @@ export function FilterBar({
 					<h5>Show by:</h5>
 				</header>
 				<section class="obwf-card-content obwf-actions">
-					{TABS.map((t) => (
-						<button
-							key={t.key}
-							class={'obwf-btn' + (listType === t.key ? ' obwf-btn--active' : '')}
-							onClick={() => {
-								setListType(t.key);
-								setOpen(false); // collapse the dropdown as the view scrolls up
-							}}
-						>
-							{t.label}
-						</button>
-					))}
+					<div class="obwf-tabs" role="tablist">
+						{TABS.map((t) => (
+							<button
+								key={t.key}
+								role="tab"
+								aria-selected={listType === t.key}
+								class={'obwf-tab' + (listType === t.key ? ' obwf-tab--active' : '')}
+								onClick={() => {
+									setListType(t.key);
+									setOpen(false); // collapse the dropdown as the view scrolls up
+								}}
+							>
+								{t.label}
+							</button>
+						))}
+					</div>
 				</section>
 
 			</div>

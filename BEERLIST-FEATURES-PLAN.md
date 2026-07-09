@@ -228,8 +228,9 @@ button (leave unless the shared type change trivially covers them).
 
 ## Feature 2 — Filter bar: site type + gold selected state, tabs vs filters
 
-**Status:** ready for handoff (Sonnet / medium). **Depends on Feature 1 being
-committed** (both touch `style.css`; sequence after `3dfb843`).
+**Status:** DONE — implemented on `main` (segmented gold tabs, gold filter
+chips, IconCheck). Known minor: at ≤~390px the longest chip ("Want to Try")
+wraps to a second row — accepted, not worth tightening.
 
 ### Goal
 The sticky filter bar is a **dark app-bar** (`#2b2b2b`, white text). Its two control

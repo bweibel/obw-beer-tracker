@@ -65,6 +65,15 @@ export function IconChevronRight({ class: className = '' }) {
 	);
 }
 
+/** Feather "check" — the filter-chip checkbox tick (replaces the CSS `\2713`). */
+export function IconCheck({ class: className = '' }) {
+	return (
+		<svg {...BASE_PROPS} class={'obwf-icon ' + className}>
+			<polyline points="20 6 9 17 4 12" />
+		</svg>
+	);
+}
+
 /** Feather "sliders" — filter toggle. */
 export function IconFilter({ class: className = '' }) {
 	return (
