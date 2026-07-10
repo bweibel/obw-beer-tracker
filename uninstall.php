@@ -14,4 +14,15 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Intentionally nothing to clean up yet.
+// Beers/breweries/venues are intentionally left untouched (see file header).
+//
+// The one thing we DO remove is the anonymous trending table + its options: it
+// holds only random device UUIDs and per-beer flag counts (no PII, no directory
+// data), and is disposable. Inlined here rather than via TrackStore because the
+// plugin's autoloader is not active in the uninstall context.
+global $wpdb;
+$obw_track_table = $wpdb->prefix . 'obw_beer_track';
+// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+$wpdb->query( "DROP TABLE IF EXISTS {$obw_track_table}" );
+delete_option( 'obw_beer_track_db_version' );
+delete_option( 'obw_beer_tracker_trend_disabled' );

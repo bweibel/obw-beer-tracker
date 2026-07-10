@@ -172,4 +172,43 @@ final class CliCommand {
 
 		\WP_CLI::error( 'Usage: wp obw pwa <on|off>' );
 	}
+
+	/**
+	 * Enable/disable the trending aggregate (collection + admin preview).
+	 *
+	 * The killswitch for the "Most Wanted / Most Loved" test run. OFF makes the
+	 * write endpoint a no-op, hides the admin preview, and stops clients from
+	 * reporting or requesting counts — the rollback lever for the live event.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <state>
+	 * : on|off
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp obw trend off
+	 *     wp obw trend on
+	 *
+	 * @when after_wp_load
+	 *
+	 * @param array<int,string> $args Positional args ([0] => on|off).
+	 */
+	public function trend( array $args ): void {
+		$state = strtolower( $args[0] ?? '' );
+
+		if ( 'off' === $state ) {
+			update_option( 'obw_beer_tracker_trend_disabled', 1, false );
+			\WP_CLI::success( 'Trending disabled: writes are no-ops, the admin preview is hidden, and clients stop reporting.' );
+			return;
+		}
+
+		if ( 'on' === $state ) {
+			delete_option( 'obw_beer_tracker_trend_disabled' );
+			\WP_CLI::success( 'Trending enabled.' );
+			return;
+		}
+
+		\WP_CLI::error( 'Usage: wp obw trend <on|off>' );
+	}
 }

@@ -12,7 +12,7 @@
  * loops so the finder still works, just without the single-payload win.
  */
 
-import { decodeEntities, finderConfig } from './util.js';
+import { decodeEntities, finderConfig, trendConfig } from './util.js';
 
 const PER_PAGE = 100;
 const UNTAPPD_PREFIX = 'https://untappd.com/b/';
@@ -238,6 +238,94 @@ function normalizeFinderPayload(payload) {
  * @param {number|string} beerId
  * @returns {Promise<string>} The rendered content HTML (possibly empty).
  */
+// ── Trending (anonymous aggregate) ─────────────────────────────────────────
+
+// Random per-device id so the server can count distinct devices (not events)
+// without any account/PII. Separate key from beerData / the finder cache.
+const DEVICE_KEY = 'obwDeviceId';
+
+/** RFC4122-ish v4 fallback for browsers without crypto.randomUUID. */
+function fallbackUuid() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+		const r = (Math.random() * 16) | 0;
+		const v = c === 'x' ? r : (r & 0x3) | 0x8;
+		return v.toString(16);
+	});
+}
+
+/** Get (and lazily persist) this device's anonymous id. */
+function deviceId() {
+	try {
+		let id = localStorage.getItem(DEVICE_KEY);
+		if (!id) {
+			id =
+				typeof crypto !== 'undefined' && crypto.randomUUID
+					? crypto.randomUUID()
+					: fallbackUuid();
+			localStorage.setItem(DEVICE_KEY, id);
+		}
+		return id;
+	} catch (e) {
+		return fallbackUuid(); // private mode / storage off — still send something
+	}
+}
+
+/**
+ * Fire-and-forget report of tracker flags to the aggregate endpoint. No-ops
+ * unless trending is enabled (the killswitch flag). `beers` is an array of
+ * `{ id, totry, tasted, favorited }`.
+ *
+ * @param {Array<{id:number,totry:boolean,tasted:boolean,favorited:boolean}>} beers
+ */
+export function reportTrack(beers) {
+	if (!trendConfig().enabled) return;
+	if (!Array.isArray(beers) || beers.length === 0) return;
+
+	const { base, nonce } = restBase();
+	const headers = { 'Content-Type': 'application/json' };
+	if (nonce) headers['X-WP-Nonce'] = nonce;
+
+	try {
+		fetch(`${base}/obw/v1/track`, {
+			method: 'POST',
+			headers,
+			credentials: 'same-origin',
+			// keepalive so a report fired during navigation/unload still completes.
+			keepalive: true,
+			body: JSON.stringify({ deviceId: deviceId(), beers }),
+		}).catch(() => {
+			/* aggregate is best-effort — never surface a failure to the user */
+		});
+	} catch (e) {
+		/* ignore */
+	}
+}
+
+/**
+ * Admin-only: aggregate counts for a beer. Returns null unless the viewer can
+ * see trending (the server also enforces `manage_options`).
+ *
+ * @param {number} beerId
+ * @returns {Promise<{totry:number,tasted:number,favorited:number}|null>}
+ */
+export async function fetchTrend(beerId) {
+	if (!trendConfig().canView) return null;
+
+	const { base, nonce } = restBase();
+	const headers = nonce ? { 'X-WP-Nonce': nonce } : {};
+
+	try {
+		const res = await fetch(`${base}/obw/v1/trend/${beerId}`, {
+			headers,
+			credentials: 'same-origin',
+		});
+		if (!res.ok) return null;
+		return await res.json();
+	} catch (e) {
+		return null;
+	}
+}
+
 export async function loadBeerContent(beerId) {
 	if (contentCache.has(beerId)) {
 		return contentCache.get(beerId);

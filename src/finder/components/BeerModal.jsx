@@ -6,7 +6,8 @@
  * AngularJS `click-outside` directive).
  */
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { loadBeerContent } from '../api.js';
+import { fetchTrend, loadBeerContent } from '../api.js';
+import { trendConfig } from '../util.js';
 import { Badges } from './Badges.jsx';
 import { IconClose } from './icons/Icons.jsx';
 
@@ -27,6 +28,9 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 	// CSS; the clamp height matches the reserved min-height, so loading the text
 	// never grows the card.
 	const [overflows, setOverflows] = useState(false);
+	// Admin-only aggregate counts for this beer (null = not shown / not loaded).
+	// Gated by the mount flag AND the server's manage_options check.
+	const [trend, setTrend] = useState(null);
 	const innerRef = useRef(null);
 
 	useEffect(() => {
@@ -44,6 +48,20 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 			}
 		});
 
+		return () => {
+			cancelled = true;
+		};
+	}, [beer && beer.id]);
+
+	// Admin preview: fetch aggregate counts when the modal opens. No-ops for
+	// non-admins (trendConfig().canView is false → fetchTrend returns null).
+	useEffect(() => {
+		setTrend(null);
+		if (!beer || !trendConfig().canView) return undefined;
+		let cancelled = false;
+		fetchTrend(beer.id).then((t) => {
+			if (!cancelled) setTrend(t);
+		});
 		return () => {
 			cancelled = true;
 		};
@@ -173,6 +191,13 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 									{expanded ? 'Read less' : 'Read more'}
 								</button>
 							) : null}
+						</div>
+					) : null}
+
+					{trend ? (
+						<div class="obwf-admin-stat" role="note">
+							<strong>Admin preview</strong> · Want to try: {trend.totry} ·
+							Favorited: {trend.favorited}
 						</div>
 					) : null}
 

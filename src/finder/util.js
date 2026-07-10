@@ -68,3 +68,26 @@ export function finderConfig() {
 		nonce: nonce || '',
 	};
 }
+
+/**
+ * Trending feature flags, read from the mount node's data attributes (set by the
+ * shortcode). `enabled` gates client reporting (killswitch); `canView` reveals
+ * the admin-only modal preview. Both default false, so a mocked/standalone mount
+ * silently does nothing.
+ *
+ * @returns {{ enabled: boolean, canView: boolean }}
+ */
+export function trendConfig() {
+	let enabled = false;
+	let canView = false;
+
+	if (typeof document !== 'undefined') {
+		const el = document.getElementById('obw-beer-finder-root');
+		if (el) {
+			enabled = el.getAttribute('data-trend-enabled') === '1';
+			canView = el.getAttribute('data-can-view-trending') === '1';
+		}
+	}
+
+	return { enabled, canView };
+}

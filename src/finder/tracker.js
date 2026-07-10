@@ -12,7 +12,11 @@
  *   - delete-all wipes beerData (+ helpHide / adHide) and resets every flag
  */
 
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
+import { reportTrack } from './api.js';
+import { trendConfig } from './util.js';
+
+const BACKFILL_KEY = 'obwTrendBackfilled';
 
 const STORAGE_KEY = 'beerData';
 
@@ -92,8 +96,41 @@ export function useTracker() {
 			const next = mutate({ ...current });
 			const updated = { ...prev, [id]: next };
 			writeStore(updated);
+			// Report the changed beer's new flags to the anonymous aggregate
+			// (fire-and-forget; no-ops when trending is disabled). Consistent with
+			// writeStore already being a side effect inside this updater.
+			reportTrack([
+				{ id, totry: next.toTry, tasted: next.tasted, favorited: next.favorited },
+			]);
 			return updated;
 		});
+	}, []);
+
+	// One-time backfill: report any list built BEFORE trending shipped so the
+	// aggregate reflects it. Runs at most once per device, and only once trending
+	// is enabled (so flipping the switch on later still backfills).
+	useEffect(() => {
+		if (!trendConfig().enabled) return;
+		try {
+			if (localStorage.getItem(BACKFILL_KEY)) return;
+		} catch (e) {
+			return; // storage unavailable — skip; nothing to persist a guard with
+		}
+		const current = readStore();
+		const beers = Object.keys(current)
+			.filter((id) => current[id].toTry || current[id].tasted || current[id].favorited)
+			.map((id) => ({
+				id: Number(id),
+				totry: current[id].toTry,
+				tasted: current[id].tasted,
+				favorited: current[id].favorited,
+			}));
+		if (beers.length) reportTrack(beers);
+		try {
+			localStorage.setItem(BACKFILL_KEY, '1');
+		} catch (e) {
+			/* ignore */
+		}
 	}, []);
 
 	const toggleTasted = useCallback(

@@ -76,6 +76,11 @@ final class Plugin {
 		// PWA: installable manifest + offline service worker for the finder.
 		( new ServiceWorker() )->register_hooks();
 
+		// Trending: anonymous aggregate favorite/want-to-try counts. Universal
+		// collection (POST /obw/v1/track) + admin-only preview (GET /obw/v1/trend).
+		Trend\TrackStore::maybe_upgrade();
+		( new Rest\TrendController() )->register_hooks();
+
 		// Placeholder finder mount for WP-0 acceptance; WP-3 replaces the app,
 		// WP-6 wires the theme page to this shortcode.
 		add_shortcode( 'obw_beer_finder', [ $this, 'render_finder_shortcode' ] );
@@ -141,11 +146,22 @@ final class Plugin {
 			);
 		}
 
+		// Trending flags: `data-trend-enabled` lets the client report; the
+		// `data-can-view-trending` flag (admins only) reveals the modal preview.
+		// The REST read is independently `manage_options`-gated, so the flag is a
+		// UI hint, not the security boundary.
+		$trend_attrs = '';
+		if ( Trend\TrackStore::is_enabled() ) {
+			$trend_attrs = ' data-trend-enabled="1"'
+				. ( current_user_can( 'manage_options' ) ? ' data-can-view-trending="1"' : '' );
+		}
+
 		return sprintf(
-			'<div id="obw-beer-finder-root" class="obw-beer-finder" data-rest-url="%s" data-nonce="%s"%s></div>',
+			'<div id="obw-beer-finder-root" class="obw-beer-finder" data-rest-url="%s" data-nonce="%s"%s%s></div>',
 			esc_url( rest_url() ),
 			esc_attr( wp_create_nonce( 'wp_rest' ) ),
-			$pwa_attrs
+			$pwa_attrs,
+			$trend_attrs
 		);
 	}
 
@@ -156,6 +172,9 @@ final class Plugin {
 	public static function activate(): void {
 		// WP-4: create the pending-review store table.
 		Import\PendingStore::create_table();
+
+		// Trending: anonymous aggregate tracker table.
+		Trend\TrackStore::create_table();
 
 		flush_rewrite_rules();
 	}
