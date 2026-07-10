@@ -197,7 +197,7 @@ export function BeerModal({ beer, flags, onClose, onTasted, onFavorited, onToTry
 					{trend ? (
 						<div class="obwf-admin-stat" role="note">
 							<strong>Admin preview</strong> · Want to try: {trend.totry} ·
-							Favorited: {trend.favorited}
+							Tasted: {trend.tasted} · Favorited: {trend.favorited}
 						</div>
 					) : null}
 
