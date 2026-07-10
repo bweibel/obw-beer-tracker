@@ -76,7 +76,8 @@ body.beer-tracker-page-body {
 
 /* ---- Filter bar --------------------------------------------------------- */
 .obwf-filterbar {
-	border: 1px solid var(--obwf-line);
+	/* No border — it read as a white outline on the brown bar. Depth is added
+	   only when pinned, via a subtle box-shadow on `.is-stuck` below. */
 	padding: 0.75rem 1rem;
 	margin-bottom: 1.25rem;
 	/*
@@ -94,13 +95,13 @@ body.beer-tracker-page-body {
 	   Without this the transparent buttons were white-bordered on a white bar and
 	   effectively invisible until the bar became sticky. `.is-stuck` below only
 	   adds the blurred/translucent pinned look on top of this. */
-	background: #2b2b2b;
+	background: var(--obwf-brown); /* OBW brown ($obw-brown) — ties the bar into the site palette */
 	z-index: 10;
 	/* Explicit color so currentColor (icon strokes, borders) is deterministic
 	   under the theme's `all: unset` global reset, which otherwise leaves the
 	   finder's color to ambiguous inheritance. */
 	color: #fff;
-	transition: background-color 0.15s ease, color 0.15s ease;
+	transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 /* Mobile only: break the bar out to full viewport width (edge-to-edge app-bar
    look). Works flush because the theme's mobile column is centered with equal
@@ -123,11 +124,17 @@ body.beer-tracker-page-body {
    toggle icon and button borders read against the dark bar. The search field
    keeps its own white background (below) so typed text stays legible. */
 .obwf-filterbar.is-stuck {
-	background: rgba(44, 44, 44, 0.93);
+	/* Slightly darker than the solid --obwf-brown (#483a34) so that, at 0.93
+	   opacity with lighter page content bleeding through the blur, the apparent
+	   brightness stays about the same as the un-pinned bar — only the
+	   transparency shifts. */
+	background: rgba(58, 46, 42, 0.93);
 	-webkit-backdrop-filter: blur(8px);
 	backdrop-filter: blur(8px);
 	color: #fff;
 	padding-bottom: 0;
+	/* Subtle depth when pinned, replacing the removed static border. */
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
 }
 /* The toggle and the section headings carry their own explicit colors for the
    light state, so they won't inherit the white above — flip them when dark. */
@@ -289,14 +296,32 @@ body.beer-tracker-page-body {
 	margin-left: 0;
 }
 .obwf-filterbar .obwf-tab:hover:not(.obwf-tab--active) {
-	background: rgba(255, 255, 255, 0.12);
+	/* On hover: gold outline + the beer-pour. The BASE is gold and BROWN liquid
+	   fills up over it (see the brown-glass pour rule at the end of the file),
+	   settling to brown with white text. The solid gold fill (no pour) is the
+	   active/selected state. */
+	background-color: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
+	color: #fff;
 }
 .obwf-filterbar .obwf-tab--active {
 	background: var(--obwf-yellow);
 	border-color: var(--obwf-yellow);
-	color: #2b2b2b;
+	color: #fff;
 	position: relative;
 	z-index: 1;
+}
+/* Active tab on hover: it's already the solid gold selected state, so NO pour —
+   just a slight brighten + the foam bubbles rising. Two-class specificity
+   (.obwf-tab.obwf-tab--active) outranks the shared pour rule so this wins
+   regardless of source order; only the two foam layers are set (no glass fill),
+   and the animation drops obwf-pour. The reduced-motion guard still strips the
+   bubbles (leaving just the brighten). */
+.obwf-filterbar .obwf-tab.obwf-tab--active:hover {
+	background-image: var(--obwf-foam-1), var(--obwf-foam-2);
+	background-size: auto, auto;
+	animation: obwf-bubbles 3s linear infinite;
+	filter: brightness(1.08);
 }
 
 /* B) "Show only" → separate gold filter chips (multi-select). */
@@ -306,12 +331,15 @@ body.beer-tracker-page-body {
 	gap: 0.4rem;
 }
 .obwf-filterbar .obwf-filter-chip:hover:not(.obwf-filter-chip--on) {
-	background: rgba(255, 255, 255, 0.12);
+	/* Gold outline + brown liquid pouring up over the gold base. Solid gold fill
+	   stays reserved for the ON state. */
+	background-color: var(--obwf-yellow);
+	border-color: var(--obwf-yellow);
 }
 .obwf-filterbar .obwf-filter-chip--on {
 	background: var(--obwf-yellow);
 	border-color: var(--obwf-yellow);
-	color: #2b2b2b;
+	color: #fff;
 }
 
 /* C) Checkbox: a 1px current-color square holding an IconCheck that fades in on
@@ -1278,4 +1306,72 @@ body.obwf-scroll-locked {
 	letter-spacing: 0.03em;
 	font-size: 0.72rem;
 	color: var(--obwf-brown);
+}
+
+/* ── Site "beer pour" button effect ──────────────────────────────
+   Replicates the parent theme's `.obw-button` `bubbles-full-hover`
+   (library/scss/modules/_bubbles.scss): white foam-bubble PNGs + a glass-fill
+   image animated so the button "pours" full on interaction. Applied on
+   hover/focus/active only (never a persistent selected state, so nothing
+   animates indefinitely). Keyframes renamed `obwf-*` to stay decoupled from the
+   theme's globals.
+
+   Two variants share the same white foam bubbles but differ in what "fills":
+   - Modal buttons pour the theme's WHITE glass over each button's own brand
+     color (matches the site's `.obw-button`).
+   - Filter-bar tabs/chips pour a BROWN-recolored glass over a GOLD base (set on
+     their hover rules), so the button fills brown from gold. */
+:root {
+	--obwf-foam-1: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAD6CAMAAABgUBJVAAAA0lBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Y/9RiAAAARnRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RF/NndygAABEBJREFUeF7t2Wlv2koYxfEz4wWMFzA2xgRSA12yts1G0t6EJBDO9/9K15CUCEVJmrqPbnU7v1d+95c98sxID36ZYRhW/mGcaMgauEDSlY4ooBYoiCoANBLhSDe3GtsRhLX9ZgBxtsbfxzAMwzAMw/ByC+LiiQtxlq/w5zIMw6h5NQhTvRve9BREtbnUhiS9y6VdLRo55NLhS5F6ksc2KlA5l3KF5/j9IGj6rb5ToaL3SO5pPCdvNzQAu1HUq1TCNHy+kSQ/+s7YgQwrqeEHt6MgImvj0VBDRNrCo8CFiKiBR64PEXGwsclBRN7GI6mLa9BUWBsqyOgHj48+hNhD//HLidGDjl1yhjFeYNdcjSqc3mg4ShWepVrF0eX5brcOOc4n3juPIcU+5g+zFDLULkuTTwdzktMQIvwFefuuDiv+SvKjgoQhyRGWvAvyOoCEC/LMwUqfZAoJd+Rn3EtIdiDhhjxSWOmIRQ7JaYyVffIuFruBnvkoFSS/OpBgXZD8Nt4e7pNcdCGjOePagQ0h2fW64UKM9/6OpUliQZCq+a3Is/GfUpalIEtHo6OjIhTN2O+5MtaQ84EPthWkhDckTyYkrz1I2SEXY6e+TzKBlEPyTgOtGdmHlANyUQOyBZlDypDk91Z2SbIJKfaE5GJB8sSBmGzKlesIgpLTKXl1GkFWXBRNrBmG4QYupEVxFrcgK+7Z0HkKSbXEAqCSGgTFIZa8NgSFAZYaIQSpXqiAxraCJGs7tBuFBWFBFuIvZRhKQ97WYR3i0pGL/zUj6HdtCBv5rpNnEDX0FKC32hBkNxVK9UBDynrKp0IHcpz4/k0iDUF9D6VuJHzRzBtxL7Ihyml5YaT+4AMh7Xc70pnondZbdcgKc6DlQZY/CMJhHcL8d0MfP8EwtKshzP08m8/2bfwOut7wPY0nnCsunbiorvnxlpzvtBU24TPvjVCVVXDl6fRZn5PTw6vfMTgcc20PG+wL8gzH5KSOajpzksfD4ohPhraqjMyP5+SBRjVfSI5dwBnPye/YMF5wpY9qvG/kuUJJnZIzd3O57ld+z0Y1yQ3Zw8r2nLMWNtjp0dWXtkZFndl6JXozztrYBK0VKgv+IQ/XM6GZBwnqmGSKUvuKvMbr3HaWJXW8SXFHLoZ5t7j9uV87PWZpkuEt9BHXJgqvye64sujjLfwTPjj18Bp3ygezOt6iNrhi6aao4VUfF+RZp/P1F3ZNr5l2Wg38hFPytga4E/ISUsrI9cMhsICUE/LWB4Jv5IXo6HOaZRckB5Cizvlg6kBM/J0rV00ICnfLzOVeBFlB3queUJBnx0UdlahoPBpYeEkjShuopBdr7Ww7eEkQa1TRiDQAr4CkboySm0JSHKHkDCBJd30AeQJRQdofbLWeBMr272RHUYBNUIOg6UOY3oHfhbTmzkCjOsMwDMMwDMMwDMMwDMMwDMMwDAP/AiXXntswHP/6AAAAAElFTkSuQmCC");
+	--obwf-foam-2: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAD6CAMAAABgUBJVAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA0lBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Y/9RiAAAARnRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RF/NndygAABEZJREFUGBntwQlb2lgYBtD33iwkZIEkLEGwAVrrhuOK1lFUkPf//6UJaLU6j7WK30xnnnsODMP4B+ls+CW3IKudAW4PolRYAVQPolRWBVBAVrxetfI2hIW1IIU4bcMwDMMwDMP4rVm5D3HuOIE4FVgwDMP4f6j4FQhTnWtedxREpVxIIUlvcWFLYwV2kmceXqZHXBhpvJvTrQe1MOwGeInKuZArvJdXVG0AuprmeIneJrmt8V7O0MEdnWV4iY4akcZ7qaaL7yqZBRG6j0dpCyLcEI/qDYgIXDyqxhDhV/AoTCDCyvEozSFC9fFA1ULICLr4LuxCSprjTtC3ISbpO3ap2dMQpBqD/qDjYBXardiQ5bW3Ti8OirqCnOSUd746kNKY8rtDGzKiCcnZ7tcxS1sKEtQGyf3EgvfphpwHkBBekWc+FgYk+5DQINnFknNCnkFCk2SGO3vkLSQ0STaxpA7Ia0hIbskdLCUTcgQJzj7JAqXghGQKEe05yZ3++vAbyTMLIuxdPpjWIMTd5b2rFsRY2Zil288+JNl+XA8qCqtSlqUgS0XFwcEg1hCkh1z6bEOMWue9LxDjX5EcH5G8jiAlI7njOcM5uQkpXXJaB/QtOYKUnJy3gMqc3IWUGsmLVv2cZB9SnCOS8znJsQ0x8RWXJi0Iio8vyclxBlm1okhgGMbbuaELafWklcSQ1cg17E4CSZVMAbCyCgSlPhaiBIKiKhbCCILUehVQUUdBklVU7WjdgrCoFcIw/m1aQZw3WoM4d9CAYdyx290Qwlq54wYDiErXNKD8PgTp0ENJ1WzIcSKFBTeEHB17KKnEgaC4jZLfhSQ77iTVPKtAlIojv+7g96EVpOlmu9uAMG9N608xZPl1II8gy+tHYS+AsKD/KYDxX6ddDWH2znQ23XMhyT3iwqWDv9F+UPU0PsCAd/bwjEo3Z+TNRg0rc/bJy9GEPNV4Qm3wXmFhRd6YPMQJeWbjiW0+GGJFepecHc7IM4UfNVk6KPqHJGdNrKjLpfkQT5yTs6EDuEOSf2BF9jYX9iz8yJ2SxwoldUp+87Einf5xedCw8UR9ytk6ljrkdYaVKa3xTDrltIOlJjltQoI/JUdYGpF/hngLL2u1UhevuyIvU5QaJA8V3qA1ZumwgVcNSN4U7bw/J28LvEF3zqXbFl6jxnxwoPHrvCnvTVy8xj/mvaMAbzAgud9snpDzDbyqUlyzdNmr4C0uyLELVG7IY/yCar3ZqPl4mzm5h9IVeQwpZ+S3EAhuyCNI6ZE8a7UmJPuQ4kx471RBTO2SS+cJBMXbF+T5VgRZcScP8RtQEOcViQ1p1UZcxc9YvcEwVliJTkL8jLPuaJ10IKrwAei4CkkNF6WkDUk9B6U4gaQsBxC0NT5O0MZz9bVetxHi4wS1sKfwTBjHNj5QO8CmhjDd26zBMAzDMAzDMAzDMAzDMAzDMAzDeJe/AGBBnts60yfCAAAAAElFTkSuQmCC");
+	--obwf-glass-white: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAEsCAYAAACG+vy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAADo0lEQVR4AezTUQkAIBAFQRX7B/ZHX4CDC+AMbISdNwZQWgkwCBgEDAIGAYOAQcAgYBAwCGAQMAgYBAwCBgGDgEHAIGAQMAhgEDAIGAQMAgYBg4BBwCBgEMAgYBAwCBgEDAIGAYOAQcAgYBDAIGAQMAgYBAwCBgGDgEHAIIBBwCBgEDAIGAQMAgYBg4BBwCCAQcAgYBAwCBgEDAIGgT8GAQwCBgGDgEHAIGAQMAgYBAwCBgEMAgYBg4BBwCBgEDAIGAQMAgYBDAIGAYOAQcAgYBAwCBgEDAIYBAwCBgGDgEHAIGAQMAgYBAwCGAQMAgYBg4BBwCBgEDAIGAQwCBgEDAIGAYOAQcAgYBAwCBgEMAgYBAwCBgGDgEHAIGAQMAhgEDAIGAQMAgYBg4BBwCBgEDAIYBAwCBgEDAIGAYOAQcAgYBBgJ+icx67ZtSQQRGE4iT4oSyswLUqri0jpIrqr/v8fKV3X1Syzj8ja3qFHGmQRKaEWzwMPczhze96dcVB2PG9lV/bkvecD/TfZl0/ylb0P6YjlnfTJjXysF2SWel6ue71VJ3WevU25wTqst9j/FZlYzM0cBkMeypZsUkeyQS+i32HY08iiLMiik3pH7skyVuTybATEGDDodYb7hrVOv4kRp8IXRknuu7AQmiN5IqsuIG7jUl7JC1njOPs/GDEDHjDsDeoGDgMRcpWZEkYm4QBZkqfyXJ4RmBr3uuljdL0hD7yv/rVssYbc6/8UC8h4igSlKo/lIVYI1TfGwLvbB9R11oB+k96zTD8WkLFPxbvygMCUZQmL7BVSfm17l50EI9lm8MPhD1yMpWEBmZhtguKCk/fMjUo/y8m0wnP02g8Hu8crzMsE9WNCCNpcgwwLSFrg3TyZfnrv64YFxDDsryaG8dk+HQgAAAAAAPm/NsKDQWqQGqQapAapQWqQGqQGqUFqkBqkGqQGqUFqkBqkBqlBapAapAapBqlBapAapAapQWqQGqQGqQapQWqQGqQGqUFqkBqkBqlBqkFqkBqkBqlBapAapAapQapBapAapAapQWqQGqQGqUFqkGqQGqQGqUFqkBqkBqlBapAapBqkBqlBapAapAapQWqQGqQapAapQWqQGqQGqUFqkBqkBqkGqUFqkBqkBqlBapAapAapBqlBapAapAapQWqQGqQGqUGqQWqQGqQGqUFqkBqkBqlBqkFqkBqkBqlBapAapAapQWqQapAapAapQWqQGqQGqUFqkArLvZUdaybXJwAAAABJRU5ErkJggg==");
+	--obwf-glass-brown: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAEsCAYAAACG+vy+AAAEEklEQVR42u3a3UpUURzG4TezjLKyAtOktDqIlA6ijqwL6E67ik46CzrrDrJx8ivT7MMs7cD/wG4YxURDmeeBxWzWyEb2rJ97zcYzL2af7gToacAlAIGAQEAgIBAQCAgEBAICAYEAAgGBgEBAICAQEAgIBAQCAgGBAAIBgYBAQCAgEBAICAQEAgIBBAICAYGAQEAgIBAQCAgEBAICAQQCAgGBgEBAICAQEAgIBAQCCAQEAgIBgYBAQCAgEBAICAQEAggEBAICAYGAQEAgIBAQCAgEEAgIBAQCAgGBgEBAICAQEAgIBBAICAQEAgIBgYBAQCAgEBAICMQlAIGAQEAgIBAQCAgEBAICAYEAAgGBgEBAICAQEAgIBAQCAgGBAAIBgYBAQCAgEBAICAQEAgIBBAICAYGAQEAgIBAQCAgEBAICAQQCAgGBgEBAICAQEAgIBAQCCAQEAgIBgYBAQCAgEBAICAQEAggEBAICAYGAQEAgIBAQCPSNQZeAA/iZZKUxPiVZTbKeZK0xvtT8VpKNJN+SbNZ723WunSSfu85/teuP9bkkw3V8NsmVxtylGsNJRuq960mu1Wvn+Ea9LxAO5VOShSSLST7W8VKS+ZpbqvmVWuzHaa3H3OIRnPd8ktEkYzVGk9xKcjvJZI2pJBcE0h9+1UJv1eL+UK+tmv9YY6nuCv1w5/tQYz/jSe5ULJNJ7id5mGR6sCaeJXmeZDbJTN3OODl2aoG3a7HP1/F8jVbjLrDtcv2zdo03ve4g72u8rLmhJI+SPEnyuIKZqX0dR2+1scjbjb/6c7XNmKuFv+VSnYwv6ZtJ3tZoGqtQppM8SHKvxlRFxd9bnc7evl3HrXptN7Y6rSTfXa7TFcheOh/qq675gSQTSe5WMJO1pxuvqCbqy9Fp3rb97nqK0xlLSZZr4S80vuAu1raIPgpkL9u1DZhL8nqfn7tZoYxn9/FbZ1ztMUay+xhvKMnF+j0vH3Jhr9dTmB8HOP7aI4Ll2gYhkGO1UOPdEZyr+7l504b9OqcxkKO05qPjf/CvJiAQEAgIBAQCAgGBgEBAICAQQCAgEBAICAQEAgIBgYBAQCAgEEAgIBAQCAgEBAICAYGAQEAggEBAICAQEAgIBAQCAgGBgEBAIIBAQCAgEBAICAQEAgIBgYBAAIGAQEAgIBAQCAgEBAICAYGAQACBgEBAICAQEAgIBAQCAgGBAAIBgYBAQCAgEBAICAQEAgIBgQACAYGAQEAgIBAQCAgEBAICAQQCAgGBgEBAICAQEAgIBAQCAgEEAgIBgYBAQCAgEBAICAQEAgIBBAICAYGAQEAgIBAQCAgEBAIIBAQCAgGBgEBAICAQEAgIBAQCCAQEAgIBgYBAQCAgEBAICAQQCAgEBALH5A95wovoq6SlEAAAAABJRU5ErkJggg==");
+}
+@keyframes obwf-bubbles {
+	from { background-position: 0 0, 20px 0%, 0 -200px; }
+	to   { background-position: 0 -250px, 20px -500px, 0 -200px; }
+}
+@keyframes obwf-pour {
+	from { background-position: 0 50px, 20px 75px, 100px -100px; }
+	to   { background-position: 0 0, 20px 0%, 0 -160px; }
+}
+
+/* Modal: white foam over each button's own brand fill. */
+.obwf-card .obwf-btn--gold:hover,
+.obwf-card .obwf-btn--gold:focus,
+.obwf-card .obwf-btn--gold:active,
+.obwf-card .obwf-btn-more-info:hover,
+.obwf-card .obwf-btn-more-info:focus,
+.obwf-card .obwf-btn-more-info:active,
+.obwf-card .obwf-track-btn:hover,
+.obwf-card .obwf-track-btn:focus-visible,
+.obwf-card .obwf-track-btn:active {
+	background-image: var(--obwf-foam-1), var(--obwf-foam-2), var(--obwf-glass-white);
+	background-size: auto, auto, 200px auto;
+	animation: obwf-bubbles 3s linear infinite, obwf-pour 0.35s ease-out;
+	animation-delay: 0.35s, 0s;
+}
+
+/* Filter bar: BROWN liquid pours up over the GOLD base (see the tab/chip hover
+   rules, which set background-color to --obwf-yellow). */
+.obwf-filterbar .obwf-tab:hover,
+.obwf-filterbar .obwf-tab:active,
+.obwf-filterbar .obwf-filter-chip:hover,
+.obwf-filterbar .obwf-filter-chip:active {
+	background-image: var(--obwf-foam-1), var(--obwf-foam-2), var(--obwf-glass-brown);
+	background-size: auto, auto, 200px auto;
+	animation: obwf-bubbles 3s linear infinite, obwf-pour 0.35s ease-out;
+	animation-delay: 0.35s, 0s;
+}
+
+/* Reduced motion: keep the solid color fill, drop the bubbles/pour entirely. */
+@media (prefers-reduced-motion: reduce) {
+	.obwf-card .obwf-btn--gold,
+	.obwf-card .obwf-btn-more-info,
+	.obwf-card .obwf-track-btn,
+	.obwf-filterbar .obwf-tab,
+	.obwf-filterbar .obwf-filter-chip {
+		background-image: none !important;
+		animation: none !important;
+	}
 }
