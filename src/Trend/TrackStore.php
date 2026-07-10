@@ -207,4 +207,96 @@ final class TrackStore {
 			'favorited' => 0,
 		];
 	}
+
+	/**
+	 * Top-line totals for the admin data panel. Queried fresh (bypasses the
+	 * per-beer aggregate transient) so the dashboard is never stale.
+	 *
+	 * `devices` counts distinct devices that marked at least one beer this year —
+	 * i.e. engaged devices, not raw page views (the finder records nothing until a
+	 * visitor toggles a tracker button).
+	 *
+	 * @return array{devices:int,beers:int,totry:int,tasted:int,favorited:int}
+	 */
+	public function totals(): array {
+		global $wpdb;
+		$table = $this->table();
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$row = $wpdb->get_row(
+			"SELECT
+				COUNT(DISTINCT device_id) AS devices,
+				COUNT(DISTINCT beer_id) AS beers,
+				COALESCE(SUM(totry), 0) AS totry,
+				COALESCE(SUM(tasted), 0) AS tasted,
+				COALESCE(SUM(favorited), 0) AS favorited
+			 FROM {$table}",
+			ARRAY_A
+		);
+
+		return [
+			'devices'   => (int) ( $row['devices'] ?? 0 ),
+			'beers'     => (int) ( $row['beers'] ?? 0 ),
+			'totry'     => (int) ( $row['totry'] ?? 0 ),
+			'tasted'    => (int) ( $row['tasted'] ?? 0 ),
+			'favorited' => (int) ( $row['favorited'] ?? 0 ),
+		];
+	}
+
+	/**
+	 * Top beers by a single flag, highest first (ties broken by beer_id).
+	 *
+	 * @param string $flag  One of 'totry' | 'tasted' | 'favorited'.
+	 * @param int    $limit Max rows.
+	 * @return array<int,array{beer_id:int,count:int}>
+	 */
+	public function top( string $flag, int $limit = 10 ): array {
+		// Whitelist the column so it can be interpolated safely (never user input).
+		if ( ! in_array( $flag, [ 'totry', 'tasted', 'favorited' ], true ) ) {
+			return [];
+		}
+
+		global $wpdb;
+		$table = $this->table();
+
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $flag is whitelisted above.
+				"SELECT beer_id, SUM({$flag}) AS c
+				 FROM {$table}
+				 GROUP BY beer_id
+				 HAVING c > 0
+				 ORDER BY c DESC, beer_id ASC
+				 LIMIT %d",
+				$limit
+			),
+			ARRAY_A
+		);
+
+		$out = [];
+		if ( is_array( $rows ) ) {
+			foreach ( $rows as $r ) {
+				$out[] = [
+					'beer_id' => (int) $r['beer_id'],
+					'count'   => (int) $r['c'],
+				];
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Annual reset: wipe ALL aggregate rows and the count cache. Returns rows
+	 * removed. Never touches visitors' own localStorage lists (client-side).
+	 */
+	public function reset(): int {
+		global $wpdb;
+		$table = $this->table();
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$deleted = $wpdb->query( "DELETE FROM {$table}" );
+		delete_transient( self::COUNT_CACHE );
+
+		return is_numeric( $deleted ) ? (int) $deleted : 0;
+	}
 }

@@ -100,6 +100,9 @@ final class Plugin {
 
 			// Printable venue → brewery → beer tasting sheet (POC).
 			( new Admin\PrintList() )->register_hooks();
+
+			// "Data" dashboard: anonymous aggregate finder usage + annual reset.
+			( new Admin\DataPage() )->register_hooks();
 		}
 	}
 
